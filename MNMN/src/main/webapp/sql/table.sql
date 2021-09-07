@@ -1,5 +1,3 @@
--- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
-
 -- member Table Create SQL
 CREATE TABLE member
 (
@@ -15,22 +13,6 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER member_AI_TRG
-BEFORE INSERT ON member 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT member_SEQ.NEXTVAL
-    INTO :NEW.member_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER member_AI_TRG;
-/
-
---DROP SEQUENCE member_SEQ;
-/
-
 COMMENT ON TABLE member IS '사이트에 가입한 회원의 정보(탈퇴 후에도 삭제되지 않는 정보)'
 /
 
@@ -42,7 +24,6 @@ COMMENT ON COLUMN member.member_id IS '아이디'
 
 COMMENT ON COLUMN member.member_grade IS '등급'
 /
-
 
 -- pet Table Create SQL
 CREATE TABLE pet
@@ -61,22 +42,6 @@ CREATE TABLE pet
 CREATE SEQUENCE pet_SEQ
 START WITH 1
 INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER pet_AI_TRG
-BEFORE INSERT ON pet 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT pet_SEQ.NEXTVAL
-    INTO :NEW.pet_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER pet_AI_TRG;
-/
-
---DROP SEQUENCE pet_SEQ;
 /
 
 COMMENT ON TABLE pet IS '동물의 입양 정보와 그 정보를 남기는 게시글(기다리개)'
@@ -103,7 +68,6 @@ COMMENT ON COLUMN pet.pet_date IS '등록날짜'
 COMMENT ON COLUMN pet.pet_photo IS '동물사진'
 /
 
-
 -- volunteer Table Create SQL
 CREATE TABLE volunteer
 (
@@ -119,22 +83,6 @@ CREATE TABLE volunteer
 CREATE SEQUENCE volunteer_SEQ
 START WITH 1
 INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER volunteer_AI_TRG
-BEFORE INSERT ON volunteer 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT volunteer_SEQ.NEXTVAL
-    INTO :NEW.vol_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER volunteer_AI_TRG;
-/
-
---DROP SEQUENCE volunteer_SEQ;
 /
 
 COMMENT ON TABLE volunteer IS '봉사를 신청하는 양식(힘드냥 도울개)'
@@ -182,22 +130,6 @@ START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER adopt_AI_TRG
-BEFORE INSERT ON adopt 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT adopt_SEQ.NEXTVAL
-    INTO :NEW.adopt_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER adopt_AI_TRG;
-/
-
---DROP SEQUENCE adopt_SEQ;
-/
-
 COMMENT ON TABLE adopt IS '원하는 동물을 입양 신청하는 게시글'
 /
 
@@ -238,7 +170,6 @@ ALTER TABLE adopt
         REFERENCES pet (pet_num)
 /
 
-
 -- community Table Create SQL
 CREATE TABLE community
 (
@@ -255,22 +186,6 @@ CREATE TABLE community
 CREATE SEQUENCE community_SEQ
 START WITH 1
 INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER community_AI_TRG
-BEFORE INSERT ON community 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT community_SEQ.NEXTVAL
-    INTO :NEW.com_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER community_AI_TRG;
-/
-
---DROP SEQUENCE community_SEQ;
 /
 
 COMMENT ON TABLE community IS '회원들이 자율적으로 남길 수 있는 게시글(멍냥토크)'
@@ -317,22 +232,6 @@ CREATE TABLE adopt_after
 CREATE SEQUENCE adopt_after_SEQ
 START WITH 1
 INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER adopt_after_AI_TRG
-BEFORE INSERT ON adopt_after 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT adopt_after_SEQ.NEXTVAL
-    INTO :NEW.after_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER adopt_after_AI_TRG;
-/
-
---DROP SEQUENCE adopt_after_SEQ;
 /
 
 COMMENT ON TABLE adopt_after IS '입양한 동물의 후기를 작성하는 게시글(찾았냥?묘?냥?묘?)'
@@ -387,22 +286,6 @@ CREATE TABLE member_detail
 CREATE SEQUENCE member_detail_SEQ
 START WITH 1
 INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER member_detail_AI_TRG
-BEFORE INSERT ON member_detail 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT member_detail_SEQ.NEXTVAL
-    INTO :NEW.member_detail_num
-    FROM DUAL;
-END;
-/
-
---DROP TRIGGER member_detail_AI_TRG;
-/
-
---DROP SEQUENCE member_detail_SEQ;
 /
 
 COMMENT ON TABLE member_detail IS '사이트에 가입한 회원의 정보(탈퇴 후 삭제되는 정보)'
