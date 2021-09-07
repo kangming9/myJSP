@@ -1,450 +1,437 @@
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
--- Member Table Create SQL
-CREATE TABLE Member
+-- member Table Create SQL
+CREATE TABLE member
 (
-    member_num         NUMBER          NOT NULL, 
-    member_id          VARCHAR2(20)    NOT NULL, 
-    member_pw          VARCHAR2(20)    NOT NULL, 
-    member_name        VARCHAR2(20)    NOT NULL, 
-    member_reg_date    DATE            NOT NULL, 
-    member_grade       NUMBER          NOT NULL, 
-    member_new_date    DATE            NOT NULL, 
-    member_phone       VARCHAR2(20)    NOT NULL, 
-    member_photo       VARCHAR2(20)    NULL, 
-    CONSTRAINT PK_Member PRIMARY KEY (member_num)
+    member_num      NUMBER          NOT NULL, 
+    member_id       VARCHAR2(20)    NOT NULL, 
+    member_grade    NUMBER          DEFAULT 3 NOT NULL, 
+    CONSTRAINT PK_member PRIMARY KEY (member_num)
 )
 /
 
-CREATE SEQUENCE Member_SEQ
+CREATE SEQUENCE member_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Member_AI_TRG
-BEFORE INSERT ON Member 
+CREATE OR REPLACE TRIGGER member_AI_TRG
+BEFORE INSERT ON member 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Member_SEQ.NEXTVAL
+    SELECT member_SEQ.NEXTVAL
     INTO :NEW.member_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Member_AI_TRG;
+--DROP TRIGGER member_AI_TRG;
 /
 
---DROP SEQUENCE Member_SEQ;
+--DROP SEQUENCE member_SEQ;
 /
 
-COMMENT ON TABLE Member IS '회원'
+COMMENT ON TABLE member IS '사이트에 가입한 회원의 정보(탈퇴 후에도 삭제되지 않는 정보)'
 /
 
-COMMENT ON COLUMN Member.member_num IS '회원번호'
+COMMENT ON COLUMN member.member_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Member.member_id IS '아이디'
+COMMENT ON COLUMN member.member_id IS '아이디'
 /
 
-COMMENT ON COLUMN Member.member_pw IS '비밀번호'
-/
-
-COMMENT ON COLUMN Member.member_name IS '이름'
-/
-
-COMMENT ON COLUMN Member.member_reg_date IS '가입날짜'
-/
-
-COMMENT ON COLUMN Member.member_grade IS '등급'
-/
-
-COMMENT ON COLUMN Member.member_new_date IS '수정날짜'
-/
-
-COMMENT ON COLUMN Member.member_phone IS '휴대폰번호'
-/
-
-COMMENT ON COLUMN Member.member_photo IS '사진'
+COMMENT ON COLUMN member.member_grade IS '등급'
 /
 
 
--- Pet Table Create SQL
-CREATE TABLE Pet
+-- pet Table Create SQL
+CREATE TABLE pet
 (
     pet_num       NUMBER          NOT NULL, 
     pet_name      VARCHAR2(20)    NOT NULL, 
     pet_type      VARCHAR2(20)    NOT NULL, 
-    pet_adopt     NUMBER          NOT NULL, 
+    pet_adopt     NUMBER          DEFAULT 0 NOT NULL, 
     pet_detail    CLOB            NOT NULL, 
-    CONSTRAINT PK_Pet PRIMARY KEY (pet_num)
+    pet_date      DATE            DEFAULT sysdate NOT NULL, 
+    pet_photo     VARCHAR2(20)    NOT NULL, 
+    CONSTRAINT PK_pet PRIMARY KEY (pet_num)
 )
 /
 
-CREATE SEQUENCE Pet_SEQ
+CREATE SEQUENCE pet_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Pet_AI_TRG
-BEFORE INSERT ON Pet 
+CREATE OR REPLACE TRIGGER pet_AI_TRG
+BEFORE INSERT ON pet 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Pet_SEQ.NEXTVAL
+    SELECT pet_SEQ.NEXTVAL
     INTO :NEW.pet_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Pet_AI_TRG;
+--DROP TRIGGER pet_AI_TRG;
 /
 
---DROP SEQUENCE Pet_SEQ;
+--DROP SEQUENCE pet_SEQ;
 /
 
-COMMENT ON TABLE Pet IS '동물 입양 정보'
+COMMENT ON TABLE pet IS '동물의 입양 정보와 그 정보를 남기는 게시글(기다리개)'
 /
 
-COMMENT ON COLUMN Pet.pet_num IS '동물번호'
+COMMENT ON COLUMN pet.pet_num IS '동물번호'
 /
 
-COMMENT ON COLUMN Pet.pet_name IS '동물이름'
+COMMENT ON COLUMN pet.pet_name IS '동물이름'
 /
 
-COMMENT ON COLUMN Pet.pet_type IS '동물종류'
+COMMENT ON COLUMN pet.pet_type IS '동물종류'
 /
 
-COMMENT ON COLUMN Pet.pet_adopt IS '입양여부'
+COMMENT ON COLUMN pet.pet_adopt IS '입양여부'
 /
 
-COMMENT ON COLUMN Pet.pet_detail IS '상세정보'
+COMMENT ON COLUMN pet.pet_detail IS '상세정보'
+/
+
+COMMENT ON COLUMN pet.pet_date IS '등록날짜'
+/
+
+COMMENT ON COLUMN pet.pet_photo IS '동물사진'
 /
 
 
--- Volunteer Table Create SQL
-CREATE TABLE Volunteer
+-- volunteer Table Create SQL
+CREATE TABLE volunteer
 (
     vol_num           NUMBER    NOT NULL, 
-    vol_Member_num    NUMBER    NOT NULL, 
-    Vol_date          DATE      NOT NULL, 
-    Vol_time          NUMBER    NOT NULL, 
-    Vol_reg_date      DATE      NOT NULL, 
-    CONSTRAINT PK_Volunteer PRIMARY KEY (vol_num)
+    vol_member_num    NUMBER    NOT NULL, 
+    vol_date          DATE      NOT NULL, 
+    vol_time          NUMBER    NOT NULL, 
+    vol_reg_date      DATE      DEFAULT sysdate NOT NULL, 
+    CONSTRAINT PK_volunteer PRIMARY KEY (vol_num)
 )
 /
 
-CREATE SEQUENCE Volunteer_SEQ
+CREATE SEQUENCE volunteer_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Volunteer_AI_TRG
-BEFORE INSERT ON Volunteer 
+CREATE OR REPLACE TRIGGER volunteer_AI_TRG
+BEFORE INSERT ON volunteer 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Volunteer_SEQ.NEXTVAL
+    SELECT volunteer_SEQ.NEXTVAL
     INTO :NEW.vol_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Volunteer_AI_TRG;
+--DROP TRIGGER volunteer_AI_TRG;
 /
 
---DROP SEQUENCE Volunteer_SEQ;
+--DROP SEQUENCE volunteer_SEQ;
 /
 
-COMMENT ON TABLE Volunteer IS '봉사 정보'
+COMMENT ON TABLE volunteer IS '봉사를 신청하는 양식(힘드냥 도울개)'
 /
 
-COMMENT ON COLUMN Volunteer.vol_num IS '봉사번호'
+COMMENT ON COLUMN volunteer.vol_num IS '봉사번호'
 /
 
-COMMENT ON COLUMN Volunteer.vol_Member_num IS '회원번호'
+COMMENT ON COLUMN volunteer.vol_member_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Volunteer.Vol_date IS '봉사날짜'
+COMMENT ON COLUMN volunteer.vol_date IS '봉사날짜'
 /
 
-COMMENT ON COLUMN Volunteer.Vol_time IS '봉사시간'
+COMMENT ON COLUMN volunteer.vol_time IS '봉사시간'
 /
 
-COMMENT ON COLUMN Volunteer.Vol_reg_date IS '신청날짜'
+COMMENT ON COLUMN volunteer.vol_reg_date IS '신청날짜'
 /
 
-ALTER TABLE Volunteer
-    ADD CONSTRAINT FK_Volunteer_vol_Member_num_Me FOREIGN KEY (vol_Member_num)
-        REFERENCES Member (member_num)
+ALTER TABLE volunteer
+    ADD CONSTRAINT FK_volunteer_vol_member_num_me FOREIGN KEY (vol_member_num)
+        REFERENCES member (member_num)
 /
 
 
--- Adopt Table Create SQL
-CREATE TABLE Adopt
+-- adopt Table Create SQL
+CREATE TABLE adopt
 (
     adopt_num           NUMBER          NOT NULL, 
     adopt_member_num    NUMBER          NOT NULL, 
     adopt_pet_num       NUMBER          NOT NULL, 
-    adopt_date          DATE            NOT NULL, 
-    adopt_reg           CLOB            NOT NULL, 
+    adopt_date          DATE            DEFAULT sysdate NOT NULL, 
+    adopt_intro         CLOB            NOT NULL, 
     adopt_married       NUMBER          NOT NULL, 
     adopt_house         VARCHAR2(20)    NOT NULL, 
-    CONSTRAINT PK_Adopt PRIMARY KEY (adopt_num)
+    adopt_now           NUMBER          DEFAULT 0 NOT NULL, 
+    adopt_why           CLOB            NULL, 
+    CONSTRAINT PK_adopt PRIMARY KEY (adopt_num)
 )
 /
 
-CREATE SEQUENCE Adopt_SEQ
+CREATE SEQUENCE adopt_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Adopt_AI_TRG
-BEFORE INSERT ON Adopt 
+CREATE OR REPLACE TRIGGER adopt_AI_TRG
+BEFORE INSERT ON adopt 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Adopt_SEQ.NEXTVAL
+    SELECT adopt_SEQ.NEXTVAL
     INTO :NEW.adopt_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Adopt_AI_TRG;
+--DROP TRIGGER adopt_AI_TRG;
 /
 
---DROP SEQUENCE Adopt_SEQ;
+--DROP SEQUENCE adopt_SEQ;
 /
 
-COMMENT ON TABLE Adopt IS '입양 신청'
+COMMENT ON TABLE adopt IS '원하는 동물을 입양 신청하는 게시글'
 /
 
-COMMENT ON COLUMN Adopt.adopt_num IS '입양신청번호'
+COMMENT ON COLUMN adopt.adopt_num IS '입양신청번호'
 /
 
-COMMENT ON COLUMN Adopt.adopt_member_num IS '회원번호'
+COMMENT ON COLUMN adopt.adopt_member_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Adopt.adopt_pet_num IS '동물번호'
+COMMENT ON COLUMN adopt.adopt_pet_num IS '동물번호'
 /
 
-COMMENT ON COLUMN Adopt.adopt_date IS '신청날짜'
+COMMENT ON COLUMN adopt.adopt_date IS '신청날짜'
 /
 
-COMMENT ON COLUMN Adopt.adopt_reg IS '자기소개'
+COMMENT ON COLUMN adopt.adopt_intro IS '자기소개'
 /
 
-COMMENT ON COLUMN Adopt.adopt_married IS '결혼여부'
+COMMENT ON COLUMN adopt.adopt_married IS '결혼여부'
 /
 
-COMMENT ON COLUMN Adopt.adopt_house IS '거주형태'
+COMMENT ON COLUMN adopt.adopt_house IS '거주형태'
 /
 
-ALTER TABLE Adopt
-    ADD CONSTRAINT FK_Adopt_adopt_member_num_Memb FOREIGN KEY (adopt_member_num)
-        REFERENCES Member (member_num)
+COMMENT ON COLUMN adopt.adopt_now IS '신청처리상태'
 /
 
-ALTER TABLE Adopt
-    ADD CONSTRAINT FK_Adopt_adopt_pet_num_Pet_pet FOREIGN KEY (adopt_pet_num)
-        REFERENCES Pet (pet_num)
+COMMENT ON COLUMN adopt.adopt_why IS '사유'
+/
+
+ALTER TABLE adopt
+    ADD CONSTRAINT FK_adopt_adopt_member_num_memb FOREIGN KEY (adopt_member_num)
+        REFERENCES member (member_num)
+/
+
+ALTER TABLE adopt
+    ADD CONSTRAINT FK_adopt_adopt_pet_num_pet_pet FOREIGN KEY (adopt_pet_num)
+        REFERENCES pet (pet_num)
 /
 
 
--- Community Table Create SQL
-CREATE TABLE Community
+-- community Table Create SQL
+CREATE TABLE community
 (
     com_num           NUMBER          NOT NULL, 
     com_title         VARCHAR2(20)    NOT NULL, 
     com_member_num    NUMBER          NOT NULL, 
     com_content       CLOB            NOT NULL, 
-    com_date          DATE            NOT NULL, 
-    com_hit           NUMBER          NOT NULL, 
-    CONSTRAINT PK_Community PRIMARY KEY (com_num)
+    com_date          DATE            DEFAULT sysdate NOT NULL, 
+    com_hit           NUMBER          DEFAULT 0 NOT NULL, 
+    CONSTRAINT PK_community PRIMARY KEY (com_num)
 )
 /
 
-CREATE SEQUENCE Community_SEQ
+CREATE SEQUENCE community_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Community_AI_TRG
-BEFORE INSERT ON Community 
+CREATE OR REPLACE TRIGGER community_AI_TRG
+BEFORE INSERT ON community 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Community_SEQ.NEXTVAL
+    SELECT community_SEQ.NEXTVAL
     INTO :NEW.com_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Community_AI_TRG;
+--DROP TRIGGER community_AI_TRG;
 /
 
---DROP SEQUENCE Community_SEQ;
+--DROP SEQUENCE community_SEQ;
 /
 
-COMMENT ON TABLE Community IS '커뮤니티'
+COMMENT ON TABLE community IS '회원들이 자율적으로 남길 수 있는 게시글(멍냥토크)'
 /
 
-COMMENT ON COLUMN Community.com_num IS '게시글번호'
+COMMENT ON COLUMN community.com_num IS '게시글번호'
 /
 
-COMMENT ON COLUMN Community.com_title IS '제목'
+COMMENT ON COLUMN community.com_title IS '제목'
 /
 
-COMMENT ON COLUMN Community.com_member_num IS '회원번호'
+COMMENT ON COLUMN community.com_member_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Community.com_content IS '내용'
+COMMENT ON COLUMN community.com_content IS '내용'
 /
 
-COMMENT ON COLUMN Community.com_date IS '등록날짜'
+COMMENT ON COLUMN community.com_date IS '등록날짜'
 /
 
-COMMENT ON COLUMN Community.com_hit IS '조회수'
+COMMENT ON COLUMN community.com_hit IS '조회수'
 /
 
-ALTER TABLE Community
-    ADD CONSTRAINT FK_Community_com_member_num_Me FOREIGN KEY (com_member_num)
-        REFERENCES Member (member_num)
+ALTER TABLE community
+    ADD CONSTRAINT FK_community_com_member_num_me FOREIGN KEY (com_member_num)
+        REFERENCES member (member_num)
 /
 
 
--- Adopt_after Table Create SQL
-CREATE TABLE Adopt_after
+-- adopt_after Table Create SQL
+CREATE TABLE adopt_after
 (
     after_num           NUMBER          NOT NULL, 
     after_pet_num       NUMBER          NOT NULL, 
     after_title         VARCHAR2(20)    NOT NULL, 
     after_content       CLOB            NOT NULL, 
-    after_date          DATE            NOT NULL, 
+    after_date          DATE            DEFAULT sysdate NOT NULL, 
     after_member_num    NUMBER          NOT NULL, 
     after_photo         VARCHAR2(20)    NOT NULL, 
-    CONSTRAINT PK_Adopt_after PRIMARY KEY (after_num)
+    CONSTRAINT PK_adopt_after PRIMARY KEY (after_num)
 )
 /
 
-CREATE SEQUENCE Adopt_after_SEQ
+CREATE SEQUENCE adopt_after_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Adopt_after_AI_TRG
-BEFORE INSERT ON Adopt_after 
+CREATE OR REPLACE TRIGGER adopt_after_AI_TRG
+BEFORE INSERT ON adopt_after 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Adopt_after_SEQ.NEXTVAL
+    SELECT adopt_after_SEQ.NEXTVAL
     INTO :NEW.after_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Adopt_after_AI_TRG;
+--DROP TRIGGER adopt_after_AI_TRG;
 /
 
---DROP SEQUENCE Adopt_after_SEQ;
+--DROP SEQUENCE adopt_after_SEQ;
 /
 
-COMMENT ON TABLE Adopt_after IS '입양후기'
+COMMENT ON TABLE adopt_after IS '입양한 동물의 후기를 작성하는 게시글(찾았냥?묘?냥?묘?)'
 /
 
-COMMENT ON COLUMN Adopt_after.after_num IS '후기번호'
+COMMENT ON COLUMN adopt_after.after_num IS '후기번호'
 /
 
-COMMENT ON COLUMN Adopt_after.after_pet_num IS '동물번호'
+COMMENT ON COLUMN adopt_after.after_pet_num IS '동물번호'
 /
 
-COMMENT ON COLUMN Adopt_after.after_title IS '제목'
+COMMENT ON COLUMN adopt_after.after_title IS '제목'
 /
 
-COMMENT ON COLUMN Adopt_after.after_content IS '내용'
+COMMENT ON COLUMN adopt_after.after_content IS '내용'
 /
 
-COMMENT ON COLUMN Adopt_after.after_date IS '등록날짜'
+COMMENT ON COLUMN adopt_after.after_date IS '등록날짜'
 /
 
-COMMENT ON COLUMN Adopt_after.after_member_num IS '회원번호'
+COMMENT ON COLUMN adopt_after.after_member_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Adopt_after.after_photo IS '동물사진'
+COMMENT ON COLUMN adopt_after.after_photo IS '동물사진'
 /
 
-ALTER TABLE Adopt_after
-    ADD CONSTRAINT FK_Adopt_after_after_pet_num_P FOREIGN KEY (after_pet_num)
-        REFERENCES Pet (pet_num)
+ALTER TABLE adopt_after
+    ADD CONSTRAINT FK_adopt_after_after_pet_num_p FOREIGN KEY (after_pet_num)
+        REFERENCES pet (pet_num)
 /
 
-ALTER TABLE Adopt_after
-    ADD CONSTRAINT FK_Adopt_after_after_member_nu FOREIGN KEY (after_member_num)
-        REFERENCES Member (member_num)
+ALTER TABLE adopt_after
+    ADD CONSTRAINT FK_adopt_after_after_member_nu FOREIGN KEY (after_member_num)
+        REFERENCES member (member_num)
 /
 
 
--- Adopt_wait Table Create SQL
-CREATE TABLE Adopt_wait
+-- member_detail Table Create SQL
+CREATE TABLE member_detail
 (
-    wait_num           NUMBER          NOT NULL, 
-    wait_pet_num       NUMBER          NOT NULL, 
-    wait_title         VARCHAR2(20)    NOT NULL, 
-    wait_content       CLOB            NOT NULL, 
-    wait_date          DATE            NOT NULL, 
-    wait_member_num    NUMBER          NOT NULL, 
-    wait_photo         VARCHAR2(20)    NOT NULL, 
-    CONSTRAINT PK_Adopt_wait PRIMARY KEY (wait_num)
+    member_detail_num         NUMBER          NOT NULL, 
+    member_detail_pw          VARCHAR2(20)    NOT NULL, 
+    member_detail_name        VARCHAR2(20)    NOT NULL, 
+    member_detail_reg_date    DATE            DEFAULT sysdate NOT NULL, 
+    member_detail_new_date    DATE            DEFAULT sysdate NOT NULL, 
+    member_detail_phone       VARCHAR2(20)    NOT NULL, 
+    member_detail_photo       VARCHAR2(20)    NULL, 
+    CONSTRAINT PK_member_detail PRIMARY KEY (member_detail_num)
 )
 /
 
-CREATE SEQUENCE Adopt_wait_SEQ
+CREATE SEQUENCE member_detail_SEQ
 START WITH 1
 INCREMENT BY 1;
 /
 
-CREATE OR REPLACE TRIGGER Adopt_wait_AI_TRG
-BEFORE INSERT ON Adopt_wait 
+CREATE OR REPLACE TRIGGER member_detail_AI_TRG
+BEFORE INSERT ON member_detail 
 REFERENCING NEW AS NEW FOR EACH ROW 
 BEGIN 
-    SELECT Adopt_wait_SEQ.NEXTVAL
-    INTO :NEW.wait_num
+    SELECT member_detail_SEQ.NEXTVAL
+    INTO :NEW.member_detail_num
     FROM DUAL;
 END;
 /
 
---DROP TRIGGER Adopt_wait_AI_TRG;
+--DROP TRIGGER member_detail_AI_TRG;
 /
 
---DROP SEQUENCE Adopt_wait_SEQ;
+--DROP SEQUENCE member_detail_SEQ;
 /
 
-COMMENT ON TABLE Adopt_wait IS '입양대기'
+COMMENT ON TABLE member_detail IS '사이트에 가입한 회원의 정보(탈퇴 후 삭제되는 정보)'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_num IS '대기번호'
+COMMENT ON COLUMN member_detail.member_detail_num IS '회원번호'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_pet_num IS '동물번호'
+COMMENT ON COLUMN member_detail.member_detail_pw IS '비밀번호'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_title IS '제목'
+COMMENT ON COLUMN member_detail.member_detail_name IS '이름'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_content IS '내용'
+COMMENT ON COLUMN member_detail.member_detail_reg_date IS '가입날짜'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_date IS '등록날짜'
+COMMENT ON COLUMN member_detail.member_detail_new_date IS '수정날짜'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_member_num IS '회원번호'
+COMMENT ON COLUMN member_detail.member_detail_phone IS '휴대폰번호'
 /
 
-COMMENT ON COLUMN Adopt_wait.wait_photo IS '동물사진'
+COMMENT ON COLUMN member_detail.member_detail_photo IS '사진'
 /
 
-ALTER TABLE Adopt_wait
-    ADD CONSTRAINT FK_Adopt_wait_wait_pet_num_Pet FOREIGN KEY (wait_pet_num)
-        REFERENCES Pet (pet_num)
-/
-
-ALTER TABLE Adopt_wait
-    ADD CONSTRAINT FK_Adopt_wait_wait_member_num_ FOREIGN KEY (wait_member_num)
-        REFERENCES Member (member_num)
+ALTER TABLE member_detail
+    ADD CONSTRAINT FK_member_detail_member_detail FOREIGN KEY (member_detail_num)
+        REFERENCES member (member_num)
 /
 
 
