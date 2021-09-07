@@ -3,7 +3,7 @@
 	<Resource name="jdbc/xe"
 			  auth="Container"
 			  type="javax.sql.DataSource"
-			  username="java"
+			  username="mnmn"
 			  password="1234"
 			  driverClassName="oracle.jdbc.OracleDriver"
 			  url="jdbc:oracle:thin:@localhost:1521:xe"	
