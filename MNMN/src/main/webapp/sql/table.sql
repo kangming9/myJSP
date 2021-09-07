@@ -433,5 +433,3 @@ ALTER TABLE member_detail
     ADD CONSTRAINT FK_member_detail_member_detail FOREIGN KEY (member_detail_num)
         REFERENCES member (member_num)
 /
-
-
