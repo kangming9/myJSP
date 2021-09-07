@@ -1,0 +1,113 @@
+package kr.member.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import kr.member.vo.MemberVO;
+import kr.util.DBUtil;
+
+public class MemberDAO {
+	//싱글턴 패턴
+	private static MemberDAO instance = new MemberDAO();
+	
+	public static MemberDAO getInstance() {
+		return instance;
+	}
+	private MemberDAO() {}
+	
+	//ID 중복 체크 및 로그인
+	public MemberVO checkMember(String id) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO member = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "SELECT * FROM member m LEFT OUTER JOIN member_detail d "
+				+ "ON m.member_num = d.member_detail_num WHERE m.member_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setMember_num(rs.getInt("member_num"));
+				member.setMember_id(rs.getString("member_id"));
+				member.setMember_grade(rs.getInt("member_grade"));
+				member.setMember_detail_pw(rs.getString("member_detail_pw"));
+				member.setMember_detail_photo(rs.getString("member_detail_photo"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return member;
+	}
+	
+	//회원가입
+	public void insertMember(MemberVO member) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;			
+		PreparedStatement pstmt3 = null;
+		ResultSet rs = null;
+		String sql = null;
+		int num = 0; //시퀀스 번호 저장
+	
+		try {
+			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			//회원 번호 생성
+			sql = "SELECT member_seq.nextval FROM dual";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(1);
+			}
+			
+			//회원 정보 저장
+			sql = "INSERT INTO member (member_num, member_id) VALUES (?,?)";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, num);
+			pstmt2.setString(2, member.getMember_id());
+			pstmt2.executeUpdate();
+			
+			//회원 정보 저장2
+			sql = "INSERT INTO member_detail (member_detail_num, member_detail_pw, member_detail_name, member_detail_phone) VALUES (?,?,?,?)";
+			pstmt3 = conn.prepareStatement(sql);
+			pstmt3.setInt(1, num);
+			pstmt3.setString(2, member.getMember_detail_pw());
+			pstmt3.setString(3, member.getMember_detail_name());
+			pstmt3.setString(4, member.getMember_detail_phone());
+			pstmt3.executeUpdate();
+			
+			conn.commit();
+		}catch(Exception e) {
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+			DBUtil.executeClose(null, pstmt3, null);
+			DBUtil.executeClose(null, pstmt2, null);
+		}
+	}	
+}
+
+
+
+
+
+
+
+
+
+
+

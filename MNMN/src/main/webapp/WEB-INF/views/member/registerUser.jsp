@@ -4,16 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>멍냥멍냥</title>
+<title>회원가입 완료</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
-	<!-- header 시작 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<!-- header 끝 -->
-	<div>
-		<h3>1조 프로젝트</h3>
+	<h2>회원가입 완료</h2>
+	<div class="result-display">
+		<div class="align-center">
+			회원가입이 완료되었습니다.
+			<p>
+			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		</div>
 	</div>
 </div>
 </body>
