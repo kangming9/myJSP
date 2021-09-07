@@ -13,7 +13,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<!-- header 끝 -->
 	<div>
-		<h3>1조</h3>
+		<h3>1조 프로젝트</h3>
 	</div>
 </div>
 </body>
