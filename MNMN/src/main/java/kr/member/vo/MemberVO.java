@@ -16,7 +16,7 @@ public class MemberVO {
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPassword(String userPasswd) {
 		//회원 등급(auth) : 탈퇴회원(0등급), 관리자(1등급), 입양회원(2등급), 일반회원(3등급)
-		if(member_grade > 1 && member_detail_pw.equals(userPasswd)) {
+		if(member_grade > 0 && member_detail_pw.equals(userPasswd)) {
 			return true;
 		}
 		return false;
