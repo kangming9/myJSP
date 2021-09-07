@@ -34,7 +34,7 @@ CREATE TABLE pet
     pet_adopt     NUMBER          DEFAULT 0 NOT NULL, 
     pet_detail    CLOB            NOT NULL, 
     pet_date      DATE            DEFAULT sysdate NOT NULL, 
-    pet_photo     VARCHAR2(20)    NOT NULL, 
+    pet_photo     VARCHAR2(150)    NOT NULL, 
     CONSTRAINT PK_pet PRIMARY KEY (pet_num)
 )
 /
@@ -224,7 +224,7 @@ CREATE TABLE adopt_after
     after_content       CLOB            NOT NULL, 
     after_date          DATE            DEFAULT sysdate NOT NULL, 
     after_member_num    NUMBER          NOT NULL, 
-    after_photo         VARCHAR2(20)    NOT NULL, 
+    after_photo         VARCHAR2(150)    NOT NULL, 
     CONSTRAINT PK_adopt_after PRIMARY KEY (after_num)
 )
 /
@@ -278,7 +278,7 @@ CREATE TABLE member_detail
     member_detail_reg_date    DATE            DEFAULT sysdate NOT NULL, 
     member_detail_new_date    DATE            DEFAULT sysdate NOT NULL, 
     member_detail_phone       VARCHAR2(20)    NOT NULL, 
-    member_detail_photo       VARCHAR2(20)    NULL, 
+    member_detail_photo       VARCHAR2(150)    NULL, 
     CONSTRAINT PK_member_detail PRIMARY KEY (member_detail_num)
 )
 /
