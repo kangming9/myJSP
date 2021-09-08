@@ -5,9 +5,9 @@
 <div class="align-right">
 	<a href="">About멍냥멍냥</a>
 	<a href="${pageContext.request.contextPath}/volunteer/volunteerUser.do">힘드냥 도울개</a>
-	<a href="">기다리개</a>
-	<a href="">찾았냥</a>
-	<a href="">멍냥토크</a>
+	<a href="${pageContext.request.contextPath}/adopt/petList.do">기다리개</a>
+	<a href="${pageContext.request.contextPath}/adoptAfter/list.do">찾았냥</a>
+	<a href="${pageContext.request.contextPath}/board/list.do">멍냥토크</a>
 	<c:if test="${!empty user_num}">
 		[<span>${user_id}</span>]
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
