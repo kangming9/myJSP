@@ -7,6 +7,80 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#photo_btn').click(function(){
+			$('#photo_choice').show();
+			$(this).hide();
+		});
+		
+		//이미지 미리 보기
+		var photo_path;
+		var my_photo;
+		$('#photo').change(function(){
+			var photo = document.getElementById('photo');
+			my_photo = photo.files[0];
+			if(my_photo){
+				var reader = new FileReader();
+				reader.readAsDataURL(my_photo);
+				
+				reader.onload=function(){
+					photo_path = $('.my-photo').attr('src');//이미지 미리보기 전 이미지 저장
+					$('.my-photo').attr('src',reader.result);
+				};
+			}
+		});
+		
+		//이미지 전송
+		$('#photo_submit').click(function(){
+			if($('#photo').val()==''){
+				alert('파일을 선택하세요!');
+				$('#photo').focus();
+				return;
+			}
+			
+			//파일 전송
+			var form_data = new FormData();
+			form_data.append('photo',my_photo);
+			$.ajax({
+				data:form_data,
+				type:'post',
+				url:'updateMyPhoto.do',
+				dataType:'json',
+				contentType:false,
+				enctype:'multipart/form-data',
+				processData:false,
+				success:function(param){
+					if(param.result == 'logout'){
+						alert('로그인 후 사용하세요!');
+					}else if(param.result == 'success'){
+						alert('프로필 사진이 수정되었습니다.');
+						$('#photo').val('');
+						$('#photo_choice').hide();
+						$('#photo_btn').show();
+					}else{
+						alert('파일 전송 오류 발생');
+					}
+				},
+				error:function(){
+					alert('네트워크 오류 발생');
+				}
+			});
+			
+		});
+		
+		//이미지 미리보기 취소
+		$('#photo_reset').click(function(){
+			//이미지 미리보기 전 이미지로 되돌리기
+			$('.my-photo').attr('src',photo_path);
+			$('#photo').val('');
+			$('#photo_choice').hide();
+			$('#photo_btn').show();
+		});
+		
+	});
+</script>
 </head>
 <body>
 <div class="page-main">
@@ -20,7 +94,7 @@
 				<img src="${pageContext.request.contextPath}/images/default_profile.png" width="100" height="100" class="my-photo">
 				</c:if>
 				<c:if test="${!empty member.member_detail_photo}">
-				<img src="${pageContext.request.contextPath}/upload/${member.photo}" width="100" height="100" class="my-photo">
+				<img src="${pageContext.request.contextPath}/upload/${member.member_detail_photo}" width="100" height="100" class="my-photo">
 				</c:if>
 			</li>
 			<li>
