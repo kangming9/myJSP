@@ -161,6 +161,30 @@ public class MemberDAO {
 		}
 		
 	}
+	
+	//회원 정보 수정
+	public MemberVO updateMember(MemberVO member) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE member_detail SET member_detail_phone=?, member_detail_new_date=SYSDATE WHERE member_detail_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMember_detail_phone());
+			pstmt.setInt(2, member.getMember_num());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		return null;
+	}
 }
 
 
