@@ -209,7 +209,37 @@ public class MemberDAO {
 		}
 		return null;
 	}
-
+	
+	//È¸¿ø Å»Åð
+	public void deleteMember(int member_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			sql = "Update member SET member_grade=0 WHERE member_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.executeUpdate();
+			
+			sql = "DELETE FROM member_detail WHERE member_detail_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, member_num);
+			pstmt2.executeUpdate();
+			
+			conn.commit();
+		}catch(Exception e) {
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt2, null);
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 }
 
 

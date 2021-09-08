@@ -108,7 +108,7 @@
 				</div>
 			</li>
 		</ul>
-		<h3>회원탈퇴</h3>
+		<h3>회원 탈퇴</h3>
 		<ul>
 			<li>
 				<input type="button" value="회원탈퇴" onclick="location.href='deleteUserForm.do'">
