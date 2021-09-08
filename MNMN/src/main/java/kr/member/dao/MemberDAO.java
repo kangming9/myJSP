@@ -185,6 +185,31 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	
+	//비밀번호 수정
+	public MemberVO updatePassword(String member_detail_pw, int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+			
+		try {
+			conn = DBUtil.getConnection();
+				
+			sql = "UPDATE member_detail SET member_detail_pw=?, member_detail_new_date=SYSDATE WHERE member_detail_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_detail_pw);
+			pstmt.setInt(2, member_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		return null;
+	}
+
 }
 
 
