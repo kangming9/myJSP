@@ -98,7 +98,45 @@ public class MemberDAO {
 			DBUtil.executeClose(null, pstmt3, null);
 			DBUtil.executeClose(null, pstmt2, null);
 		}
-	}	
+	}
+	
+	//회원 상세 정보
+	public MemberVO getMember(int member_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO member = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM member m JOIN member_detail d ON m.member_num=d.member_detail_num WHERE m.member_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberVO();
+				member.setMember_num(rs.getInt("member_num"));
+				member.setMember_id(rs.getString("member_id"));
+				member.setMember_grade(rs.getInt("member_grade"));
+				member.setMember_detail_pw(rs.getString("member_detail_pw"));
+				member.setMember_detail_name(rs.getString("member_detail_name"));
+				member.setMember_detail_phone(rs.getString("member_detail_phone"));
+				member.setMember_detail_photo(rs.getString("member_detail_photo"));
+				member.setMember_detail_reg_date(rs.getDate("member_detail_reg_date"));//가입일
+				member.setMember_detail_new_date(rs.getDate("member_detail_new_date"));//수정일
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return member;
+	}
 }
 
 
