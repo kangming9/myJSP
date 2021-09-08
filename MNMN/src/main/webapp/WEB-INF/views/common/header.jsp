@@ -16,7 +16,7 @@
 		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
 	</c:if>
-	<c:if test="${!empty user_num && user_auth > 2}">
+	<c:if test="${!empty user_num && user_grade > 0}">
 		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
 	</c:if>
 </div>
