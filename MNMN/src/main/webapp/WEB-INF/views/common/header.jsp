@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <h1 class="align-center">멍냥멍냥</h1>
 <div class="align-right">
-	<a href="">About멍냥멍냥</a>
+	<a href="${pageContext.request.contextPath}/intro/introduce.do">About멍냥멍냥</a>
 	<a href="${pageContext.request.contextPath}/volunteer/volunteerForm.do">힘드냥 도울개</a>
 	<a href="${pageContext.request.contextPath}/adopt/petList.do">기다리개</a>
 	<a href="${pageContext.request.contextPath}/adoptAfter/list.do">찾았냥</a>
