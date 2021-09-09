@@ -14,14 +14,14 @@
 		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
-			if($("#date").val().trim() == ""){
+			if($("#date").val() == ""){
 				alert("날짜를 선택하세요");
 				$("date").focus();
 				$("date").val("");
 				return;
 			}
 			
-			if($("#time").val().trim() == ""){
+			if($("#time").val() == ""){
 				alert("시간을 선택하세요");
 				$("time").focus();
 				$("time").val("");
@@ -56,6 +56,37 @@
 					alert("네트워크 오류 발생");
 				}
 			});
+			
+			$('#message_already').text("");
+			
+			$.ajax({
+				url:"checkAlready.do",
+				type:"post",
+				data:{date:$("#date").val(), time:$("#time").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "Yet"){
+						dateChecked = 1;
+						$("#message_date").css("color", "blue").text("신청 가능");
+						$('#message_already').text("");
+					}
+					else if(param.result == "Already"){
+						dateChecked = 0;
+						$("#message_date").css("color", "red").text("신청 불가");
+						$("#message_already").css("color", "red").text("봉사활동은 한 번에 1회만 신청 가능합니다.");
+					}
+					else{
+						dateChecked = 0;
+						alert("오류 발생");
+					}
+				},
+				error:function(){
+					dateChecked = 0;
+					alert("네트워크 오류 발생");
+				}
+			});
 		});
 		
 		$("#volunteer_form #date").keydown(function(){
@@ -64,13 +95,13 @@
 		});
 		
 		$('#volunteer_form').submit(function(){
-			if($('#date').val().trim()==''){
+			if($('#date').val()==''){
 				alert('날짜를 입력하세요!');
 				$('#date').focus();
 				$('#date').val('');
 				return false;
 			}
-			if($('#time').val().trim()==''){
+			if($('#time').val()==''){
 				alert('시간을 입력하세요!');
 				$('#time').focus();
 				$('#time').val('');
@@ -100,6 +131,9 @@
 		<li>
 			<label for="time">봉사 시작 시간</label>
 			<input type="number" id="time" name="time" min="9" max="18" required>
+		</li>
+		<li>
+			<span id="message_already"></span>
 		</li>
 		</ul>
 		<div class="align-center">

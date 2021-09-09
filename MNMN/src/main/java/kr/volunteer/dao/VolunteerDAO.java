@@ -130,6 +130,39 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		return volCount;
 	}
 	
+	public int checkAlready(int user_num)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		
+		int volCount = 0;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT count(*) as count FROM volunteer WHERE vol_member_num = ? and vol_checked = 0";
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, user_num);
+			
+			//SQL문을 실행해서 결과행을 ResultSet에 담음
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				volCount = rs.getInt("count");
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return volCount;
+	}
+	
 	public int checkDateRequest(String date, int time)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
