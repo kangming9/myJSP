@@ -36,7 +36,7 @@
 			<td>${volunteer.vol_date}</td>
 			<td>${volunteer.vol_time}:00</td>
 			<td><input type=button value="승인" onclick="location.href='confirmVolunteer.do?vol_num=${volunteer.vol_num}'"/>
-			<input type=button value="삭제" onclick="location.href='notConfirmVolunteer.do?vol_num=${volunteer.vol_num}'"/></td>
+			<input type=button value="불승인" onclick="location.href='notConfirmVolunteer.do?vol_num=${volunteer.vol_num}'"/></td>
 		</tr>
 		</c:forEach>
 	</table>
