@@ -75,6 +75,7 @@ CREATE TABLE volunteer
     vol_member_num    NUMBER    NOT NULL, 
     vol_date          DATE      NOT NULL, 
     vol_time          NUMBER    NOT NULL, 
+    vol_checked		  NUMBER    DEFAULT 0 NOT NULL;
     vol_reg_date      DATE      DEFAULT sysdate NOT NULL, 
     CONSTRAINT PK_volunteer PRIMARY KEY (vol_num)
 )
@@ -98,6 +99,9 @@ COMMENT ON COLUMN volunteer.vol_date IS '봉사날짜'
 /
 
 COMMENT ON COLUMN volunteer.vol_time IS '봉사시간'
+/
+
+COMMENT ON COLUMN volunteer.vol_checked IS '봉사수행여부'
 /
 
 COMMENT ON COLUMN volunteer.vol_reg_date IS '신청날짜'
