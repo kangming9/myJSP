@@ -61,7 +61,7 @@ public class AdoptAfterDAO {
 		
 	}
 	//총 레코드 수
-	//테스트다
+	//테스트다3
 	//글 목록
 	//글 상세
 	//글 수정
