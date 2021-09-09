@@ -2,6 +2,7 @@ package kr.volunteer.action;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +12,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import kr.controller.Action;
 import kr.volunteer.dao.VolunteerDAO;
 
-import java.util.logging.Logger;
-
-public class CheckDateFullAction implements Action{
+public class CheckDateRequestAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,15 +27,15 @@ public class CheckDateFullAction implements Action{
 		int time = Integer.parseInt(request.getParameter("time"));
 		
 		VolunteerDAO dao = VolunteerDAO.getInstance();
-		int volCount = dao.checkDateFull(date, time);
+		int Requested = dao.checkDateRequest(date, time);
 		
 		
 		Map<String,String> mapAjax = new HashMap<String,String>();
 		
-		if(volCount < 5) {//봉사자 수 미초과
-			mapAjax.put("result", "LessThan");
-		}else {//봉사자 수 초과
-			mapAjax.put("result", "MoreThan");
+		if(Requested > 0) {//해당 날짜에 신청한 봉사 있음
+			mapAjax.put("result", "Requested");
+		}else {//해당 날짜에 신청한 봉사 없음
+			mapAjax.put("result", "NotRequested");
 		}
 		
 		/*
@@ -46,7 +45,7 @@ public class CheckDateFullAction implements Action{
 		 */
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);
-		
+
 		request.setAttribute("ajaxData", ajaxData);
 		
 		return "/WEB-INF/views/common/ajax_view.jsp";

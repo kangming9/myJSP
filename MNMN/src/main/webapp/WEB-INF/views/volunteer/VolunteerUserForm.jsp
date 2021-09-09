@@ -10,8 +10,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var dateChecked = 0;
+		var cancelChecked = 0;
 		
-		//날짜 인원 초과 체크
+		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
 			if($("#date").val().trim() == ""){
 				alert("날짜를 선택하세요");
@@ -33,7 +34,7 @@
 				url:"checkDateFull.do",
 				type:"post",
 				data:{date:$("#date").val(), time:$("#time").val()},
-				datatype:"json",
+				dataType:"json",
 				cache:false,
 				timeout:30000,
 				success:function(param){
@@ -47,7 +48,7 @@
 					}
 					else{
 						dateChecked = 0;
-						alert("여기");
+						alert("오류 발생");
 					}
 				},
 				error:function(){
@@ -80,6 +81,7 @@
 				return false;
 			}
 		});
+		
 	});
 </script>
 </head>
