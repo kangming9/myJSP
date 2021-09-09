@@ -112,7 +112,7 @@
 		<h3>관리자 메뉴</h3>
 		<ul>
 			<li>
-				<input type="button" value="신규 입양 신청 확인" onclick="location.href='${pageContext.request.contextPath}/adopt/ListAdoptForm.do'">
+				<input type="button" value="신규 입양 신청 확인" onclick="location.href='${pageContext.request.contextPath}/adopt/listAdopt.do'">
 			</li>
 			</br>
 			<li>

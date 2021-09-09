@@ -12,6 +12,8 @@ public class AdoptVO {
 	private String adopt_house;
 	private int adopt_now;
 	private String adopt_why;
+	private String adopt_member_id;
+	private String adopt_pet_name;
 	
 	public int getAdopt_num() {
 		return adopt_num;
@@ -67,6 +69,19 @@ public class AdoptVO {
 	public void setAdopt_why(String adopt_why) {
 		this.adopt_why = adopt_why;
 	}
+	public String getAdopt_member_id() {
+		return adopt_member_id;
+	}
+	public void setAdopt_member_id(String adopt_member_id) {
+		this.adopt_member_id = adopt_member_id;
+	}
+	public String getAdopt_pet_name() {
+		return adopt_pet_name;
+	}
+	public void setAdopt_pet_name(String adopt_pet_name) {
+		this.adopt_pet_name = adopt_pet_name;
+	}
+
 	
 	
 }
