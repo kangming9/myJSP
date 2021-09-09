@@ -108,6 +108,18 @@
 				</div>
 			</li>
 		</ul>
+		<c:if test="${user_grade == 1}">
+		<h3>관리자 메뉴</h3>
+		<ul>
+			<li>
+				<input type="button" value="신규 입양 신청 확인" onclick="location.href='${pageContext.request.contextPath}/adopt/ListAdoptForm.do'">
+			</li>
+			</br>
+			<li>
+				<input type="button" value="신규 봉사 신청 확인" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'">
+			</li>
+		</ul>
+		</c:if>
 		<h3>회원 탈퇴</h3>
 		<ul>
 			<li>

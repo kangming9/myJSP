@@ -163,4 +163,98 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		}
 		return Requested;
 	}
+	
+	//신규 봉사 신청 개수
+		public int getVolunteerCount() throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT COUNT(*) FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num WHERE vol_checked=0";
+				
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
+		
+		//신규 봉사 신청 목록
+		public List<VolunteerVO> getListVolunteer(int start, int end) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<VolunteerVO> list = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+					+ "(SELECT * FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num "
+					+ "WHERE vol_checked=0 ORDER BY v.vol_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+				
+				rs = pstmt.executeQuery();
+				list = new ArrayList<VolunteerVO>();
+				while(rs.next()) {
+					VolunteerVO volunteer = new VolunteerVO();
+					volunteer.setVol_num(rs.getInt("vol_num"));
+					volunteer.setVol_m_num(rs.getInt("vol_member_num"));
+					volunteer.setVol_m_id(rs.getString("member_id"));
+					volunteer.setVol_reg_date(rs.getDate("vol_reg_date"));
+					volunteer.setVol_date(rs.getDate("vol_date"));
+					volunteer.setVol_time(rs.getInt("vol_time"));
+					volunteer.setVol_checked(rs.getInt("vol_checked"));
+					
+					list.add(volunteer);
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return list;
+		}
+		//봉사활동 승인
+		public boolean confirmVolunteer(int vol_num) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "UPDATE volunteer SET vol_checked=? WHERE vol_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, 1);
+				pstmt.setInt(2, vol_num);
+				
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+			return true;
+		}
 }

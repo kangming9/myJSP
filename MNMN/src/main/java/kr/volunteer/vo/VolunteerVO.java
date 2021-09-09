@@ -8,6 +8,8 @@ public class VolunteerVO {
 	private Date vol_date;
 	private int vol_time;
 	private Date vol_reg_date;
+	private int vol_checked;
+	private String vol_m_id;
 	
 	
 	public int getVol_num() {
@@ -40,4 +42,17 @@ public class VolunteerVO {
 	public void setVol_reg_date(Date vol_reg_date) {
 		this.vol_reg_date = vol_reg_date;
 	}
+	public int getVol_checked() {
+		return vol_checked;
+	}
+	public void setVol_checked(int vol_checked) {
+		this.vol_checked = vol_checked;
+	}
+	public String getVol_m_id() {
+		return vol_m_id;
+	}
+	public void setVol_m_id(String vol_m_id) {
+		this.vol_m_id = vol_m_id;
+	}
+	
 }
