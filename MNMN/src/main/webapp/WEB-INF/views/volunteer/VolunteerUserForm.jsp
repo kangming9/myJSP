@@ -21,23 +21,34 @@
 			}
 			
 			if($("#time").val().trim() == ""){
-				alert("날짜를 선택하세요");
+				alert("시간을 선택하세요");
 				$("time").focus();
 				$("time").val("");
 				return;
 			}
 			
-			$("#message_date".text="");
+			$('#message_date').text("");
 			
 			$.ajax({
 				url:"checkDateFull.do",
 				type:"post",
-				data:{date:$("#date").val()},
+				data:{date:$("#date").val(), time:$("#time").val()},
 				datatype:"json",
 				cache:false,
 				timeout:30000,
 				success:function(param){
-					
+					if(param.result == "LessThan"){
+						dateChecked = 1;
+						$("#message_date").css("color", "blue").text("신청 가능");
+					}
+					else if(param.result == "MoreThan"){
+						dateChecked = 0;
+						$("#message_date").css("color", "red").text("신청 불가");
+					}
+					else{
+						dateChecked = 0;
+						alert("여기");
+					}
 				},
 				error:function(){
 					dateChecked = 0;
@@ -46,12 +57,12 @@
 			});
 		});
 		
-		$("#volunteer_form #date".keydown(function(){
+		$("#volunteer_form #date").keydown(function(){
 			dateChecked = 0;
 			$("#message_date").text("");
 		});
 		
-		$('#register_form').submit(function(){
+		$('#volunteer_form').submit(function(){
 			if($('#date').val().trim()==''){
 				alert('날짜를 입력하세요!');
 				$('#date').focus();

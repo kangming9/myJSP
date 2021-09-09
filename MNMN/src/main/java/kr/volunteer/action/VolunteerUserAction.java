@@ -1,15 +1,13 @@
 package kr.volunteer.action;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-
 import kr.controller.Action;
-import kr.util.FileUtil;
 import kr.volunteer.dao.VolunteerDAO;
 import kr.volunteer.vo.VolunteerVO;
 
@@ -25,16 +23,15 @@ public class VolunteerUserAction implements Action{
 		//로그인 된 경우
 		VolunteerVO vol = new VolunteerVO();
 		vol.setVol_m_num(user_num);
-	
-		MultipartRequest multi = FileUtil.createFile(request);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date d = sdf.parse(request.getParameter("date"));
 		
-		vol.setVol_date(Date.valueOf(multi.getParameter("vol_date")));
-		vol.setVol_time(Integer.parseInt(multi.getParameter("vol_time")));
-		
-		VolunteerDAO dao = VolunteerDAO.getInstance();
+		vol.setVol_date(new Date(d.getTime()));
+		vol.setVol_time(Integer.parseInt(request.getParameter("time")));
+		VolunteerDAO dao = VolunteerDAO.getInstance(); 
 		dao.insertVolunteer(vol);
 		
-		return "/WEB-INF/views/volunteer/volunteerUser.jsp";
+		return "/WEB-INF/views/volunteer/VolunteerUser.jsp";
 	}
 
 }

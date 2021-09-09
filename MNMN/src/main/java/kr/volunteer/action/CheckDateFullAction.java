@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-
 import kr.controller.Action;
 import kr.volunteer.dao.VolunteerDAO;
 
+import java.util.logging.Logger;
+
 public class CheckDateFullAction implements Action{
+	
+	private final static Logger LOG = Logger.getGlobal();
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,20 +23,29 @@ public class CheckDateFullAction implements Action{
 		//전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
 		
-		String date = request.getParameter("vol_date");
+		String date = request.getParameter("date");
+		date = date.replace("-", "/");
+		date = date.substring(2);
+		
+		int time = Integer.parseInt(request.getParameter("time"));
 		
 		VolunteerDAO dao = VolunteerDAO.getInstance();
-		int volCount = dao.checkDateFull(date);
+		int volCount = dao.checkDateFull(date, time);
+		
+		
+		LOG.info("봉사자수 : " + volCount);
+		
+		
+		
 		
 		Map<String,String> mapAjax = new HashMap<String,String>();
 		
-		
-		
-		
 		if(volCount < 5) {//봉사자 수 미초과
-			mapAjax.put("result", "Less than");
+			mapAjax.put("result", "LessThan");
+			LOG.info("봉사자 수 미초과");
 		}else {//봉사자 수 초과
-			mapAjax.put("result", "More than");
+			mapAjax.put("result", "MoreThan");
+			LOG.info("봉사자 수 초과");
 		}
 		
 		/*
@@ -43,6 +55,12 @@ public class CheckDateFullAction implements Action{
 		 */
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);
+		
+		
+		
+		LOG.info(ajaxData);
+		
+		
 		
 		request.setAttribute("ajaxData", ajaxData);
 		

@@ -1,6 +1,7 @@
 package kr.volunteer.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,8 +58,6 @@ private static VolunteerDAO instance = new VolunteerDAO();
 			pstmt.executeUpdate();
 			
 		}catch(Exception e) {
-			//SQL문장이 하나라도 실패하면 rollback
-		    conn.rollback();
 			throw new Exception(e);
 		}finally {
 			//자원정리
@@ -66,7 +65,7 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		}
 	}
 	
-	public int checkDateFull(String date)throws Exception{
+	public int checkDateFull(String date, int time)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -77,8 +76,8 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		try {
 			//커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
-			//zmember와 zmember_detail 조인시 zmember의 누락된 데이터가 보여야 id 중복 체크 가능함
-			sql = "select count(*) as count from volunteer where to_char(vol_date, 'YY/MM/DD') = ?;";
+			
+			sql = "SELECT count(*) as count FROM volunteer WHERE to_char(vol_date, 'YY/MM/DD') = ?";
 			
 			//PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);

@@ -4,7 +4,7 @@
 <h1 class="align-center">멍냥멍냥</h1>
 <div class="align-right">
 	<a href="">About멍냥멍냥</a>
-	<a href="${pageContext.request.contextPath}/volunteer/volunteerUser.do">힘드냥 도울개</a>
+	<a href="${pageContext.request.contextPath}/volunteer/volunteerUserForm.do">힘드냥 도울개</a>
 	<a href="${pageContext.request.contextPath}/adopt/petList.do">기다리개</a>
 	<a href="${pageContext.request.contextPath}/adoptAfter/list.do">찾았냥</a>
 	<a href="${pageContext.request.contextPath}/board/list.do">멍냥토크</a>

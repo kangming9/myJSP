@@ -15,6 +15,6 @@ public class VolunteerUserFormAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		//로그인 된 경우
-		return "/WEB-INF/views/volunteer/volunteerUserForm.jsp";
+		return "/WEB-INF/views/volunteer/VolunteerUserForm.jsp";
 	}
 }
