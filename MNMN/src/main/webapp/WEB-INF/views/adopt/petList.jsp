@@ -16,8 +16,6 @@
 	<c:if test="${user_grade == 1}">
 	<div class="align-right">
 		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'">
-		<input type="button" value="동물 수정" onclick="location.href=''">
-		<input type="button" value="동물 삭제" onclick="location.href=''">
 	</div>
 	</c:if>
 	<c:if test="${count == 0}">

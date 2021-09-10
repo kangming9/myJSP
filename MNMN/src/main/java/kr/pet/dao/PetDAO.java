@@ -172,6 +172,82 @@ public class PetDAO {
 		return pet;
 	}
 	
+	//펫 사진 수정
+	public void updatePetPhoto(String photo, int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update pet set photo=? where mem_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, photo);
+			pstmt.setInt(2, member_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
+	
+	//펫 수정
+	public void updatePetDetail(PetVO petVO) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			//date는 수정 x : pet_date는 입양공고에 등록한 날짜
+			sql = "update pet set pet_name=?,pet_type=?,pet_adopt=?,pet_detail=?,pet_photo=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, petVO.getPet_name());
+			pstmt.setString(2, petVO.getPet_type());
+			pstmt.setInt(3, petVO.getPet_adopt());
+			pstmt.setString(4, petVO.getPet_detail());
+			pstmt.setString(5, petVO.getPet_photo());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
+
+	//펫 삭제
+	public void deletePetdetail(int pet_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "delete from pet where pet_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pet_num);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+	}
+
+
+	
 	
 }
 	

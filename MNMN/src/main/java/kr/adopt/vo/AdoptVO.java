@@ -14,6 +14,7 @@ public class AdoptVO {
 	private String adopt_why;
 	private String adopt_member_id;
 	private String adopt_pet_name;
+	private String adopt_member_name;
 	
 	public int getAdopt_num() {
 		return adopt_num;
@@ -80,6 +81,12 @@ public class AdoptVO {
 	}
 	public void setAdopt_pet_name(String adopt_pet_name) {
 		this.adopt_pet_name = adopt_pet_name;
+	}
+	public String getAdopt_member_name() {
+		return adopt_member_name;
+	}
+	public void setAdopt_member_name(String adopt_member_name) {
+		this.adopt_member_name = adopt_member_name;
 	}
 
 	
