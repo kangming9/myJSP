@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>About 멍냥멍냥</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
+	<div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h1>About 멍냥멍냥</h1>
-	<div>
+		<h1>About 멍냥멍냥</h1>
 		<div>
 			유기동물 입양센터<h3>멍냥멍냥</h3>
 			<h5>새 보금자리를 찾을 때까지 유기동물을 보호하고<br>
