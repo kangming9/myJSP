@@ -140,51 +140,7 @@ a:hover, a:visited, a:link, a:active
 	height:20px;
 }
 
-/*main*/
-.container{
-	padding: 100px 50px;
-	font-family : sans-serif;
-}
 
-.tag{
-	padding: 5px 20px;
-	font-size : 20px;
-}
-
-/*Volunteer*/
-
-#button_home{
-	border: 1px solid 39A2DB;
-	background-color:#A2DBFA;
-	color: skyblue;
-	border-radius: 5px;
-	padding: 5px;
-}
-#button_home:hover{
-	background-color: #A2DBFA;
-	color: white;
-}
-
-#req_vol{
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	margin-right:-4px;
-}
-#can_vol{
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-left:-4px;
-}
-.button_vol{
-	border: 1px solid #39A2DB;
-	background-color:white;
-	color: white;
-	padding: 5px;
-}
-.button_vol:hover{
-	background-color: #39A2DB;
-	color: white;
-}
 
 
 
