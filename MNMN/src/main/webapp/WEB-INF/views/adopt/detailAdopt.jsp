@@ -15,6 +15,7 @@
 	<ul>
 		<li>신청번호 : ${adopt.adopt_num}</li>
 		<li>신청인 : ${adopt.adopt_member_id}</li>
+		<li>반려희망동물 : ${adopt.adopt_pet_name}</li>
 		<c:choose> 
 			<c:when test="${adopt.adopt_married == 0}">
 				<li>결혼여부 : 미혼</li> 
@@ -35,7 +36,7 @@
 	</p>
 	<hr size="1" noshade width="100%">
 	<div class="align-right">
-		<input type="button" value="승인" onclick="location.href='approveAdopt.do'">
+		<input type="button" value="승인" onclick="location.href='approveAdopt.do?adopt=${adopt.adopt_num}&pet=${adopt.adopt_pet_num}'">
 		<input type="button" value="반려" onclick="location.href='rejectAdopt.do'">
 		<input type="button" value="목록" onclick="location.href='listAdopt.do'">
 	</div>

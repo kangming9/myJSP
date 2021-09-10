@@ -159,5 +159,39 @@ public class AdoptDAO {
 			}
 			
 			return adopt;
+		}
+		
+		//입양 신청 승인
+		public boolean approveAdopt(int adopt_num, int pet_num) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			PreparedStatement pstmt2 = null;
+			String sql = null;
+				
+			try {
+				conn = DBUtil.getConnection();
+				conn.setAutoCommit(false);
+					
+				sql = "UPDATE adopt SET adopt_now=? WHERE adopt_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, 1);
+				pstmt.setInt(2, adopt_num);
+				pstmt.executeUpdate();
+				
+				sql = "UPDATE pet SET pet_adopt=? WHERE pet_num=?";
+				pstmt2 = conn.prepareStatement(sql);
+				pstmt2.setInt(1, 1);
+				pstmt2.setInt(2, pet_num);
+				pstmt2.executeUpdate();
+				
+				conn.commit();
+			}catch(Exception e) {
+				conn.rollback();
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+			return true;
 		}		
 }
