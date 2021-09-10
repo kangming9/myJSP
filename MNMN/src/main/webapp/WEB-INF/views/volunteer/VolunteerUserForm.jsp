@@ -118,7 +118,9 @@
 </head>
 <body>
 <div class="page-main">
+	<!-- header 시작 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+		<!-- header 끝 -->
 	<h2>봉사활동 신청</h2>
 	<form id="volunteer_form" action="volunteerUser.do" method="post">
 		<ul>	

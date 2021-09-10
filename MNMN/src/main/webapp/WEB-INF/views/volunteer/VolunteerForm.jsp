@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 </head>
 <body>
+<div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="align-center vol_button_group">
 		<input type="button" value="신청" class="button_vol" id="req_vol"
@@ -19,5 +20,6 @@
 		<input type="button" value="홈으로" id="button_home"
 			        onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
+</div>
 </body>
 </html>
