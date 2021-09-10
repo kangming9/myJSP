@@ -7,6 +7,7 @@
 <title>About 멍냥멍냥</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h1>About 멍냥멍냥</h1>
 	<div>
 		<div>
