@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.member.vo.MemberVO;
 import kr.pet.vo.PetVO;
 import kr.util.DBUtil;
 
@@ -21,6 +20,49 @@ public class PetDAO {
 	private PetDAO() {}
 
 	//펫 등록
+	public boolean insertPet(PetVO pet) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		ResultSet rs = null;
+		String sql = null;
+		int num = 0; //시퀀스 번호 저장
+	
+		try {
+			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			//펫 번호 생성
+			sql = "SELECT pet_seq.nextval FROM dual";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(1);
+			}
+			
+			//펫 정보 저장
+			sql = "INSERT INTO pet (pet_num, pet_name, pet_type, pet_detail, pet_photo) VALUES (?,?,?,?,?)";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setInt(1, num);
+			pstmt2.setString(2, pet.getPet_name());
+			pstmt2.setString(3, pet.getPet_type());
+			pstmt2.setString(4, pet.getPet_detail());
+			pstmt2.setString(5, pet.getPet_photo());
+			pstmt2.executeUpdate();
+			
+			conn.commit();
+		}catch(Exception e) {
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+			DBUtil.executeClose(null, pstmt2, null);
+		}	
+		
+		return true;
+
+	}
+	
 	//총 레코드 수
 	public int getPetCount() throws Exception {
 		Connection conn = null;
@@ -90,7 +132,7 @@ public class PetDAO {
 		}
 		
 		return list;
-	};
+	}
 
 
 	
@@ -128,8 +170,8 @@ public class PetDAO {
 		}
 		
 		return pet;
-	};
+	}
 	
 	
-};
+}
 	
