@@ -193,5 +193,31 @@ public class AdoptDAO {
 			}
 			
 			return true;
+		}
+		
+		//입양 신청 반려
+		public boolean rejectAdopt(int adopt_num, String adopt_why) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+				
+			try {
+				conn = DBUtil.getConnection();
+					
+				sql = "UPDATE adopt SET adopt_now=?, adopt_why=? WHERE adopt_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, 2);
+				pstmt.setString(2, adopt_why);
+				pstmt.setInt(3, adopt_num);
+				
+				pstmt.executeUpdate();
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			
+			return true;
 		}		
 }

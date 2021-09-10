@@ -7,6 +7,27 @@
 <meta charset="UTF-8">
 <title>입양신청서</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('#reject_btn').click(function(){
+			$('#reject_container').show();
+		});
+		
+		$('#reject_form').submit(function(){
+			if($('#reason').val().trim()==''){
+				alert('반려 사유를 입력하세요!');
+				$('#reason').val('').focus();
+				return false;
+			}
+		});
+		
+		$('#reject_reset').click(function(){
+			$('#reject_container').hide();
+		});
+	});
+</script>
 </head>
 <body>
 <div class="page-main">
@@ -37,8 +58,25 @@
 	<hr size="1" noshade width="100%">
 	<div class="align-right">
 		<input type="button" value="승인" onclick="location.href='approveAdopt.do?adopt=${adopt.adopt_num}&pet=${adopt.adopt_pet_num}'">
-		<input type="button" value="반려" onclick="location.href='rejectAdopt.do'">
+		<input type="button" value="반려" id="reject_btn">
 		<input type="button" value="목록" onclick="location.href='listAdopt.do'">
+	</div>
+	<br>
+	<div class="page-main" id="reject_container" style="display:none;">
+		<h2>반려 처리</h2>
+		<form id="reject_form" action="rejectAdopt.do" method="post">
+			<input type="hidden" name="adopt" value="${adopt.adopt_num}">
+			<ul>
+				<li>
+					<label for="reason">사유</label>
+					<textarea rows="5" cols="30" name="reason" id="reason"></textarea>
+				</li>
+			</ul>
+			<div class="align-center">
+				<input type="submit" value="제출" id="reject_submit">
+				<input type="button" value="취소" id="reject_reset">
+			</div>
+		</form>
 	</div>
 </div>
 </body>
