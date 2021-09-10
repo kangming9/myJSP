@@ -79,10 +79,54 @@ input[id="zipcode"]{
 }
 
 
+/*Header*/
+#headerdiv{
+	width:100%;
+	background-color: skyblue;
+}
+.common {
+	width:30%;
+	display: inline-table;
+    font-size: 15px;
+    height:50px;
+    text-align: center;
+    vertical-align: bottom;
+}
 
+/*Volunteer*/
 
+#button_home{
+	border: 1px solid skyblue;
+	background-color:white;
+	color: skyblue;
+	border-radius: 5px;
+	padding: 5px;
+}
+#button_home:hover{
+	background-color: skyblue;
+	color: white;
+}
 
-
+#req_vol{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-right:-4px;
+}
+#can_vol{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left:-4px;
+}
+.button_vol{
+	border: 1px solid skyblue;
+	background-color:white;
+	color: skyblue;
+	padding: 5px;
+}
+.button_vol:hover{
+	background-color: skyblue;
+	color: white;
+}
 
 
 
