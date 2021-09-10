@@ -84,7 +84,7 @@ input[id="zipcode"]{
 #headerdiv{
 	width:100%;
 	margin: 0 auto;
-	background-color: skyblue;
+	background-color: #A2DBFA;
 	height:150px;
 	display: flex;
 	align-items: center;
@@ -106,8 +106,8 @@ input[id="zipcode"]{
       padding: 0px 5px 0px 5px;
       display:inline-block;
       transition:all 0.1s;
-      background-color: skyblue;
-      border-bottom: 5px solid #76aae8;
+      background-color: #A2DBFA;
+      border-bottom: 5px solid #39A2DB;
 }
 
 a:hover, a:visited, a:link, a:active
@@ -116,14 +116,14 @@ a:hover, a:visited, a:link, a:active
 }
 .menu > a:active{
 	transform: translateY(3px);
-	border-bottom: 2px solid #76aae8;
+	border-bottom: 2px solid #39A2DB;
 }
 .login{
 	text-align: center;
 	margin: 0px 20px 0px 0px;
 }
 .login > span{
-	color:white;
+	color:E8F0F2;
 	font-weight : bold;
 }
 .login > a{
@@ -140,17 +140,28 @@ a:hover, a:visited, a:link, a:active
 	height:20px;
 }
 
+/*main*/
+.container{
+	padding: 100px 50px;
+	font-family : sans-serif;
+}
+
+.tag{
+	padding: 5px 20px;
+	font-size : 20px;
+}
+
 /*Volunteer*/
 
 #button_home{
-	border: 1px solid skyblue;
-	background-color:white;
+	border: 1px solid 39A2DB;
+	background-color:#A2DBFA;
 	color: skyblue;
 	border-radius: 5px;
 	padding: 5px;
 }
 #button_home:hover{
-	background-color: skyblue;
+	background-color: #A2DBFA;
 	color: white;
 }
 
@@ -165,13 +176,13 @@ a:hover, a:visited, a:link, a:active
 	margin-left:-4px;
 }
 .button_vol{
-	border: 1px solid skyblue;
+	border: 1px solid #39A2DB;
 	background-color:white;
-	color: skyblue;
+	color: white;
 	padding: 5px;
 }
 .button_vol:hover{
-	background-color: skyblue;
+	background-color: #39A2DB;
 	color: white;
 }
 
