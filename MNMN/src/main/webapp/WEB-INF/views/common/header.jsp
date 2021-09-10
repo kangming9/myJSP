@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 	<div id="headerdiv">
 		<div class="logo">
 			<a href="${pageContext.request.contextPath}/main/main.do">
@@ -9,8 +10,8 @@
 		</div>
 	
 		<nav class="menu">
-		<a href="${pageContext.request.contextPath}/intro/introduce.do">About멍냥멍냥</a>
-		<a href="${pageContext.request.contextPath}/volunteer/volunteerForm.do">힘드냥 도울개</a>
+		<a href="${pageContext.request.contextPath}/intro/introduce.do">소개할개</a>
+		<a href="${pageContext.request.contextPath}/volunteer/volunteerForm.do">힘드냥<i class="fas fa-paw fa-xs"></i>도울개</a>
 		<a href="${pageContext.request.contextPath}/adopt/petList.do">기다리개</a>
 		<a href="${pageContext.request.contextPath}/adoptAfter/list.do">찾았냥</a>
 		<a href="${pageContext.request.contextPath}/board/list.do">멍냥토크</a>
