@@ -11,7 +11,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양 신청 목록</h2>
+	<h2>신규 입양 신청 목록</h2>
 	<div class="list-space align-right">
 		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
@@ -29,7 +29,7 @@
 		</tr>
 		<c:forEach var="adopt" items="${list}">
 		<tr>
-			<td><a href="adoptDetail.do?adopt_num=${adopt.adopt_num}">${adopt.adopt_member_id}</a></td>
+			<td><a href="detailAdopt.do?adopt_num=${adopt.adopt_num}">${adopt.adopt_member_id}</a></td>
 			<th>${adopt.adopt_pet_name}</th>
 			<td>${adopt.adopt_date}</td>
 		</tr>

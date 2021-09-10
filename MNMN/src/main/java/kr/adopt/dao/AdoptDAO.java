@@ -119,4 +119,45 @@ public class AdoptDAO {
 			}
 			return list;
 		}
+		
+		//입양신청서 상세
+		public AdoptVO getAdopt(int adopt_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			AdoptVO adopt = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "SELECT * FROM adopt a JOIN member m ON a.adopt_member_num=m.member_num JOIN pet p ON a.adopt_pet_num=p.pet_num WHERE a.adopt_num=?";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, adopt_num);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					adopt = new AdoptVO();
+					adopt.setAdopt_num(rs.getInt("adopt_num"));
+					adopt.setAdopt_member_num(rs.getInt("adopt_member_num"));
+					adopt.setAdopt_pet_num(rs.getInt("adopt_pet_num"));
+					adopt.setAdopt_date(rs.getDate("adopt_date"));					
+					adopt.setAdopt_intro(rs.getString("adopt_intro"));
+					adopt.setAdopt_married(rs.getInt("adopt_married"));
+					adopt.setAdopt_house(rs.getString("adopt_house"));
+					adopt.setAdopt_now(rs.getInt("adopt_now"));
+					adopt.setAdopt_why(rs.getString("adopt_why"));
+					adopt.setAdopt_member_id(rs.getString("member_id"));
+					adopt.setAdopt_pet_name(rs.getString("pet_name"));
+				}
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			
+			return adopt;
+		}		
 }
