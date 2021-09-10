@@ -206,13 +206,13 @@ public class PetDAO {
 			conn = DBUtil.getConnection();
 			
 			//date는 수정 x : pet_date는 입양공고에 등록한 날짜
-			sql = "update pet set pet_name=?,pet_type=?,pet_adopt=?,pet_detail=?,pet_photo=?";
+			sql = "update pet set pet_name=?,pet_type=?,pet_detail=?,pet_photo=? where pet_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, petVO.getPet_name());
 			pstmt.setString(2, petVO.getPet_type());
-			pstmt.setInt(3, petVO.getPet_adopt());
-			pstmt.setString(4, petVO.getPet_detail());
-			pstmt.setString(5, petVO.getPet_photo());
+			pstmt.setString(3, petVO.getPet_detail());
+			pstmt.setString(4, petVO.getPet_photo());
+			pstmt.setInt(5, petVO.getPet_num());
 			
 			pstmt.executeUpdate();
 			
