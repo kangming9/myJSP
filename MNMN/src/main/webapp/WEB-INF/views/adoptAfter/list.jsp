@@ -17,6 +17,28 @@
 			<c:if test="${empty user_num || user_grade=='3'}">disabled="disabled"</c:if>
 		>
 	</div>
+	<c:if test="${count == 0}">
+	<div class="result-display">
+		등록된 게시물이 없습니다.
+	</div>
+	</c:if>
+	<c:if test="${count > 0 }">
+	<table>
+		<c:forEach var="adoptAfter" items="${list}">
+		<tr>
+			<td>
+			<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="detail-img">
+			</td>
+			<td><a href="afterDetail.do?after_num=${adoptAfter.after_num}">${adoptAfter.after_title}</a></td>
+			<td>${adoptAfter.after_content}</td>
+			<td>${adoptAfter.after_date}</td>
+		</tr>
+		</c:forEach>
+	</table>
+	</c:if>
+	<div class="align-center">
+		${pagingHtml}
+	</div>
 </div>
 </body>
 </html>
