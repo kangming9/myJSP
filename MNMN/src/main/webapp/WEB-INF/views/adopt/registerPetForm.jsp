@@ -29,7 +29,7 @@
 			}
 			if($('#photo').val().trim()==''){
 				alert('사진을 첨부하세요!');
-				$('#content').val('').focus();
+				$('#photo').val('').focus();
 				return false;
 			}
 		});
