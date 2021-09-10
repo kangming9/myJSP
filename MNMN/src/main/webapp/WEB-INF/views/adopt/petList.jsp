@@ -13,6 +13,11 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>입양 동물 리스트</h2>
+	<div class="align-right">
+		<input type="button" value="동물 등록" onclick="location.href=''">
+		<input type="button" value="동물 수정" onclick="location.href=''">
+		<input type="button" value="동물 삭제" onclick="location.href=''">
+	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		모든 친구들이 가족을 만났어요!
