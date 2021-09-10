@@ -17,6 +17,35 @@ public class AdoptDAO {
 		}
 		private AdoptDAO() {}
 		
+		//member의 입양 자격 확인
+		public int adoptCheck(int mem_num)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+		
+			try {
+				conn = DBUtil.getConnection();
+				sql = "select count(vol_checked) from volunteer v join member m on v.vol_member_num=m.member_num where m.member_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, mem_num);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt("count(vol_checked)");
+				}
+				
+				
+			}catch (Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(null, pstmt, conn);
+			}
+			return count;
+		}
+		
 		//신규 입양 신청 개수
 		public int getAdoptCount() throws Exception {
 			Connection conn = null;

@@ -30,20 +30,19 @@
 	<div class="align-right">
 		<%-- 관리자 등급 -> 수정, 삭제, 목록이 보여야 하고 / 관리자 아닌 멤버-> 입양신청, 목록 --%>
 		<c:if test="${user_grade == 1}">
-		<input type="button" value="수정" onclick="location.href='updateForm.do?pet_num=${pet.pet_num}'">
+		<input type="button" value="수정" onclick="location.href='modifyPetForm.do?pet_num=${pet.pet_num}'">
 		<input type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			var delete_btn = document.getElementById('delete_btn');
 			delete_btn.onclick = function(){
 				var choice = cofirm('입양공고를 삭제 하시겠습니까?');
 				if(choice){
-					location.replace('delete.do?pet_num=${pet.pet_num}');
+					location.replace('deletePetForm.do?pet_num=${pet.pet_num}');
 				}
 			};
 		</script>
 		</c:if>
-		<%-- 입양신청은 일정 시간 봉사활동을 마친 사람만 할 수 있도록 --%>
-		<input type="button" value="입양 신청" onclick="location.href='adoptRegister.do'">
+		<input type="button" value="입양 신청" onclick="location.href='adoptRegister.do?pet_num=${pet.pet_num}'">
 		<input type="button" value="목록" onclick="location.href='petList.do'">
 	</div>
 	

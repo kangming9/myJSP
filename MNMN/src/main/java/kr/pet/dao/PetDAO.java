@@ -20,41 +20,6 @@ public class PetDAO {
 	
 	private PetDAO() {}
 
-	//memberÀÇ ÀÔ¾ç °¡´É È®ÀÎ
-	public int adoptCheck(int mem_num)throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = null;
-		int count = 0;
-	
-		try {
-			conn = DBUtil.getConnection();
-			sql = "";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mem_num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				count = rs.getInt("count(*)");
-			}
-			
-			
-		}catch (Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null, pstmt, conn);
-		}
-		
-		
-		
-		
-		return count;
-	}
-	
-	
-	
 	//Æê µî·Ï
 	//ÃÑ ·¹ÄÚµå ¼ö
 	public int getPetCount() throws Exception {
@@ -66,7 +31,7 @@ public class PetDAO {
 	
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select count(*) from pet";
+			sql = "select count(*) from pet where pet_adopt=0";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -96,7 +61,7 @@ public class PetDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from (select a.*, rownum rnum from (select * from pet p order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
+			sql = "select * from (select a.*, rownum rnum from (select * from pet p where pet_adopt=0 order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
@@ -140,7 +105,7 @@ public class PetDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from pet where pet_num=?";
+			sql = "select * from pet where pet_adopt=0 and pet_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pet_num);
 			rs = pstmt.executeQuery();
@@ -164,11 +129,6 @@ public class PetDAO {
 		
 		return pet;
 	};
-	
-	
-	//Æê ÀÔ¾ç½ÅÃ»
-	
-	
 	
 	
 };
