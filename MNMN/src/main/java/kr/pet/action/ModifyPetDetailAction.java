@@ -25,15 +25,22 @@ public class ModifyPetDetailAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		MultipartRequest multi = FileUtil.createFile(request);
+		
+		PetDAO dao = PetDAO.getInstance();
 		PetVO petVO = new PetVO();
 		
 		petVO.setPet_num(Integer.parseInt(multi.getParameter("num")));
 		petVO.setPet_name(multi.getParameter("name"));
 		petVO.setPet_type(multi.getParameter("type"));
 		petVO.setPet_detail(multi.getParameter("detail"));
-		petVO.setPet_photo(multi.getFilesystemName("photoname"));
 		
-		PetDAO dao = PetDAO.getInstance();
+		if(multi.getFilesystemName("photoname") != null) { //파일을 수정한 경우
+			petVO.setPet_photo(multi.getFilesystemName("photoname"));
+		}else { //파일을 수정하지 않은 경우
+			PetVO pet = dao.getPet(Integer.parseInt(multi.getParameter("num")));
+			petVO.setPet_photo(pet.getPet_photo());
+		}
+		
 		dao.updatePetDetail(petVO);
 		
 		PetVO pet = dao.getPet(petVO.getPet_num());
