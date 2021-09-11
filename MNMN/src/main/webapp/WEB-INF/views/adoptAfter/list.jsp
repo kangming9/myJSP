@@ -14,7 +14,7 @@
 	<h2>입양후기 게시판</h2>
 	<div class="list-space align-right">
 		<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'"
-			<c:if test="${empty user_num || user_grade=='3'}">disabled="disabled"</c:if>
+			<c:if test="${empty user_num || user_grade=='3' || user_grade=='1'}">disabled="disabled"</c:if>
 		>
 	</div>
 	<c:if test="${count == 0}">
@@ -30,7 +30,7 @@
 			<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="detail-img">
 			</td>
 			<td><a href="afterDetail.do?after_num=${adoptAfter.after_num}">${adoptAfter.after_title}</a></td>
-			<td>${adoptAfter.after_content}</td>
+			<td id="content">${adoptAfter.after_content}</td>
 			<td>${adoptAfter.after_date}</td>
 		</tr>
 		</c:forEach>

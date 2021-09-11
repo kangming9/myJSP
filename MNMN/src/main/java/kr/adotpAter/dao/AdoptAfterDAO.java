@@ -161,6 +161,31 @@ public class AdoptAfterDAO {
 		return after;
 	}
 	//입양후기 게시판 글 수정
+	public void updateAfterBoard(AdoptAfterVO adoptAfter)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update adopt_after set after_title=?,after_content=?,after_photo=? where after_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adoptAfter.getAfter_title());
+			pstmt.setString(2, adoptAfter.getAfter_content());
+			pstmt.setString(3, adoptAfter.getAfter_photo());
+			pstmt.setInt(4, adoptAfter.getAfter_num());
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
+	
+	
 	//입양후기 게시판 글 삭제
 	public void deleteAfterBoard(int after_num)throws Exception{
 		Connection conn = null;
