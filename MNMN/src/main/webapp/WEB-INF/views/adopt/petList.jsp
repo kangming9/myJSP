@@ -24,16 +24,20 @@
 	</div>
 	</c:if>
 	<c:if test="${count > 0}">
+	<div id="wrap">
 	<table>
 	<c:forEach var="pet" items="${list}">
 		<tr>
 			<td width="300px"><a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="list-img"></a></td>
-			<td>${pet.pet_num}<br>
+			<td>
+			${pet.pet_num}<br>
 			${pet.pet_name}<br>
-			${pet.pet_date}</td>
+			${pet.pet_date}
+			</td>
 		</tr>
 	</c:forEach>
 	</table>
+	</div>
 	<div class="align-center">
 		${pagingHtml}
 	</div>
