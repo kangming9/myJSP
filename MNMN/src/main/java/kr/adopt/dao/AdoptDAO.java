@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.adopt.vo.AdoptVO;
+import kr.member.vo.MemberVO;
+import kr.pet.vo.PetVO;
 import kr.util.DBUtil;
 
 public class AdoptDAO {
@@ -45,6 +47,37 @@ public class AdoptDAO {
 			}
 			return count;
 		}
+		
+		//입양 신청 등록
+		public boolean insertAdoptRegister(AdoptVO adoptVO) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			
+			try {
+				conn = DBUtil.getConnection();
+				
+				sql = "insert into adopt (adopt_num,adopt_member_num,adopt_pet_num,adopt_date,adopt_intro,adopt_married,adopt_house,adopt_now) values (adopt_seq.nextval,?,?,sysdate,?,?,?,0)";
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, adoptVO.getAdopt_member_num());
+				pstmt.setInt(2, adoptVO.getAdopt_pet_num());
+				pstmt.setString(3, adoptVO.getAdopt_intro());
+				pstmt.setInt(4, adoptVO.getAdopt_married());
+				pstmt.setString(5, adoptVO.getAdopt_house());
+
+				pstmt.executeUpdate();
+					
+			
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+
+			return true;
+		}	
+		
 		
 		//신규 입양 신청 개수
 		public int getAdoptCount() throws Exception {
@@ -219,5 +252,6 @@ public class AdoptDAO {
 			}
 			
 			return true;
-		}		
+		}
+			
 }
