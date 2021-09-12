@@ -103,7 +103,7 @@
 				<div class="align-center">
 					<input type="button" value="변경" id="photo_btn">
 				</div>
-				<div id="photo_choice" style="display:none;">
+				<div id="photo_choice" style="display:none;" class="align-center">
 					<input type="file" id="photo" name="photoname" accept="image/gif,image/png,image/jpeg"><br>
 					<input type="button" value="전송" id="photo_submit">
 					<input type="button" value="취소" id="photo_reset">

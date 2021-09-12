@@ -44,9 +44,12 @@
 		<c:if test="${user_grade == 1}">
 		<input type="button" value="수정" onclick="location.href='modifyPetDetailForm.do?pet_num=${pet.pet_num}'">
 		<input type="button" value="삭제" name="delete_btn" id="delete_btn">
-		</c:if>
-		<input type="button" value="입양 신청" onclick="location.href='adoptRegister.do?pet_num=${pet.pet_num}'">
 		<input type="button" value="목록" onclick="location.href='petList.do'">
+		</c:if>
+		<c:if test="${user_grade > 1 || user_grade == null}">
+		<input type="button" value="입양 신청" onclick="location.href='adoptRegisterForm.do?pet_num=${pet.pet_num}'">
+		<input type="button" value="목록" onclick="location.href='petList.do'">
+		</c:if>
 	</div>
 	
 </div>
