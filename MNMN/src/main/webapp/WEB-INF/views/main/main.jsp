@@ -85,7 +85,7 @@
 	<!-- header 끝 -->
 	<div class="container" id="about" style="background-color:#E8F0F2">
 	  <div class="content" style="max-width:700px">
-	    <span class="tag wide"  style="background-color:#053742; color:white">멍냥멍냥 입양센터</span>
+	    <span class="tag wide"  style="background-color:#A2DBFA; color:white">멍냥멍냥 입양센터</span>
 	    <p>안녕하세요. 유기동물 입양센터, <strong>멍냥멍냥</strong>입니다.동물들과 공존하는 삶의 소중함과 그 가치를 널리 알리고, 함께 더불어 살아가는 삶을 위해 항상 힘쓰겠습니다. 오늘도 더 많은 생명에게 좋은 친구가 될 수 있도록, 따뜻한 가정의 품을 안겨줄 수 있도록 노력하겠습니다.</p>
 	    <p>저희의 가치에 동감하고 함께 하고 싶으시다면 언제든 센터를 방문해주세요. 멍냥멍냥의 문은 언제나 활짝 열려있으며 많은 아이들이 여러분의 다정한 마음을 기다리고 있습니다. 한 번의 눈길, 한 시간의 봉사, 하나의 후원이 아이들에게 큰 힘이 됩니다. </p>
 	    </div>
@@ -94,14 +94,15 @@
 	    <p><strong>주소:</strong> 서울시 마포구 어딘가.</p>
 	    <p><strong>문의:</strong> 02-1234-5678</p>
 	    <img src="${pageContext.request.contextPath}/images/main2.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
+	    <div style="margin:20px 0px"><span class="tag wide"  style="background-color:#A2DBFA; color:white">멍냥멍냥 게시판</span></div>
 	    <div class="intro">
-	    	<button id="main_btn1" onclick="ButtonOne()">소개할개<i class="far fa-smile-wink"></i></i></button>
+	    	<button id="main_btn1" onclick="ButtonOne()">소개할개<i class="far fa-smile-wink"></i></button>
 	    	<button id="main_btn2" onclick="ButtonTwo()">힘드냥<i class="fas fa-paw fa-xs"></i>도울개</button>
-	    	<button id="main_btn3" onclick="ButtonThree()">기다리개<i class="fas fa-user"></i></i></button>
+	    	<button id="main_btn3" onclick="ButtonThree()">기다리개<i class="fas fa-user"></i></button>
 	    	<button id="main_btn4" onclick="ButtonFour()">찾았냥<i class="fas fa-paw fa-xs"></i></button>
-	    	<button id="main_btn5" onclick="ButtonFive()">멍냥토크<i class="fas fa-comment"></i></i></button>
+	    	<button id="main_btn5" onclick="ButtonFive()">멍냥토크<i class="fas fa-comment"></i></button>
 	    	<div id="main_intro">
-	    		<div id="intro1" style="display:none;">소개할개는 유기동물 입양센터 멍냥멍냥에 대해 소개하는 공간입니다.<br>
+	    		<div id="intro1" style="display:inline;">소개할개는 유기동물 입양센터 멍냥멍냥에 대해 소개하는 공간입니다.<br>
 	    		멍냥멍냥에서 어떤 일을 하고 있는지, 어떻게 하면 함께 할 수 있는지, 어디에 위치해 있는지, 가족분들의 후원이 어디에 쓰이고 있는지 등에 대해 적혀있습니다.</div>
 	    		<div id="intro2" style="display:none;">힘드냥도울개는 센터에 도움을 주시고 싶으신 분들을 위한 공간입니다.<br>
 	    		원하시는 경우, 멍냥멍냥에 직접 방문하셔서 봉사활동을 하실 수 있습니다. 오전 9시부터 오후 6시까지 신청 가능하며 회원으로 가입된 경우에만 가능합니다.

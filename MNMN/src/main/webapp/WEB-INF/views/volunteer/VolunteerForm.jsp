@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>힘드냥 도울개</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_volunteer.css" type="text/css">
 </head>
 <body>
 <div class="page-main">

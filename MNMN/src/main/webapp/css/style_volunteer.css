@@ -5,9 +5,9 @@
 /*Volunteer*/
 
 #button_home{
-	border: 1px solid 39A2DB;
-	background-color:#A2DBFA;
-	color: skyblue;
+	border: 1px solid #39A2DB;
+	background-color:white;
+	color: #A2DBFA;
 	border-radius: 5px;
 	padding: 5px;
 }
@@ -29,12 +29,10 @@
 .button_vol{
 	border: 1px solid #39A2DB;
 	background-color:white;
-	color: white;
+	color: #39A2DB;
 	padding: 5px;
 }
 .button_vol:hover{
 	background-color: #39A2DB;
 	color: white;
 }
-
-@charset "EUC-KR";
