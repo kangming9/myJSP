@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>입양 신청 완료</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-
-</body>
-</html>
+<c:if test="${check}">
+	<script>
+		alert('입양 신청이 완료되었습니다.');
+		location.href='petList.do';
+	</script>
+</c:if>
+<c:if test = "${count < 60}">
+	<script>
+		alert('봉사활동 60시간 이상인 경우에만 입양이 가능합니다.');
+		history.go(-1);
+	</script>
+</c:if>

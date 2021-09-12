@@ -31,7 +31,8 @@ public class AdoptRegisterFormAction implements Action{
 		
 		//60 미만이면 alert해야 함 -> 수정 필요
 		if(count*3 < 60) {
-			return "redirect:/adopt/petList.do";
+			request.setAttribute("count", count);
+			return "/WEB-INF/views/adopt/adoptRegister.jsp";
 		}
 		
 		int pet_num = Integer.parseInt(request.getParameter("pet_num"));
