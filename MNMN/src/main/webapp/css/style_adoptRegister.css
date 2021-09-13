@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.register_form{
+	margin:10px auto;
+	padding:10px;
+}
+
+#adopt_register {
+	border:none;
+}
+
+h2{
+	text-align:center;
+}
+
+div ul li{
+	padding:5px;
+}
+
+#adopt_intro{
+	width:100%;
+}
