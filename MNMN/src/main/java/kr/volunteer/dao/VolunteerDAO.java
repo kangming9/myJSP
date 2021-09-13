@@ -127,7 +127,6 @@ private static VolunteerDAO instance = new VolunteerDAO();
 			if(rs.next()) {
 				volCount = rs.getInt("count");
 			}
-			System.out.println("현재 신청된 봉사 수 : " + volCount);
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {

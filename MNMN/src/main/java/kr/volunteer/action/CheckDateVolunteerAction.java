@@ -30,7 +30,6 @@ public class CheckDateVolunteerAction implements Action{
 		
 		String strCount =  Integer.toString(volCount);
 		
-		System.out.println("-> " + strCount);
 		mapAjax.put("result", strCount);
 		
 		/*
