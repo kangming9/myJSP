@@ -40,7 +40,8 @@
 			<a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="rounded-circle mb-3"></a>
 			<div class="card-body">
 			${pet.pet_num}<br>
-			${pet.pet_name}<br>
+			COMMENT : <br>
+			${pet.pet_name}	/ ${pet.pet_type}<br>
 			${pet.pet_date}
 			</div>
 		</div>

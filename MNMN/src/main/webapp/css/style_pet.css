@@ -2,6 +2,7 @@
 
 /*PetList*/
 
+
 div.title{
 	padding:20px;
 	text-align:center;
@@ -17,6 +18,12 @@ div.title{
 	text-align:center;
 }
 
+.card:hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+	background-color:#d1eef5;
+}
+
 .rounded-circle {
 	width:200px;
 	height:200px;
@@ -25,5 +32,18 @@ div.title{
 	object-fit: cover;
 } 
 
+.detail-img{
+	width:50%;
+	height:auto;
+}
 
+/*Pet Detail*/
+
+#wrap {
+	margin:10px;
+	padding:20px;
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+	background-color:#E8F0F2;
+}
 

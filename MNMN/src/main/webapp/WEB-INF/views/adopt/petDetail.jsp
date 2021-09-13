@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>동물 상세 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 			$(document).ready(function(){
@@ -24,9 +25,12 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>${pet.pet_name}의 상세 정보</h2>
+	<br>
+	<br>
+	<div id="wrap">
+	<h2 class="align-center">${pet.pet_name}의 상세 정보</h2>
 	<ul>
-		<li>동물 번호 : ${pet.pet_num}</li>
+		<li>동물 등록번호 : ${pet.pet_num}</li>
 		<li>동물 이름 : ${pet.pet_name}</li>
 		<li>동물 종류 : ${pet.pet_type}</li>
 		<li>등록일자 : ${pet.pet_date}</li>
@@ -51,7 +55,7 @@
 		<input type="button" value="목록" onclick="location.href='petList.do'">
 		</c:if>
 	</div>
-	
+	</div>
 </div>
 </body>
 </html>
