@@ -24,13 +24,23 @@ public class ModifyAfterDetailAction implements Action{
 		
 		MultipartRequest multi = FileUtil.createFile(request);
 		AdoptAfterVO adoptAfter = new AdoptAfterVO();
+		AdoptAfterDAO dao = AdoptAfterDAO.getInstance();
+		
 		adoptAfter.setAfter_num(Integer.parseInt(multi.getParameter("after_num")));
 		adoptAfter.setAfter_title(multi.getParameter("after_title"));
 		adoptAfter.setAfter_content(multi.getParameter("after_content"));
-		adoptAfter.setAfter_photo(multi.getFilesystemName("after_photo"));
 		adoptAfter.setAfter_member_num(user_num);
-		AdoptAfterDAO dao = AdoptAfterDAO.getInstance();
+		
+		if(multi.getFilesystemName("after_photo") != null) { //파일 수정
+			adoptAfter.setAfter_photo(multi.getFilesystemName("after_photo"));
+		}else {//파일 수정 안한경우
+			AdoptAfterVO adoptAfterVO = dao.getAfterBoard(Integer.parseInt(multi.getParameter("after_num")));
+			adoptAfter.setAfter_photo(adoptAfterVO.getAfter_photo());
+		}
+		
 		dao.updateAfterBoard(adoptAfter);
+		AdoptAfterVO adoptAfterVO = dao.getAfterBoard(adoptAfter.getAfter_pet_num());
+		request.setAttribute("adoptAfterVO", adoptAfterVO);
 		
 		return "/WEB-INF/views/adoptAfter/modifyAfterDetail.jsp";
 	}

@@ -21,10 +21,7 @@
 				$('#after_content').val('').focus();
 				return false;
 			}
-			if($('#after_photo').val().trim()==''){
-				alert('사진을 첨부해주세요.');
-				return false;
-			}
+		
 		});
 	});
 </script>
