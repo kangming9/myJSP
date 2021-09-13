@@ -14,7 +14,7 @@
 		<a href="${pageContext.request.contextPath}/volunteer/volunteerForm.do">힘드냥<i class="fas fa-paw fa-xs"></i>도울개</a>
 		<a href="${pageContext.request.contextPath}/adopt/petList.do">기다리개</a>
 		<a href="${pageContext.request.contextPath}/adoptAfter/list.do">찾았냥</a>
-		<a href="${pageContext.request.contextPath}/board/list.do">멍냥토크</a>
+		<a href="${pageContext.request.contextPath}/community/communityList.do">멍냥토크</a>
 		</nav>
 		
 		<div class="login">
