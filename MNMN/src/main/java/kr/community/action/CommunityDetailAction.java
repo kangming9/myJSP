@@ -21,10 +21,12 @@ public class CommunityDetailAction implements Action{
 		
 		CommunityVO com = dao.getCommunity(com_num);
 		
+		com.setCom_title(com.getCom_title());
+		com.setCom_content(com.getCom_content());
 		
 		request.setAttribute("com", com);
 		
-		return "/WEB-INF/views/board/communityDetail.jsp";
+		return "/WEB-INF/views/community/communityDetail.jsp";
 	}
 
 }

@@ -32,7 +32,7 @@
 			<th>작성일</th>
 			<th>조회</th>
 		</tr>
-		<c:forEach var="community" items="${list}">
+		<c:forEach var="com" items="${list}">
 		<tr>
 			<td>${com.com_num}</td>
 			<td><a href="communityDetail.do?com_num=${com.com_num}">${com.com_title}</a></td>

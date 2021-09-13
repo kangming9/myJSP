@@ -27,7 +27,7 @@
 			
 			$.ajax({
 				type:'post',
-				data:{pageNum:pageNum,board_num:$('#board_num').val()},
+				data:{pageNum:pageNum,com_num:$('#com_num').val()},
 				url:'listReply.do',
 				dataType:'json',
 				cache:false,
@@ -140,14 +140,95 @@
 			}
 		});
 		//댓글 수정 버튼 클릭시 수정폼 노출
-		
+		$(document).on('click','.modify-btn',function(){
+			//댓글 번호
+			var re_num = $(this).attr('data-renum');
+			//작성자 회원번호
+			var num = $(this).attr('data-memnum');
+			//댓글 내용 읽어옴(부모 div 안에 p가져옴)
+			//              버튼    부모태그    안에p태그찾음  그내용   바꿈   모든br검색, textarea는 <br>그대로보여서 바꿔줌
+			var content = $(this).parent().find('p').html().replace(/<br>/gi,'\n');
+			//댓글 수정폼 UI
+			var modifyUI = '<form id="mre_form">';
+			   modifyUI += '  <input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
+			   modifyUI += '  <input type="hidden" name="mem_num" id="muser_num" value="'+num+'">';
+			   modifyUI += '  <textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+content+'</textarea>';
+			   modifyUI += '  <div id="mre_first"><span class="letter-count">300/300</span></div>';
+			   modifyUI += '  <div id="mre_second" class="align-right">';
+			   modifyUI += '    <input type="submit" value="수정">';
+			   modifyUI += '    <input type="button" value="취소" class="re-reset">';
+			   modifyUI += '  </div>';
+			   modifyUI += '  <hr size="1" noshade width="96%">';
+			   modifyUI += '</form>';
+			   
+			   //                                          숨김(아이디 제외 다 숨김 폼 넣으려고!)
+			   //이전에 이미 수정하는 댓글이 있을 경우 수정버튼을 클릭하면 숨김 sub-item을 환원시키고 수정폼을 초기화함
+			   initModifyForm();
+			   //지금 클릭해서 수정하고자 하는 데이터는 감추기
+			   //수정버튼을 감싸고 있는 div(버튼의 부모 : sub-item)
+			   $(this).parent().hide();
+			   
+			   //수정폼을 수정하고자 하는 데이터가 있는 div에 노출
+			   //parents : 부모들 중 item인것. sub-item의 상위 부모인 item을 말함
+			   $(this).parents('.item').append(modifyUI);
+			   
+			   //입력한 글자수 셋팅                            메서드아니고 변수
+			   var inputLength = $('#mre_content').val().length;
+			   var remain = 300 - inputLength;
+			   remain += '/300';
+			   
+			   //문서 객체에 반영
+			   $('#mre_first .letter-count').text(remain);
+		});
 		//수정폼에서 취소 버튼 클릭시 수정폼 초기화
-		
+		$(document).on('click','.re-reset',function(){
+			initModifyForm();
+		});
 		//댓글 수정 폼 초기화
-		
-		//댓글 수정
-		//댓글 삭제
-		$(document).on('click','.delete-btn',function(){
+		function initModifyForm(){
+			$('.sub-item').show();
+			$('#mre_form').remove();
+		}
+	//댓글 수정
+	$(document).on('submit','#mre_form',function(event){
+		if($('#mre_content').val().trim()==''){
+			alert('내용을 입력하세요!');
+			$('#mre_content').val('').focus();
+			return false;
+		}
+		//폼에 입력한 데이터 반환
+		var form_data = $(this).serialize();//전체 데이터 뽑음
+		//수정
+		$.ajax({
+			url:'updateReply.do',
+			type:'post',
+			data:form_data,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인해야 수정할 수 있습니다.');
+				}else if(param.result=='success'){
+					//sub-item올라가서 p태그 온다음에 내용 가져옴
+					$('#mre_form').parent().find('p').html($('#mre_content').val().replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'));
+					//수정폼 삭제 및 초기화
+					initModifyForm();
+				}else if(param.result=='wrongAccess'){
+					alert('타인의 글을 수정할 수 없습니다.');
+				}else{
+					alert('수정 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		//기본 이벤트 제거
+		event.preventDefault();
+	});
+	//댓글 삭제
+	$(document).on('click','.delete-btn',function(){
 			//댓글 번호
 			var re_num = $(this).attr('data-renum');
 			//작성자 회원 번호
@@ -193,7 +274,7 @@
 	</ul>
 	<hr size="1" noshade width="100%">
 	<p>
-		${board.content}
+		${com.com_content}
 	</p>
 	<hr size="1" noshade width="100%">
 	<div class="align-right">

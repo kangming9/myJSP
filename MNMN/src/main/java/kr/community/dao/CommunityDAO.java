@@ -148,7 +148,7 @@ public class CommunityDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "update community set hit=hit+1 where com_num=?";
+			sql = "update community set com_hit=com_hit+1 where com_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, com_num);
 			pstmt.executeUpdate();
