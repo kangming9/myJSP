@@ -29,11 +29,15 @@
 }
 
 .tag{
-	margin: 20px 0px;
-	font-size: 20px;
+	font-family: 'NEXON Lv2 Gothic';
+	margin: 20px 0px 5px 0px;
+	font-size: 17px;
 	color:#39A2DB;
 }
-
+#afterDetail_title{
+	color: black; 
+	text-decoration: none;
+}
 #detail_card{
 	padding: 10px;
 	background-color:none;
@@ -47,4 +51,35 @@
 #content{
 	font-size: 15px;
 	font-family: 'NEXON Lv2 Gothic';
+}
+#detailTitle{
+	margin: 0;
+}
+#detailDate{
+	text-align: right;
+	margin-right: 10px;
+}
+
+#after_title{
+	width: 750px;
+	margin-top: 5px;
+	border: none;
+}
+#modify_form{
+	width: 800px;
+}
+#after_content{
+	width: 750px;
+}
+#ul_border{
+	margin: 0;
+	padding: 0;
+}
+#after_photo{
+	text-align: left;
+}
+#modify_img{
+	max-width: 70%; 
+	height: auto; 
+	margin: 0 120px;
 }

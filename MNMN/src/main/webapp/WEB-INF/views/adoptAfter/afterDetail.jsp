@@ -8,44 +8,50 @@
 <title>입양후기 게시글상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양 후기</h2>
 	<p>
-	<ul>
-		<li>${after.after_title}</li>
-		<li>${after.after_date}</li>
-		<hr size="1" noshade="noshade" width="100%">
-		<li>
-		<br>
-		<div class="align-center">
-		<img src="${pageContext.request.contextPath}/upload/${after.after_photo}" class="detail-img">
-		</div>
-		<br>
-		</li>
-		<li>${after.after_content}</li>
-	</ul>
-	<hr size="1" noshade="noshade" width="100%">
+	<div style="border: 1px solid;">
+		<ul>
+			<li class="tag">입양후기 게시판</li>
+			<p>
+			<h3 id="detailTitle">${after.after_title}</h3>
+			<li id="detailDate">${after.after_date}</li>
+			<hr size="1" noshade="noshade" width="100%">
+			<li>
+			<br>
+			<div class="align-center">
+			<img src="${pageContext.request.contextPath}/upload/${after.after_photo}" class="detail-img">
+			</div>
+			<br>
+			</li>
+			<li>${after.after_content}</li>
+		</ul>
+	</div>
+	<p>
 	<div class="align-right">
-	<input type="button" value="수정" onclick="location.href='afterModifyForm.do?after_num=${after.after_num}'"
-		<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
-	>
-	<input type="button" value="삭제" id="delete_btn" 
-		<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
-	>
-	<script type="text/javascript">
-		var delete_btn = document.getElementById('delete_btn');
-		delete_btn.onclick=function(){
-			var choice = confirm('이 글을 삭제하시겠습니까?');
-			if(choice){
-				location.replace('afterDelete.do?after_num=${after.after_num}');
-			}
-		};
-	</script>
-	<input type="button" value="목록" onclick="location.href='list.do'">
-	</div> 
+		<input type="button" value="수정" class="btn btn-outline-dark" onclick="location.href='afterModifyForm.do?after_num=${after.after_num}'"
+			<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
+		>
+		<input type="button" value="삭제" class="btn btn-outline-dark" id="delete_btn" 
+			<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
+		>
+		<script type="text/javascript">
+			var delete_btn = document.getElementById('delete_btn');
+			delete_btn.onclick=function(){
+				var choice = confirm('이 글을 삭제하시겠습니까?');
+				if(choice){
+					location.replace('afterDelete.do?after_num=${after.after_num}');
+				}
+			};
+		</script>
+		<input type="button" value="목록" class="btn btn-outline-dark" onclick="location.href='list.do'">
+		</div>
+		<p>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix= "fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,12 +31,11 @@
 		<div class="row">
       		<c:forEach var="adoptAfter" items="${list}">
 	      		<div class="col-sm-12 col-md-6 col-xl-4" id="detail_card">
-		      	<div>
-		        	 <h1 class="tag"><a href="afterDetail.do?after_num=${adoptAfter.after_num}">${adoptAfter.after_title}</a></h1>
-		      	</div>
 		      	<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="afterpet-img">
 		      	<div>
-		        	 <span id="content">${adoptAfter.after_content}</span><br>
+		        	 <h1 class="tag"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${adoptAfter.after_title}</a></h1>
+		        	 <c:set var="content2" value="${adoptAfter.after_content}"/>
+		        	 <span id="content"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${fn:substring(content2,0,40)}...</a></span><br>
 		        	 <small>${adoptAfter.after_date}</small>
 		      	</div>
 	      		</div>
