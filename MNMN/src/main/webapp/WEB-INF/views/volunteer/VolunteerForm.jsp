@@ -31,9 +31,14 @@ $(function(){
 			if(c>=e.length){
 				l.append('<div class="blank"></div>')
 			}else{
+
 				var v=e[c].day;
 				var m=g(new Date(t,n-1,v))?'<div class="today">':"<div>";
-				l.append(m+""+v+"</div>")
+				
+				var str = m+""+v + "(";
+				var newstr = Voldata(str);
+				console.log(newstr);
+				
 			}
 		}
 		
@@ -41,6 +46,40 @@ $(function(){
 		
 		d()
 	}
+	
+	
+	function Voldata(str){ 
+		
+		$.ajax({
+			url:"checkDateVol.do",
+			type:"post",
+			data:{"date":datecheck},
+			dataType:"json",
+			async:false,
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result){
+					var idate = (param.result).toString();
+					dateVol = idate;
+					str += dateVol;
+					str += ")"+"</div>";
+					
+					console.log("고친 데이터 : " + str);
+					l.append(str);
+				}else{
+					alert("오류 발생");
+				}
+			},
+			error:function(){
+				alert("네트워크 오류 발생");
+			}
+			
+		});
+				
+		return str;
+	};
+	
 	
 	function h(){
 		var e=[];
@@ -77,7 +116,10 @@ $(function(){
 	}
 	
 	function y(e){
-		return e.getFullYear()+"/"+(e.getMonth()+1)+"/"+e.getDate()
+		
+		datecheck = e.getFullYear()+"/"+(e.getMonth()+1)+"/"+e.getDate();
+		
+		return datecheck;
 	}
 	
 	function b(){
@@ -86,6 +128,7 @@ $(function(){
 		n=e.getMonth()+1
 	}
 	
+	var datecheck = "1999/01/01";
 	var e=480;
 	var t=2013;
 	var n=9;
@@ -96,6 +139,7 @@ $(function(){
 	var a=u.find("#calendar_header");
 	var f=u.find("#calendar_weekdays");
 	var l=u.find("#calendar_content");
+	var dateVol = 0;
 	
 	b();
 	c();

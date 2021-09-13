@@ -96,6 +96,47 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		}
 	}
 	
+	public int checkDateVolunteer(String date)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		
+		int volCount = 0;
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT count(*) as count FROM volunteer WHERE to_char(vol_date, 'YY/MM/DD') = ?";
+			
+			if(date.length() == 7 && (date.charAt(3) == '1' || date.charAt(3) == '2')) {
+				date = date.substring(0, 6) + "0" + date.substring(6);
+			}else if(date.length() == 7 && date.charAt(3) != '0')
+				date = date.substring(0, 3) + "0" + date.substring(3);
+			if(date.length() == 6)
+				date = date.substring(0, 3) + "0" + date.substring(3, 5) + "0" + date.substring(5);
+			
+			//PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, date);
+			
+			//SQL문을 실행해서 결과행을 ResultSet에 담음
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				volCount = rs.getInt("count");
+			}
+			System.out.println("현재 신청된 봉사 수 : " + volCount);
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return volCount;
+	}
+	
 	public int checkDateFull(String date, int time)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -251,10 +292,11 @@ private static VolunteerDAO instance = new VolunteerDAO();
 				volunteer.setVol_num(rs.getInt("vol_num"));
 				volunteer.setVol_m_num(rs.getInt("vol_member_num"));
 				volunteer.setVol_m_id(rs.getString("member_id"));
-				volunteer.setVol_reg_date(rs.getDate("vol_reg_date"));					volunteer.setVol_date(rs.getDate("vol_date"));
+				volunteer.setVol_reg_date(rs.getDate("vol_reg_date"));
+				volunteer.setVol_date(rs.getDate("vol_date"));
 				volunteer.setVol_time(rs.getInt("vol_time"));
 				volunteer.setVol_checked(rs.getInt("vol_checked"));
-				
+
 				list.add(volunteer);
 			}
 				
