@@ -5,36 +5,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신규 입양 신청 목록</title>
+<title>신규 입양 신청자</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_mypage.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>신규 입양 신청 목록</h2>
+	<h2>신규 입양 신청자</h2>
 	<div class="list-space align-right">
-		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="home_btn">
 	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
-		입양 신청 내역이 없습니다.
+		신규 입양 신청자가 없습니다.
 	</div>
 	</c:if>
 	<c:if test="${count > 0}">
+	<div class="tb-container">
 	<table>
-		<tr>
-			<th>신청자</th>
-			<th>희망입양동물</th>
-			<th>신청일</th>
-		</tr>
+		<thead class="tb-header">
+			<tr>
+				<th>신청자</th>
+				<th>희망입양동물</th>
+				<th>신청일</th>
+				<th>신청서</th>
+			</tr>
+		</thead>
+		<tbody class="tb-content">
 		<c:forEach var="adopt" items="${list}">
 		<tr>
-			<td><a href="detailAdopt.do?adopt_num=${adopt.adopt_num}">${adopt.adopt_member_id}</a></td>
-			<th>${adopt.adopt_pet_name}</th>
+			<td>${adopt.adopt_member_id}</td>
+			<th><a href="petDetail.do?pet_num=${adopt.adopt_pet_num}">${adopt.adopt_pet_name}</a></th>
 			<td>${adopt.adopt_date}</td>
+			<td><input type=button value="자세히" onclick="location.href='detailAdopt.do?adopt_num=${adopt.adopt_num}'" class="update_btn"/></td>
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
+	</div>
 	<div class="align-center">
 		${pagingHtml}
 	</div>

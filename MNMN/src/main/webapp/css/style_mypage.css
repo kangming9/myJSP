@@ -123,7 +123,7 @@ ul{
 	color: #FFFFFF;
 }
 
-/*listVolunteer*/
+/*listVolunteer, listAdopt*/
 .result-display{
 	border: 1px solid #dae9f4;
 	background-color: #dae9f4;
@@ -137,6 +137,16 @@ table {
     border-collapse: separate;
     border: 0px;
     margin-bottom: 30px;
+}
+
+table a,table a:visited,table a:link,table a:active{
+	text-decoration: none;
+	color: #000000;
+}
+
+table a:hover{
+	text-decoration: none;
+	color: #39a2db;
 }
 
 table th, table td{
