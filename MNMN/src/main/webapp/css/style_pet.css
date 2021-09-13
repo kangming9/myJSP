@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/*PetList*/
+
+div.title{
+	padding:20px;
+	text-align:center;
+	
+}
+
+#container{
+	padding:10px;
+}
+
+.card{
+	padding:10px;
+	text-align:center;
+}
+
+.rounded-circle {
+	width:200px;
+	height:200px;
+	border: 1;
+	border-radius: 50%;
+	object-fit: cover;
+} 
+
+
+
