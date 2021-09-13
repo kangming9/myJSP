@@ -25,7 +25,7 @@ public class PetListAction implements Action{
 		
 		//페이지 처리
 		//currentPage, count, rowCount, pageCount, url
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,10,10,"petList.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,12,12,"petList.do");
 		
 		List<PetVO> list = null;
 		if(count > 0) {

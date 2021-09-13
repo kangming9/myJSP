@@ -48,9 +48,9 @@
 		<li>입양자 주소 : <input type="text" name="adopt_house" id="adopt_house"></li>
 		<!-- 체크박스 통해서 거주형태 구분? or 괄호 안에 문자열로 -->
 		<li>입양자 결혼 여부 : 	<br>
-			<input type="radio" name="checkboxVal" id="checkMarried" value="0" checked>미혼
-			<input type="radio" name="checkboxVal" id="checkMarried" value="1">결혼 예정
-			<input type="radio" name="checkboxVal" id="checkMarried" value="2">기혼<br>
+			<input type="radio" name="checkboxVal" id="checkMarried1" value="0" checked>미혼
+			<input type="radio" name="checkboxVal" id="checkMarried2" value="1">결혼 예정
+			<input type="radio" name="checkboxVal" id="checkMarried3" value="2">기혼<br>
 		</li>
 	</ul>
 		<hr size="1" noshade width="100%">

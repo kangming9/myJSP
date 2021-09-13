@@ -7,37 +7,48 @@
 <meta charset="UTF-8">
 <title>입양 동물 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
-<body>			
+<body>		
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양 동물 리스트</h2>
+	<div class="title">
+		<h2>입양 동물 리스트</h2>
+	</div>
 	<c:if test="${user_grade == 1}">
 	<div class="align-right">
 		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'">
 	</div>
 	</c:if>
+	
+	<!-- 등록된 입양 예정 동물이 없는 경우 -->
 	<c:if test="${count == 0}">
 	<div class="result-display">
 		모든 친구들이 가족을 만났어요!
 	</div>
 	</c:if>
+	<!-- 끝 -->
+	<!-- 등록된 입양 예정 동물이 있는 경우 -->
 	<c:if test="${count > 0}">
-	<div id="wrap">
-	<table>
+	<div id="container">
+	<div class="row">
 	<c:forEach var="pet" items="${list}">
-		<tr>
-			<td width="300px"><a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="list-img"></a></td>
-			<td>
+	<div class="col-sm-12 col-md-6 col-xl-4">
+		<div class="card">
+			<a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="rounded-circle mb-3"></a>
+			<div class="card-body">
 			${pet.pet_num}<br>
 			${pet.pet_name}<br>
 			${pet.pet_date}
-			</td>
-		</tr>
-	</c:forEach>
-	</table>
+			</div>
+		</div>
 	</div>
+	</c:forEach>
+	</div>
+	</div>
+	<!-- 끝 -->
 	<div class="align-center">
 		${pagingHtml}
 	</div>
