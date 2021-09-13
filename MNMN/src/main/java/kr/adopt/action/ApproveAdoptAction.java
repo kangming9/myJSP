@@ -23,13 +23,14 @@ public class ApproveAdoptAction implements Action{
 		
 		int adopt_num = Integer.parseInt(request.getParameter("adopt"));
 		int pet_num = Integer.parseInt(request.getParameter("pet"));
+		int member_num = Integer.parseInt(request.getParameter("mem"));
 		
 		AdoptDAO dao = AdoptDAO.getInstance();
 		boolean check = false;
 		
 		//사용자가 관리자인지 확인
 		if(user_grade == 1) {
-			check = dao.approveAdopt(adopt_num, pet_num);
+			check = dao.approveAdopt(adopt_num, pet_num, member_num);
 		}
 		
 		request.setAttribute("check", check);
