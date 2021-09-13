@@ -1,8 +1,50 @@
 @charset "UTF-8";
 
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#container{
+	padding: 10px 20px;
+	background-color:#E8F0F2;
+	font-family : 'NEXON Lv1 Gothic OTF Bold';
+}
+
+#title{
+	background-color: #A2DBFA;
+	color: white;
+	padding: 0px 20px;
+	font-size: 20px;
+}
+
+.tag{
+	margin: 20px 0px;
+	font-size: 20px;
+	color:#39A2DB;
+}
+
 #detail_card{
-	border: 1px solid;
+	padding: 10px;
+	background-color:none;
+	border: 1px solid none;
 }
 .afterpet-img{
-	height: 155px;
+	margin: 0 auto;
+	width:100%;
+	border-radius:5px;
+}
+#content{
+	font-size: 15px;
+	font-family: 'NEXON Lv2 Gothic';
 }

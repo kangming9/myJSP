@@ -323,3 +323,20 @@ ALTER TABLE member_detail
 
 
 ALTER TABLE adopt MODIFY adopt_house varchar2(150);
+
+/*´ñ±Û*/
+create table community_reply(
+	re_num number not null,
+	re_content varchar2(900) not null,
+	re_date date default sysdate not null,
+	com_num number not null,
+	member_num number not null,
+	constraint reply_pk primary key (re_num),
+	constraint reply_fk foreign key (com_num) references community (com_num),
+	constraint reply_fk2 foreign key (member_num) references member (member_num)
+);
+
+create sequence reply_seq
+START WITH 1
+INCREMENT BY 1;
+
