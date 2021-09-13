@@ -195,10 +195,11 @@ public class AdoptDAO {
 		}
 		
 		//입양 신청 승인
-		public boolean approveAdopt(int adopt_num, int pet_num) throws Exception {
+		public boolean approveAdopt(int adopt_num, int pet_num, int member_num) throws Exception {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			PreparedStatement pstmt2 = null;
+			PreparedStatement pstmt3 = null;
 			String sql = null;
 				
 			try {
@@ -216,6 +217,12 @@ public class AdoptDAO {
 				pstmt2.setInt(1, 1);
 				pstmt2.setInt(2, pet_num);
 				pstmt2.executeUpdate();
+				
+				sql = "UPDATE member SET member_grade=? WHERE member_num=?";
+				pstmt3 = conn.prepareStatement(sql);
+				pstmt3.setInt(1, 2);
+				pstmt3.setInt(2, member_num);
+				pstmt3.executeUpdate();
 				
 				conn.commit();
 			}catch(Exception e) {

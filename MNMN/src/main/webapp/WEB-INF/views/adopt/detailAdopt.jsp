@@ -57,7 +57,7 @@
 	</p>
 	<hr size="1" noshade width="100%">
 	<div class="align-right">
-		<input type="button" value="승인" onclick="location.href='approveAdopt.do?adopt=${adopt.adopt_num}&pet=${adopt.adopt_pet_num}'">
+		<input type="button" value="승인" onclick="location.href='approveAdopt.do?adopt=${adopt.adopt_num}&pet=${adopt.adopt_pet_num}&mem=${adopt.adopt_member_num}'">
 		<input type="button" value="반려" id="reject_btn">
 		<input type="button" value="목록" onclick="location.href='listAdopt.do'">
 	</div>
