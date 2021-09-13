@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>입양후기 게시판목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
@@ -23,18 +25,22 @@
 	</div>
 	</c:if>
 	<c:if test="${count > 0 }">
-	<table>
-		<c:forEach var="adoptAfter" items="${list}">
-		<tr>
-			<td>
-			<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="detail-img">
-			</td>
-			<td><a href="afterDetail.do?after_num=${adoptAfter.after_num}">${adoptAfter.after_title}</a></td>
-			<td id="content">${adoptAfter.after_content}</td>
-			<td>${adoptAfter.after_date}</td>
-		</tr>
-		</c:forEach>
-	</table>
+	<article class="cards">
+		<div class="row">
+      <c:forEach var="adoptAfter" items="${list}">
+      <div class="col-sm-12 col-md-6 col-xl-4" id="detail_card">
+	      <div>
+	         <h1><a href="afterDetail.do?after_num=${adoptAfter.after_num}">${adoptAfter.after_title}</a></h1>
+	      </div>
+	      <img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="afterpet-img">
+	      <div>
+	         <span id="content">${adoptAfter.after_content}</span>
+	         <small>${adoptAfter.after_date}</small>
+	      </div>
+      </div>
+      </c:forEach>
+      </div>
+   </article>
 	</c:if>
 	<div class="align-center">
 		${pagingHtml}
