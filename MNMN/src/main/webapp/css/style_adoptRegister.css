@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*adoptRegisterForm*/
 h3{
 	text-align:center;
 }
@@ -23,7 +24,7 @@ h3{
 	width: 85%;
 	margin:20px auto;
 	padding:5px;
-	border-top: 8px solid #F0B4B8; /*E3AAAE E3E07D*/
+	border-top: 8px solid #F0B4B8;
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -58,7 +59,7 @@ h3{
 }
 
 .form-content .info-title{
-	background-color: #F6EAEF; /*F6EAEF EAF2F7 */
+	background-color: #F6EAEF;
 	width: 100px;
 }
 
@@ -87,4 +88,51 @@ h3{
 	background-color: #F0F0F0;
 	color: #C9C9C9;
 	width: 80%;
+}
+
+/*detailAdopt*/
+.approve{
+	background-color: #38A2DB;
+	color: #FFFFFF;
+	padding: 10px;
+}
+
+.reject{
+	background-color: #F0B4B8;
+	color: #634B4C;
+	padding: 10px;
+}
+
+.list{
+	background-color: #F0F0F0;
+	color: #C9C9C9;
+	padding: 10px;
+}
+
+.detail .info-content{
+	width: 350px;
+}
+
+.detail ul{
+	text-align:center;
+}
+
+
+.intro-content{
+	width: 95%;
+	margin: 0 auto;
+	background-color: #E8F0F2;
+}
+
+.reject-form{
+	width: 85%;
+	margin:20px auto;
+	padding:5px;
+	border-top: 8px solid #30A2DB;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.reject-form form{
+	border: 0px;
+	padding: 0px;
 }
