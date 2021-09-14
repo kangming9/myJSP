@@ -23,14 +23,13 @@ public class UpdateCommunityAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 		
-		MultipartRequest multi = FileUtil.createFile(request);
-		int com_num = Integer.parseInt(multi.getParameter("com_num"));
+		int com_num = Integer.parseInt(request.getParameter("com_num"));
 		
 		CommunityVO com = new CommunityVO();
 		com.setCom_num(com_num);
 		com.setCom_member_num(user_num);
-		com.setCom_title(multi.getParameter("com_title"));
-		com.setCom_content(multi.getParameter("com_content"));
+		com.setCom_title(request.getParameter("com_title"));
+		com.setCom_content(request.getParameter("com_content"));
 		
 		CommunityDAO dao =CommunityDAO.getInstance();
 		dao.updateCommunity(com);

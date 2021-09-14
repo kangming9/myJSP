@@ -25,10 +25,10 @@ public class WriteCommunityAction implements Action{
 		}
 		
 		//로그인 된 경우 수정해야 함
-		MultipartRequest multi = FileUtil.createFile(request); CommunityVO com = new CommunityVO(); 
-		com.setCom_title(multi.getParameter("com_title"));
+		CommunityVO com = new CommunityVO(); 
+		com.setCom_title(request.getParameter("com_title"));
 		com.setCom_member_num(user_num);
-		com.setCom_content(multi.getParameter("com_content"));
+		com.setCom_content(request.getParameter("com_content"));
 		
 		CommunityDAO dao = CommunityDAO.getInstance(); 
 		dao.insertCommunity(com);

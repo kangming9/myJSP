@@ -31,7 +31,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>게시글 수정</h2>
-	<form action="updateCommunity.do" method="post" enctype="multipart/form-data" id="update_form" >
+	<form action="updateCommunity.do" method="post" id="update_form" >
 		<input type="hidden" name="com_num" value="${com.com_num}">
 		<input type="hidden" name="com_member_num" value="${user_num}">
 		<ul>
