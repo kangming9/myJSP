@@ -1,13 +1,15 @@
 package kr.community.vo;
 
+import java.sql.Date;
 
 public class CommunityVO {
 	private int com_num;
 	private String com_title;
 	private int com_member_num;
 	private String com_content;
-	private String com_date;
+	private Date com_date;
 	private int com_hit;
+	private String com_member_id;
 	
 	public int getCom_num() {
 		return com_num;
@@ -33,11 +35,11 @@ public class CommunityVO {
 	public void setCom_content(String com_content) {
 		this.com_content = com_content;
 	}
-	public String getCom_date() {
+	public Date getCom_date() {
 		return com_date;
 	}
-	public void setCom_date(String com_date) {
-		this.com_date = com_date;
+	public void setCom_date(Date date) {
+		this.com_date = date;
 	}
 	public int getCom_hit() {
 		return com_hit;
@@ -45,6 +47,13 @@ public class CommunityVO {
 	public void setCom_hit(int com_hit) {
 		this.com_hit = com_hit;
 	}
+	public String getCom_member_id() {
+		return com_member_id;
+	}
+	public void setCom_member_id(String com_member_id) {
+		this.com_member_id = com_member_id;
+	}
+	
 	
 	
 	
