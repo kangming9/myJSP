@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_login.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_signup.css" type="text/css">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -91,34 +94,39 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>회원가입</h2>
-	<form id="register_form" action="registerUser.do" method="post">
-		<ul>
-			<li>
-				<label for="id">id</label>
-				<input type="text" name="id" id="id" maxlength="12" autocomplete="off">
-				<input type="button" value="중복확인" id="id_check">
-				<span id="message_id"></span>
-			</li>
-			<li>
-				<label for="name">이름</label>
-				<input type="text" name="name" id="name" maxlength="10">
-			</li>
-			<li>
-				<label for="passwd">비밀번호</label>
-				<input type="password" name="passwd" id="passwd" maxlength="12">
-			</li>
-			<li>
-				<label for="phone">전화번호</label>
-				<input type="text" name="phone" id="phone" maxlength="15">
-			</li>
-		</ul>
-		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="홈으로" 
-			        onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-		</div>
-	</form>
+	<div class="login-container">
+		<form id="register_form" action="registerUser.do" method="post">
+			<h3>환영하개</h3>
+			<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
+			<div class="login-content">
+				<div class="align-center field">
+					<label for="id"><i class="fas fa-user fa-lg"></i></label>
+					<div><input type="text" name="id" id="id" maxlength="12" autocomplete="off" placeholder="ID">
+					<div id="message_id"></div></div>
+					<input type="button" value="중복확인" id="id_check">
+				</div>
+				<div class="align-center field">
+					<label for="name"><i class="far fa-id-card fa-lg"></i></label>
+					<input type="text" name="name" id="name" maxlength="10" placeholder="NAME">
+				</div>
+				<div class="align-center field">
+					<label for="passwd"><i class="fas fa-lock fa-lg"></i></label>
+					<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="PASSWORD">
+				</div>
+				<div class="align-center field">
+					<label for="phone"><i class="fas fa-phone fa-lg"></i></label>
+					<input type="text" name="phone" id="phone" maxlength="15" placeholder="PHONE NUMBER">
+				</div>
+				<div class="align-center">
+					<input type="submit" value="회원가입" class="sign btn">
+				</div>
+				<div class="align-center">
+					<input type="button" value="로그인" onclick="location.href='loginForm.do'" class="signup"> l
+					<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="cancel">
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>
