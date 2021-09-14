@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>반려동물 정보 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -79,10 +80,11 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>동물 수정 폼</h2>
-	<form action="modifyPetDetail.do" method="post" enctype="multipart/form-data" id="modify_form" >
+	<div class="wrap">
+	<h2 class="title">동물 친구 정보 수정</h2>
+	<form class="form-css" action="modifyPetDetail.do" method="post" enctype="multipart/form-data" id="modify_form" >
 		<input type="hidden" name="num" value="${pet.pet_num}">
-		<ul>
+		<ul class="form-content">
 			<li>
 				<label for="name">이름</label>
 				<input type="text" name="name" id="name" maxlength="50" value="${pet.pet_name}">
@@ -92,29 +94,32 @@
 				<input type="text" name="type" id="type" maxlength="50" value="${pet.pet_type}">
 			</li>
 			<li>
-				<label for="detail">소개글</label>
-				<textarea rows="5" cols="30" name="detail" id="content">${pet.pet_detail}</textarea>
+				<label for="detail" id="detail">소개글</label>
+				<textarea rows="5" cols="27" name="detail" id="content">${pet.pet_detail}</textarea>
 			</li>
 			<li>
-				<label for="photo">사진</label>
+				<label for="photo" class="photo-modify">사진</label>
 				<img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" width="100" height="100" class="pet-photo">
 			</li>
 			<li>
 				<div class="align-center">
 					<input type="button" value="변경" id="photo_btn">
 				</div>
-				<div id="photo_choice" style="display:none;" class="align-center">
+				<div id="photo_choice" style="display:none;" class="photo-modify">
 					<input type="file" id="photo" name="photoname" accept="image/gif,image/png,image/jpeg"><br>
 					<input type="button" value="전송" id="photo_submit">
 					<input type="button" value="취소" id="photo_reset">
 				</div>
 			</li>
 		</ul>
+		<div class="form-button">
 		<div class="align-center">
 			<input type="submit" value="수정">
 			<input type="button" value="취소" onclick="location.href='petList.do'">
 		</div>
+		</div>
 	</form>
+	</div>
 </div>
 </body>
 </html>
