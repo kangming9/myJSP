@@ -51,12 +51,13 @@
 						</div>
 						<br>
 						<textarea rows="20" cols="50" name="after_content" id="after_content" 
-						          placeholder="입양된 아이들의 예쁜 모습을 담은 사진을 함께 올려주세요" style="border: none; resize: none;">${after.after_content}</textarea>
+						          placeholder="입양된 아이들의 예쁜 모습을 담은 사진을 함께 올려주세요" >${after.after_content}</textarea>
 				</li>
 			</ul>
 			 <hr noshade="noshade">
 			<div class="align-right">
-				<input type="file" name="after_photo" id="after_photo" accept="image/gif,image/png,image/jpeg">
+				<label for="after_photo" class="btn btn-outline-dark">파일업로드</label>
+					<input type="file" name="after_photo" id="after_photo" accept="image/gif,image/png,image/jpeg">
 				<input type="submit" value="등록" class="btn btn-outline-dark">
 				<input type="button" value="목록" class="btn btn-outline-dark" onclick="location.href='list.do'">
 			</div>

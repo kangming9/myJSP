@@ -3,6 +3,7 @@ package kr.communityReply.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.communityReply.vo.CommunityReplyVO;
@@ -53,7 +54,7 @@ public class CommunityReplyDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select count(*) from community_reply b join community m on b.member_num=m.member_num where b.com_num=?";
+			sql = "select count(*) from community_reply b join community m on b.member_num=m.com_member_num where b.com_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, com_num);
 			
@@ -78,7 +79,29 @@ public class CommunityReplyDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "";
+			sql = "select * from (select a.*, rownum rnum from "
+				+ "(select b.re_num, re_date, b.re_content, b.com_num, b.member_num, m.member_id "
+				+ "from community_reply b join member m on b.member_num=m.member_num "
+				+ "where b.com_num=? order by b.re_num desc)a) "
+				+ "where rnum >= ? and rnum <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, com_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			list = new ArrayList<CommunityReplyVO>();
+			while(rs.next()) {
+				CommunityReplyVO reply = new CommunityReplyVO();
+				reply.setRe_num(rs.getInt("re_num"));
+				reply.setRe_date(rs.getDate("re_date"));
+				reply.setRe_content(rs.getString("re_content"));
+				reply.setCom_num(rs.getInt("com_num"));
+				reply.setMember_num(rs.getInt("member_num"));
+				reply.setMember_id(rs.getString("member_id"));
+				
+				list.add(reply);
+			}
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {

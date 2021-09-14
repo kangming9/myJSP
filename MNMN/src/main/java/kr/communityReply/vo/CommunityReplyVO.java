@@ -8,6 +8,7 @@ public class CommunityReplyVO {
 	private Date re_date;
 	private int com_num;
 	private int member_num;
+	private String member_id;
 	
 	public int getRe_num() {
 		return re_num;
@@ -27,6 +28,12 @@ public class CommunityReplyVO {
 	public void setRe_date(Date re_date) {
 		this.re_date = re_date;
 	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 	public int getCom_num() {
 		return com_num;
 	}
@@ -39,6 +46,8 @@ public class CommunityReplyVO {
 	public void setMember_num(int member_num) {
 		this.member_num = member_num;
 	}
+	
+	
 	
 	
 }

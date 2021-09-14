@@ -50,6 +50,7 @@
     </c:forEach>
     </div>
 	</c:if>
+	
 	<div class="align-center">
 		${pagingHtml}
 	</div>
