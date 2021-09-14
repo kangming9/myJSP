@@ -92,7 +92,7 @@ public class CommunityDAO {
 				com.setCom_title(rs.getString("com_title"));
 				com.setCom_member_num(rs.getInt("com_member_num"));
 				com.setCom_content(rs.getString("com_content"));
-				com.setCom_date(rs.getString("com_date"));
+				com.setCom_date(rs.getDate("com_date"));
 				com.setCom_hit(rs.getInt("com_hit"));
 				
 				list.add(com);
@@ -127,7 +127,7 @@ public class CommunityDAO {
 				com.setCom_title(rs.getString("com_title"));
 				com.setCom_member_num(rs.getInt("com_member_num"));
 				com.setCom_content(rs.getString("com_content"));
-				com.setCom_date(rs.getString("com_date"));
+				com.setCom_date(rs.getDate("com_date"));
 				com.setCom_hit(rs.getInt("com_hit"));
 			}
 			
@@ -159,6 +159,52 @@ public class CommunityDAO {
 		}
 	}
 	//글수정
+	public void updateCommunity(CommunityVO com)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update community set com_title=?, COM_CONTENT=? where com_num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, com.getCom_title());
+			pstmt.setString(2, com.getCom_content());
+			pstmt.setInt(3, com.getCom_num());
+			pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 	
 	//글삭제
+	public void deleteCommunity(int com_num)throws Exception{
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	PreparedStatement pstmt2 = null;
+	String sql = null;
+	
+	try {
+		conn = DBUtil.getConnection();
+		sql = "delete from community_reply where com_num=?";
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, com_num);
+		pstmt.executeUpdate();
+		
+		sql = "delete from community where com_num=?";
+		pstmt2 = conn.prepareStatement(sql);
+		pstmt2.setInt(1, com_num);
+		pstmt2.executeUpdate();
+		
+	}catch (Exception e) {
+		throw new Exception(e);
+	}finally {
+		DBUtil.executeClose(null, pstmt2, null);
+		DBUtil.executeClose(null, pstmt, conn);
+	}
+	
+	}
 }

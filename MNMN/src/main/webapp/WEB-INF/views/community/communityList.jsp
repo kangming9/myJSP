@@ -13,7 +13,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>게시판 목록</h2>
 	<div class="list-space align-right">
-		<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/community/writeCommunityForm.do'"
+		<input type="button" value="글쓰기" onclick="location.href='writeCommunityForm.do'"
 			<c:if test="${empty user_num}">disabled="disabled"</c:if>
 		>
 		<input type="button" value="목록" onclick="location.href='communityList.do'">
