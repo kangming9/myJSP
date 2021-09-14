@@ -6,6 +6,7 @@
 <meta charset="utf-8">
 <title>힘드냥 도울개</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_vol.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -87,29 +88,25 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>봉사활동 취소</h2>
-	<form id="Cancel_form" action="volunteerCancel.do" method="post">
-		<ul>	
-		<li>
-			<label for="date">봉사 신청일</label>
-			<input type="date" name="canceldate" id="canceldate">
-			<input type="button" value="봉사신청확인" id="request_check">
-			
-		</li>
-		<li>
-			<label for="time">봉사 신청 시간</label>
-			<input type="number" id="canceltime" name="canceltime" min="9" max="18" required>
-		</li>
-		<li>
+	<div class="container">
+	<span id="title">봉사활동 취소</span>
+	<div id="form"><form id="Cancel_form" action="volunteerCancel.do" method="post">
+
+			<label for="date">봉사 신청일</label><br>
+			<input type="date" name="canceldate" id="canceldate"><br>
+			<input  class="button" type="button" value="봉사신청확인" id="request_check"><br><br>
+			<label for="time">봉사 신청 시간</label><br>
+			<input type="number" id="canceltime" name="canceltime" min="9" max="18" required><br>
 			<span id="message_cancel"></span>
-		</li>
-		</ul>
+
 		<div class="align-center">
-			<input type="submit" value="취소">
-			<input type="button" value="홈으로" 
+			<input  class="button" type="submit" value="취소">
+			<input  class="button" type="button" value="홈으로" 
 			        onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 	</form>
+	</div>
+	</div>
 </div>
 </body>
 </html>
