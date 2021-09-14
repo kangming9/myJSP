@@ -91,6 +91,7 @@ public class CommunityDAO {
 				com.setCom_num(rs.getInt("com_num"));
 				com.setCom_title(rs.getString("com_title"));
 				com.setCom_member_num(rs.getInt("com_member_num"));
+				com.setCom_member_id(rs.getString("member_id"));
 				com.setCom_content(rs.getString("com_content"));
 				com.setCom_date(rs.getDate("com_date"));
 				com.setCom_hit(rs.getInt("com_hit"));

@@ -16,6 +16,8 @@ public class WriteCommunityAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("utf-8");
+		
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		if(user_num == null) {//로그인 되지 않은 경우

@@ -29,7 +29,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>게시판 글쓰기</h2>
-	<form id="write_form" action="writeCommunity.do" method="post" enctype="multipart/form-data">
+	<form id="write_form" action="writeCommunity.do" method="post">
 		<ul>
 			<li>
 				<label for="title">제목</label>

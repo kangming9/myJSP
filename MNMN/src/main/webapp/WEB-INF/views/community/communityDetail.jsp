@@ -270,6 +270,7 @@
 	<ul>
 		<li>글번호 : ${com.com_num}</li>
 		<li>글제목 : ${com.com_title}</li>
+		<li>작성자 : ${com.com_member_id}</li>
 		<li>조회수 : ${com.com_hit}</li>
 	</ul>
 	<hr size="1" noshade width="100%">

@@ -29,6 +29,7 @@
 		<tr>
 			<th>글번호</th>
 			<th>제목</th>
+			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회</th>
 		</tr>
@@ -36,6 +37,7 @@
 		<tr>
 			<td>${com.com_num}</td>
 			<td><a href="communityDetail.do?com_num=${com.com_num}">${com.com_title}</a></td>
+			<td>${com.com_member_id }</td>
 			<td>${com.com_date}</td>
 			<td>${com.com_hit}</td>
 		</tr>
