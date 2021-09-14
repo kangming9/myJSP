@@ -75,6 +75,7 @@ table{
 	background-color : #c8dee3;
 	font-family: 'NEXON Lv2 Gothic';
 	text-align: center;
+	color : #787878;
 }
 
 #num{
@@ -94,7 +95,7 @@ table{
 }
 
 a:link, a:visited{
-	color:white;
+	color:#787878;
 }
 
 a:hover, a:active{
