@@ -258,9 +258,9 @@
 		<li>조회수 : ${com.com_hit}</li>
 	</ul>
 	<hr size="1" noshade width="100%">
-	<p>
-		${com.com_content}
-	</p>
+	<p style="word-break:break-all;">
+      ${com.com_content}
+   </p>
 	<hr size="1" noshade width="100%">
 	<div class="align-right">
 		작성일 : ${com.com_date}
