@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/*font-face*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*title*/
+.container{
+	background-color:#E8F0F2;
+	margin: 20px auto;
+	padding: 100px 50px;
+}
+
+#title{
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  margin : 20px 0px;
+  padding: 5px 20px;
+  background-color:#A2DBFA;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+.button{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	background-color : #faa2bb;
+	color: white;
+	width: 70px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+/*count = 0*/
+
+.result-display{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	color : white;
+	border-radius : 5px;
+	border : 1px solid #A2DBFA;
+	background-color: #A2DBFA;	
+}
+
+/* count != 0*/
+
+table{
+	border-collapse : separate;
+	border-color : #E8F0F2;
+	border-radius: 5px;
+	background-color:#E8F0F2;
+	color : white;
+}
+
+.th{
+	border-radius: 5px;
+	border-style : none;
+	background-color : #A2DBFA;
+	font-family: 'NEXON Lv2 Gothic';
+}
+
+.td{
+	border-radius: 5px;
+	border-style : none;
+	background-color : #c8dee3;
+	font-family: 'NEXON Lv2 Gothic';
+	text-align: center;
+}
+
+#num{
+	width : 10%;
+}
+#tit{
+	width : 25%;
+}
+#member{
+	width : 10%;
+}
+#date{
+	width : 15%;
+}
+#see{
+	width : 10%;
+}
+
+a:link, a:visited{
+	color:white;
+}
+
+a:hover, a:active{
+	color:#86b8c4;
+}
