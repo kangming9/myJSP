@@ -14,7 +14,7 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div id="container">
+	<div id="container"><br>
 	<span id="title">입양후기 게시판</span>
 	<div class="list-space align-right">
 		<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'"
@@ -27,22 +27,30 @@
 	</div>
 	</c:if>
 	<c:if test="${count > 0 }">
-	<article class="cards">
-		<div class="row">
-      		<c:forEach var="adoptAfter" items="${list}">
-	      		<div class="col-sm-12 col-md-6 col-xl-4" id="detail_card">
-		      	<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="afterpet-img">
-		      	<div>
-		        	 <h1 class="tag"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${adoptAfter.after_title}</a></h1>
-		        	 <c:set var="content2" value="${adoptAfter.after_content}"/>
-		        	 <span id="content"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${fn:substring(content2,0,40)}...</a></span><br>
-		        	 <small>${adoptAfter.after_date}</small>
-		      	</div>
-	      		</div>
-      		</c:forEach>
-      </div>
-   </article>
+	<div class="row">
+    <c:forEach var="adoptAfter" items="${list}">
+	<div class="col-sm-12 col-md-6 col-xl-4">
+		<div class="card">
+		<img src="${pageContext.request.contextPath}/upload/${adoptAfter.after_photo}" class="afterpet-img">
+		<div class="card-body">
+			<h1 class="tag"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${adoptAfter.after_title}</a></h1>
+		    <c:set var="content2" value="${adoptAfter.after_content}"/>
+		    
+		    <span id="content">
+		    <a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_content">
+		    
+		    <c:if test="${fn:length(content2)<40}">${content2}</c:if>
+		    <c:if test="${fn:length(content2)>40}">${fn:substring(content2,0,40)}...</c:if>
+		    </a>
+		    </span><br>
+		    <small>${adoptAfter.after_date}</small>
+		</div><%--card-body --%>
+		</div><%--card --%>
+	</div>
+    </c:forEach>
+    </div>
 	</c:if>
+	
 	<div class="align-center">
 		${pagingHtml}
 	</div>

@@ -7,6 +7,8 @@
 <title>입양후기 작성폼</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#write_form').submit(function(){
@@ -27,31 +29,34 @@
 		});
 	});
 </script>
+<style type="text/css">
+ *:focus { outline:none; }
+</style>
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양 후기 글작성</h2>
+	<P>
+	<p class="tag">입양후기 게시판</p>
 	<form id="write_form" action="write.do" method="post" enctype="multipart/form-data">
-		<ul>
+		<ul id="ul_border">
 			<li>
-				<label for="after_title">제목</label>
 				<input type="text" name="after_title" id="after_title" maxlength="30" placeholder="제목을 입력해 주세요.">
 			</li>
+			<hr noshade="noshade">
 			<li>
-				<label for="after_content">내용</label>
-				<textarea rows="30" cols="60" name="after_content" id="after_content" placeholder="입양된 아이들의 예쁜 모습을 담은 사진을 함께 올려주세요"></textarea>
-			</li>
-			<li>
-				<label for="after_photo"></label>
-				<input type="file" name="after_photo" id="after_photo" accept="image/gif,image/png,image/jpeg">
+				<textarea rows="20" cols="50" name="after_content" id="after_content" placeholder="입양된 아이들의 예쁜 모습을 담은 사진을 함께 올려주세요"></textarea>
 			</li>
 		</ul>
-		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='list.do'">
+		<hr noshade="noshade">
+		<div class="align-right">
+			<label for="after_photo" class="btn btn-outline-dark">파일업로드</label>
+				<input type="file" name="after_photo" id="after_photo" accept="image/gif,image/png,image/jpeg">
+			<input type="submit" value="등록" class="btn btn-outline-dark">
+			<input type="button" value="목록" onclick="location.href='list.do'" class="btn btn-outline-dark">
 		</div>
 	</form>
 </div>
+<p>
 </body>
 </html>
