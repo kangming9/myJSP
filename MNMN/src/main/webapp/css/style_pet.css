@@ -111,7 +111,7 @@
 }
 
 
-/* register */
+/* register, updatePet */
 .form-css{
 	padding-bottom:40px;
 	border:none;
@@ -146,8 +146,13 @@
 	
 }
 
-.form-content .photo-modify{
+#photo-modify-label{
+	text-align:center;
 	margin: 35px 10px;
+}
+
+.form-content #photo-choice-btn{
+	margin:0 0 0 150px;
 	text-align:center;
 }
 
