@@ -269,10 +269,9 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="container">
 	<div class="box">
-	<h2 class="title">게시판 글상세</h2>
+	<h2 class="title">${com.com_title}</h2>
 	<ul>
 		<li>글번호 : ${com.com_num}</li>
-		<li>글제목 : ${com.com_title}</li>
 		<li>작성자 : ${com.com_member_id}</li>
 		<li>조회수 : ${com.com_hit}</li>
 	</ul>
@@ -298,7 +297,7 @@
 			};
 		</script>
 		</c:if>
-		<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style">
+		<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style-cancel">
 	</div>
 	</div>
 	<!-- 댓글 목록 시작 -->
