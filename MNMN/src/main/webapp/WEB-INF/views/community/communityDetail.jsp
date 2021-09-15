@@ -49,10 +49,10 @@
 							//로그인 회원번호와 작성자 회원번호 일치
 							if($('#user_num').val() == item.member_num){
 				
-								output += '<button id="modify" onclick="modifyfunc();"><i class="fas fa-ellipsis-v fa-xs"></i></button>';
+								output += "<button id='modify-"+item.re_num+"' onclick=modifyfunc("+item.re_num+"); class='modify'><i class='fas fa-ellipsis-v fa-xs'></i></button>";
 						
 								output += '<div id="modify-choice-btn">';
-								output += '<div id="modify-choice" style="display:none;">';
+								output += '<div id="modify-choice-'+item.re_num+'" style="display:none;">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="수정" class="modify-btn">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="삭제" class="delete-btn">';
 								output += '<i class="fas fa-ellipsis-v fa-xs"></i>';
@@ -259,9 +259,11 @@
 		selectData(1);
 	});
 	
-	function modifyfunc(){//수정 버튼 클릭
-		$('#modify-choice').show();
-		$("#modify").hide();
+	function modifyfunc(re_num){//수정 버튼 클릭
+		var mshow = '#modify-choice-'+re_num;
+		var mhide = '#modify-'+re_num;
+		$(mshow).show();
+		$(mhide).hide();
 	}
 </script>
 </head>
