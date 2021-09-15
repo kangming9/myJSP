@@ -1,5 +1,6 @@
 package kr.pet.action;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,13 @@ public class PetListAction implements Action{
 			list = dao.getListPet(page.getStartCount(), page.getEndCount());
 		}
 		
-		request.setAttribute("count", count);
+		/*new æ∆¿Ãƒ‹
+		 * LocalDate now = LocalDate.now();
+		 * 
+		 * request.setAttribute("now", now);
+		 */
+	    
+	    request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("pagingHtml", page.getPagingHtml());
 		

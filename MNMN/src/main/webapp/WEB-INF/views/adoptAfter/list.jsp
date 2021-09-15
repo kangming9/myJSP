@@ -20,9 +20,9 @@
 	<div id="container"><br>
 	<span id="title">입양후기 게시판</span>
 	<div class="list-space align-right">
-		<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'"
-			<c:if test="${empty user_num || user_grade=='3' || user_grade=='1'}">disabled="disabled"</c:if>
-		>
+		<c:if test="${!empty user_num || user_grade=='2'}">
+			<input type="button" value="글쓰기" id="write-bt" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'">
+		</c:if>
 	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
@@ -53,7 +53,6 @@
     </c:forEach>
     </div>
 	</c:if>
-	
 	<div class="align-center">
 		${pagingHtml}
 	</div>

@@ -12,13 +12,40 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#search_form').submit(function(){
+			if($('#keyword').val().trim()==''){
+				alert('검색어를 입력하세요!');
+				$('#keyword').val('').focus();
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>		
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="wrap-list">
-	<h2 class="title">입양 동물 리스트</h2>
+	<h2 class="title">기다리개</h2>
+	<div class="intro"><p>입양을 기다리는 친구들</p></div>
+	<form class="search-form" id="search_form" action="petList.do" method="get" style="border:none;">
+		<ul class="align-center">
+			<li>
+				<select name="keyfield">
+					<option value="1">이름</option>
+					<option value="2">종류</option>
+				</select>
+			</li>
+			<li>
+				<input type="search" size="16" name="keyword" id="keyword">
+			</li>
+			<li>
+				<input type="submit" value="검색" class="btn-style-cancel">
+			</li>
+		</ul>
+	</form>
 	<c:if test="${user_grade == 1}">
 	<div id="register-button">
 		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'"class="btn-style">

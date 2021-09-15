@@ -27,7 +27,17 @@
 	padding: 0px 20px;
 	font-size: 20px;
 }
-
+/*글등록 버튼*/
+#write-bt{
+	font-size:11pt;
+	font-weight:bold;
+	margin-right:10px;
+	padding: 5px 10px;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
 .tag{
 	font-family: 'NEXON Lv2 Gothic';
 	margin: 13px 0px 5px 0px;
