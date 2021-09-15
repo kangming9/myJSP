@@ -337,11 +337,48 @@ public class MemberDAO {
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			//자원정리
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		return list;
 	}
+	
+	//회원정보 수정
+	public void updateMemberByAdmin(MemberVO member) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			conn.setAutoCommit(false);
+			
+			System.out.println(member.getMember_num());
+			
+			sql = "UPDATE member SET member_grade=? WHERE member_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member.getMember_grade());
+			pstmt.setInt(2, member.getMember_num());
+			pstmt.executeUpdate();
+			
+			sql = "UPDATE member_detail SET member_detail_name=?, member_detail_phone=?, member_detail_new_date=SYSDATE WHERE member_detail_num=?";
+			pstmt2 = conn.prepareStatement(sql);
+			pstmt2.setString(1, member.getMember_detail_name());
+			pstmt2.setString(2, member.getMember_detail_phone());
+			pstmt2.setInt(3, member.getMember_num());
+			pstmt2.executeUpdate();
+			
+			conn.commit();
+		}catch(Exception e) {
+			conn.rollback();
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+			DBUtil.executeClose(null, pstmt2, null);
+		}
+	}
+	
+	
 }
 
 
