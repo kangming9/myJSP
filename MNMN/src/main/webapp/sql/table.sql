@@ -178,7 +178,7 @@ ALTER TABLE adopt
 CREATE TABLE community
 (
     com_num           NUMBER          NOT NULL, 
-    com_title         VARCHAR2(20)    NOT NULL, 
+    com_title         VARCHAR2(60)    NOT NULL, 
     com_member_num    NUMBER          NOT NULL, 
     com_content       CLOB            NOT NULL, 
     com_date          DATE            DEFAULT sysdate NOT NULL, 
