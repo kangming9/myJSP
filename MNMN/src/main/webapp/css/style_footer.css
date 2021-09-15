@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.site-footer
+{
+ 	width:100%;
+	margin: 0 auto;
+	background-color: #A2DBFA;
+	height:200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color : white;
+}
+
+#fabout{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	margin : 10px 0px;
+	color:#77b6d9;
+	font-size : 30px;
+}
+
+#sns{
+	font-size : 30px;
+	text-align: center;
+}
+
+.snsa{
+	color : white;
+}
+.text-justify{
+	    font-family: 'WONTitle';
+}
+
+.copysns{
+	margin : 30px 50px 0px 0px;
+}

@@ -77,6 +77,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_main.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
@@ -122,6 +123,9 @@
 	    	</div>
 	   	</div>
 	</div>
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div>
 </body>
 </html>
