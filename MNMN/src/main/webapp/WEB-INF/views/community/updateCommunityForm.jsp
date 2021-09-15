@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>게시글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_com_write_modify.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -30,25 +31,30 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>게시글 수정</h2>
-	<form action="updateCommunity.do" method="post" id="update_form" >
+	<div class="container">
+	<div class="box">
+	<h2 class="title">게시글 수정</h2>
+	<hr size="1" width="90%">
+	<form action="updateCommunity.do" method="post" id="update_form" class="form-css">
 		<input type="hidden" name="com_num" value="${com.com_num}">
 		<input type="hidden" name="com_member_num" value="${user_num}">
 		<ul>
 			<li>
-				<label for="com_title">제목</label>
-				<input type="text" name="com_title" id="com_title" maxlength="50" value="${com.com_title}">
+				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
+				<input type="text" name="com_title" id="com_title" size="33" maxlength="50" value="${com.com_title}">
 			</li>
 			<li>
-				<label for="com_content">소개글</label>
+				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
 				<textarea rows="5" cols="30" name="com_content" id="com_content">${com.com_content}</textarea>
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="게시글 수정">
-			<input type="button" value="취소" onclick="location.href='communityList.do'">
+			<input type="submit" value="게시글 수정" class="btn-style">
+			<input type="button" value="취소" onclick="location.href='communityList.do'" class="btn-style-cancel">
 		</div>
 	</form>
+	</div>
+</div>
 </div>
 </body>
 </html>

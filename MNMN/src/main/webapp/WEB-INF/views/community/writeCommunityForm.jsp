@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>게시판 글쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_com_write_modify.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -21,7 +22,7 @@
 				$('#content').val('').focus();
 				return false;
 			}
-			if($('#title').val().length > 20){
+			if($('#title').val().length > 60){
 				alert("제목의 길이가 너무 깁니다!");
 				$('#title').val('').focus();
 				return false;
@@ -33,23 +34,30 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>게시판 글쓰기</h2>
-	<form id="write_form" action="writeCommunity.do" method="post">
+	<div class="container">
+	<div class="box">
+	<h2 class="title">게시판 글쓰기</h2>
+	<hr size="1" width="90%">
+	<form id="write_form" action="writeCommunity.do" method="post" class="form-css">
 		<ul>
 			<li>
-				<label for="title">제목</label>
-				<input type="text" name="com_title" id="title" maxlength="50">
+				<label for="title" class="label-detail">
+					<span class="line-color">&ensp;</span>&ensp;&ensp; 제목
+				</label>
+				<input type="text" name="com_title" id="title" size="33" maxlength="50">
 			</li>
 			<li>
-				<label for="content">내용</label>
-				<textarea rows="5" cols="30" name="com_content" id="content"></textarea>
+				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
+				<textarea rows="5" cols="30" name="com_content" id="content" placeholder="회원 간 욕설이나 폭력적인 언어는 삼가해 주세요"></textarea>
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='communityList.do'">
+			<input type="submit" value="등록" class="btn-style">
+			<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style-cancel">
 		</div>
 	</form>
+	</div>
+</div>
 </div>
 </body>
 </html>
