@@ -68,6 +68,24 @@
 	object-fit: cover;
 } 
 
+form.search-form{
+	width:100%;
+	text-align:center;
+	justify-content:center;
+}
+
+form.search-form ul{
+	width:300px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+
+form.search-form ul li{
+	margin: 0 0 9px 0;
+	padding:0;
+	display:inline;
+}
 
 /*Pet Detail*/
 
