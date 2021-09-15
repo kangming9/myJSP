@@ -47,13 +47,13 @@
 			<div class="buttons">
 		<%-- 관리자 등급(1) -> 수정, 삭제, 목록이 보여야 하고 / 관리자 아닌 멤버-> 입양신청, 목록 --%>
 		<c:if test="${user_grade == 1}">
-			<input type="button" value="수정" onclick="location.href='modifyPetDetailForm.do?pet_num=${pet.pet_num}'">
-			<input type="button" value="삭제" name="delete_btn" id="delete_btn">
-			<input type="button" value="목록" onclick="location.href='petList.do'">
+			<input type="button" value="수정" onclick="location.href='modifyPetDetailForm.do?pet_num=${pet.pet_num}'" class="btn-style">
+			<input type="button" value="삭제" name="delete_btn" id="delete_btn" class="btn-style">
+			<input type="button" value="목록" onclick="location.href='petList.do'" class="btn-style-cancel">
 			</c:if>
 			<c:if test="${user_grade > 1 || user_grade == null}">
-			<input type="button" value="입양 신청" onclick="location.href='adoptRegisterForm.do?pet_num=${pet.pet_num}'">
-			<input type="button" value="목록" onclick="location.href='petList.do'">
+			<input type="button" value="입양 신청" onclick="location.href='adoptRegisterForm.do?pet_num=${pet.pet_num}'" class="btn-style">
+			<input type="button" value="목록" onclick="location.href='petList.do'" class="btn-style-cancel">
 		</c:if>
 		</div>
 		</div>

@@ -103,21 +103,21 @@
 			</li>
 			<li>
 				<div class="align-center">
-					<input type="button" value="변경" id="photo_btn">
+					<input type="button" value="변경" id="photo_btn" class="btn-style-modify">
 				</div>
 				<div id="photo-choice-btn">
 				<div id="photo_choice" style="display:none;">
 					<input type="file" id="photo" name="photoname" accept="image/gif,image/png,image/jpeg"><br>
-					<input type="button" value="전송" id="photo_submit">
-					<input type="button" value="취소" id="photo_reset">
+					<input type="button" value="전송" id="photo_submit" class="btn-style">
+					<input type="button" value="취소" id="photo_reset" class="btn-style-cancel">
 				</div>
 				</div>
 			</li>
 		</ul>
 		<div class="form-button">
 		<div class="align-center">
-			<input type="submit" value="수정">
-			<input type="button" value="취소" onclick="location.href='petList.do'">
+			<input type="submit" value="수정" class="btn-style">
+			<input type="button" value="취소" onclick="location.href='petList.do'" class="btn-style-cancel">
 		</div>
 		</div>
 	</form>

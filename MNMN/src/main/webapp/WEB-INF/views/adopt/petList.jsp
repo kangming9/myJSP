@@ -19,7 +19,7 @@
 	<h2 class="title">입양 동물 리스트</h2>
 	<c:if test="${user_grade == 1}">
 	<div id="register-button">
-		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'">
+		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'"class="btn-style">
 	</div>
 	</c:if>
 	<!-- 등록된 입양 예정 동물이 없는 경우 -->

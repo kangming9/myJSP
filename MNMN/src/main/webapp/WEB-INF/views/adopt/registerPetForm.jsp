@@ -62,11 +62,9 @@
 				<input type="file" name="photo" id="photo">
 			</li>
 		</ul>
-		<div class="form-button">
 		<div class="align-center">
-			<input type="submit" value="등록">
-			<input type="button" value="취소" onclick="location.href='petList.do'">
-		</div>
+			<input type="submit" value="등록" class="btn-style">
+			<input type="button" value="취소" onclick="location.href='petList.do'" class="btn-style-cancel">
 		</div>
 	</form>
 	</div>

@@ -1,5 +1,37 @@
 @charset "UTF-8";
 
+.btn-style{
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding: 5px 10px;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
+
+.btn-style-cancel{
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding: 5px 10px;
+	background:	#d1d1d1;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
+
+.btn-style-modify{
+	font-size:10pt;
+	font-weight:bold;
+	padding: 5px 10px;
+	background:	#d1d1d1;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
+
 /*PetList*/
 
  h2.title {
@@ -113,6 +145,7 @@
 
 /* register, updatePet */
 .form-css{
+	padding-top:20px;
 	padding-bottom:40px;
 	border:none;
 	text-align:center;
@@ -157,7 +190,7 @@
 }
 
 .form-button{
-	padding-top:20px;
+	padding-top:10px;
 }
 
 .form-content li input[type=button]#photo_btn{
