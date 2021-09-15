@@ -8,12 +8,20 @@
 <title>글상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comdetail.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comReply.css" type="text/css">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var currentPage;
 		var count;
 		var rowCount;
+		
+		//수정 버튼 클릭
+		$('#modify').click(function(){
+			$('#modify-choice').show();
+			//$(this).hide();
+		});
 		
 		//댓글 리스트
 		function selectData(pageNum){
@@ -37,18 +45,27 @@
 					rowCount = param.rowCount;
 					
 					$(param.list).each(function(index,item){
-						var output = '<div class="item">';
-						output += '<h4>' + item.member_id + '</h4>';
+						var output = '<div class="item" id="replyList">';
+						output += '<span id="repltListId">' + item.member_id + '</span>';
+						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';
-						output += '<p style="word-break:break-all;">' + item.re_content + '</p>';
-						output += item.re_date;
+						output += '<p style="word-break:break-all;" id="replyListContent">' + item.re_content + '</p>';
+						//output += item.re_date;
 						
 							//로그인 회원번호와 작성자 회원번호 일치
 							if($('#user_num').val() == item.member_num){
+				
+								output += '<button id="modify"><i class="fas fa-ellipsis-v fa-xs"></i></button>';
+						
+								output += '<div id="modify-choice-btn">';
+								output += '<div id="modify-choice" style="display:none;">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="수정" class="modify-btn">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="삭제" class="delete-btn">';
+								output += '<i class="fas fa-ellipsis-v fa-xs"></i>';
+								output += '</div>';
+								output += '</div>';
 							}
-						output += '<hr size="1" noshade width="100%">';
+						output += '<hr color="#d3e0e3" size="1"; width="100%">';
 						output += '</div>';
 						output += '</div">';
 						
@@ -68,6 +85,7 @@
 				}
 			});
 		}
+		
 		//페이지 처리 이벤트 연결
 		$('.paging-button input').click(function(){
 			selectData(currentPage + 1); //페이지 아니면 기존데이터 냅두고 페이지 붙임
@@ -285,6 +303,15 @@
 		<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style">
 	</div>
 	</div>
+	<!-- 댓글 목록 시작 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display: none;">
+		<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
+	</div>
+	<!-- 댓글 목록 끝 -->
 	<!-- 댓글 시작 -->
 	<div id="reply_div">
 		<span class="re-title">댓글 달기</span>
@@ -305,15 +332,6 @@
 		</form>
 	</div>
 	<!-- 댓글 끝 -->
-	<!-- 댓글 목록 시작 -->
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
-	</div>
-	<div id="loading" style="display: none;">
-		<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
-	</div>
-	<!-- 댓글 목록 끝 -->
 </div>
 </div><!-- 같은 배경 안하실 거면 이걸 댓글 시작 전으로 옮겨주세요 -->
 </body>

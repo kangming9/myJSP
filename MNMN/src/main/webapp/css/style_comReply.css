@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*community reply*/
+/*reply list*/
+
+#replyList{
+	/*댓글 리스트 전체*/
+	font-size: 13px;
+	
+}
+#replyListContent{
+	padding: 0;	
+}
+#repltListId{
+	margin: 0 5px 0 0;
+	font-weight: bold;
+}
+#repltListDate{
+	font-size: 10px;
+	color: gray;
+}
+#modify{
+	background: none;
+	
+}
