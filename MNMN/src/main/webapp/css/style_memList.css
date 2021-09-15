@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+.page-main{
+	background-color: #f4f7f7;
+}
+
+.top{
+	padding: 2px;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+	
+}
+
+form{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.search{
+	margin-left: 5px;
+	display: flex;
+    align-items: center;
+}
+
+.search select, #keyword{
+	padding: 3px;
+}
+
+#keyword{
+	margin-left: 15px;
+}
+
+.btn-container{
+	margin: 0;
+	padding: 0;
+	height: 30px;
+	display: inline-block;
+}
+
+.btns{
+	margin-left: 5px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 0px;
+	border-radius: 10px;
+	width: 50px;
+}
+
+.submit{
+	background-color: #88898C;
+	margin-left: 3px;
+	margin-bottom: 0;
+}
+
+.home{
+	margin-right: 5px;
+	background-color: #38A2DB;
+	color: #FFFFFF;
+}
+
+.cancel{
+	background-color: #F2ACB9;
+	color: #FFFFFF;
+}
+
+.result-display{
+	border: 1px solid #dae9f4;
+	background-color: #dae9f4;
+	font-weight: bold;
+  	font-size:18px;
+	color: #053742;
+}
+
+.memlist{
+	margin-bottom: 100px;
+}
+
+
+table {
+	width: 100%;
+    border-collapse: separate;
+    border: 0px;
+    margin-bottom: 30px;
+}
+
+table a,table a:visited,table a:link,table a:active{
+	text-decoration: none;
+	color: #000000;
+}
+
+table a:hover{
+	text-decoration: none;
+	color: #39a2db;
+}
+
+table th, table td{
+	border: 0px;
+    padding: 5px;
+}
+
+th{
+  padding: 20px 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #053742;
+}
+
+td{
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tb-header{
+	height: 50px;
+	background-color: #dae9f4;
+}
+
+.tb-content{
+	height: 40px;
+  	background-color: #F0F8FF;
+}

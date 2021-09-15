@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 <title>회원 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_memList.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -31,25 +32,21 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>회원 목록</h2>
-	<form id="search_form" action="memberList.do" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="1">ID</option>
+	<div class="top">
+		<form id="search_form" action="memberList.do" method="get">
+		<div class="search">
+			<select name="keyfield">
+					<option value="1">아이디</option>
 					<option value="2">이름</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword">
-			</li>
-			<li>
-				<input type="submit" value="검색">
-			</li>
-		</ul>
-	</form>
-	<div class="list-space align-right">
-		<input type="button" value="목록" onclick="location.href='memberList.do'">
-		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			</select>
+			<input type="search" size="25" name="keyword" id="keyword">
+			<input type="submit" value="검색" class="submit btns">
+		</div>
+		</form>
+		<div class="btn-container">
+			<input type="button" value="목록" class="cancel btns" onclick="location.href='memberList.do'">
+			<input type="button" value="홈으로" class="home btns" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		</div>
 	</div>
 	<c:if test="${count == 0}">
 	<div class="result-display">
@@ -57,14 +54,18 @@
 	</div>
 	</c:if>
 	<c:if test="${count > 0}">
+	<div class="tb-container">
 	<table>
-		<tr>
-			<th>ID</th>
-			<th>이름</th>
-			<th>전화번호</th>
-			<th>가입일</th>
-			<th>등급</th>
-		</tr>
+		<thead class="tb-header">
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>전화번호</th>
+				<th>가입일</th>
+				<th>등급</th>
+			</tr>
+		</thead>
+		<tbody class="tb-content">
 		<c:forEach var="member" items="${list}">
 		<tr>
 			<td>
@@ -86,8 +87,10 @@
 			</td>
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
-	<div class="align-center">
+	</div>
+	<div class="align-center memlist">
 		${pagingHtml}
 	</div>
 	</c:if>
