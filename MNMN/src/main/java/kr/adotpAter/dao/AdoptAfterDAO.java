@@ -98,7 +98,7 @@ public class AdoptAfterDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from (select a.*, rownum rnum from (select * from adopt_after order by after_num desc)a) where rnum >= ? and rnum <=?";
+			sql = "select * from (select a.*, rownum rnum from (select * from adopt_after a join member m on a.after_member_num=m.member_num order by after_num desc)a) where rnum >= ? and rnum <=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
@@ -115,7 +115,7 @@ public class AdoptAfterDAO {
 				after.setAfter_date(rs.getDate("after_date"));
 				after.setAfter_member_num(rs.getInt("after_member_num"));
 				after.setAfter_photo(rs.getString("after_photo"));
-				
+				after.setMember_id(rs.getString("member_id"));
 				list.add(after);
 			}
 		}catch(Exception e) {
@@ -136,7 +136,7 @@ public class AdoptAfterDAO {
 		try {
 			conn = DBUtil.getConnection();
 			
-			sql = "select * from adopt_after where after_num=?";
+			sql = "select * from adopt_after a join member m on a.after_member_num=m.member_num where a.after_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, after_num);
 			rs = pstmt.executeQuery();
@@ -150,6 +150,7 @@ public class AdoptAfterDAO {
 				after.setAfter_date(rs.getDate("after_date"));
 				after.setAfter_member_num(rs.getInt("after_member_num"));
 				after.setAfter_photo(rs.getString("after_photo"));
+				after.setMember_id(rs.getString("member_id"));
 			}
 			
 		}catch(Exception e) {

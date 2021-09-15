@@ -62,16 +62,39 @@
 	font-size: 17px;
 	color:#39A2DB;
 }
-/*리스트 글 제목 및 내용*/
+/*리스트*/
+.card{
+	margin: 20px 0;
+	background-color: #f5f5f5;
+	border-color: gray;
+}
 #afterDetail_title, #afterDetail_content{
 	color: black; 
 	text-decoration: none;
+}
+#afterDetail_title{
+	font-size: 15px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+#afterDetail_content{
+	display: block;
+	font-size: 13px;
+	margin: 10px;
 }
 #detail_card{
 	padding: 0 10px 0 10px;
 	background-color:none;
 	border: 1px solid none;
 	overflow: hidden;
+}
+#listID_DATE{
+	font-size: 9px; 
+	margin: 0 10px; 
+	text-align: right; 
+	display: block; 
+	font-family: 명조체;
+	font-weight: bold;
 }
 /*리스트 이미지*/
 .afterpet-img{
@@ -89,10 +112,9 @@
 }
 #detailDate{
 	text-align: right;
-	margin-right: 10px;
-	background: red;
+	
 }
-
+/*수정폼*/
 #after_title{
 	width: 750px;
 	margin-top: 5px;
@@ -101,9 +123,9 @@
 #modify_form, #write_form{
 	width: 800px;
 }
-
 #after_content{
 	width: 750px;
+	height: 300px;
 	border: none; 
 	resize: none;
 }
@@ -121,8 +143,7 @@
 	height: auto; 
 	margin: 0 120px;
 }
-/*리스트*/
-.card{
-	margin: 20px 0;
-	background-color: #f5f5f5;
+/*디테일*/
+#detail_Id_Date{
+	text-align: right;
 }

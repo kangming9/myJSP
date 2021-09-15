@@ -42,15 +42,13 @@
 		<div class="card-body" style="padding: 7px;">
 			<h1 class="tag"><a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_title">${adoptAfter.after_title}</a></h1>
 		    <c:set var="content2" value="${adoptAfter.after_content}"/>
-		    
-		    <span id="content">
+		    <span id="content" class="card-text">
 		    <a href="afterDetail.do?after_num=${adoptAfter.after_num}" id="afterDetail_content">
-		    
 		    <c:if test="${fn:length(content2)<40}">${content2}</c:if>
 		    <c:if test="${fn:length(content2)>40}">${fn:substring(content2,0,40)}...</c:if>
 		    </a>
-		    </span><br>
-		    <p style="font-size: 5px; margin: 3px 0; text-align: right;">${adoptAfter.after_date}</p>
+		    </span>
+		    <span id="listID_DATE"> ${adoptAfter.member_id} ${adoptAfter.after_date}</span>
 		</div><%--card-body --%>
 		</div><%--card --%>
 	</div>

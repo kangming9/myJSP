@@ -11,7 +11,14 @@ public class AdoptAfterVO {
 	private Date after_date;
 	private int after_member_num;
 	private String after_photo;
+	private String member_id;
 	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 	public int getAfter_num() {
 		return after_num;
 	}

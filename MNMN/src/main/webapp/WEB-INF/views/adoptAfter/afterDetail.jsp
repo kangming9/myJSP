@@ -20,8 +20,11 @@
 		<ul>
 			<li class="tag">입양후기 게시판</li>
 			<p>
-			<h3 id="detailTitle">${after.after_title}</h3>
-			<li id="detailDate">${after.after_date}</li>
+			<h5 id="detailTitle">${after.after_title}</h5>
+			<div id="detail_Id_Date">
+			<span>${after.member_id}</span>
+			<span id="detailDate">${after.after_date}</span>
+			</div>
 			<hr size="1" noshade="noshade" width="100%">
 			<li>
 			<br>
