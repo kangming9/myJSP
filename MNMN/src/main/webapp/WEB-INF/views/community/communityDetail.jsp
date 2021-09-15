@@ -52,6 +52,7 @@
 								output += '<div id="modify-choice-'+item.re_num+'" style="display:none;">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="수정" class="modify-btn">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="삭제" class="delete-btn">';
+								output += "<button id='modify-"+item.re_num+"' onclick=backfunc("+item.re_num+"); class='button9'>취소</button>";
 								output += '</div>';
 								output += '</div>';
 							}
@@ -153,20 +154,20 @@
 			var num = $(this).attr('data-memnum');
 			var content = $(this).parents().find('#replyListContent').html();
 			
-			var modifyUI = '<form id="mre_form">';
+			var modifyUI = '<form id="mre_form" style="padding:0; width:100%; border:none;">';
 				modifyUI += '	<input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
 				modifyUI += '	<input type="hidden" name="mem_num" id="muser_num" value="'+num+'">';
-				modifyUI += '  	<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content">'+content+'</textarea>';
-			    modifyUI += ' 	<div id="mre_first"><span class="letter-count">300/300</span></div>';
-				modifyUI += '  	<div id="mre_second" class="align-right">';
-				modifyUI += '    	<input type="submit" value="수정">';
-				modifyUI += '    	<input type="button" value="취소" class="re-reset">';
+				modifyUI += '  	<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content" style="width:100%; height:60px; resize:none; margin: 5px 0;">'+content+'</textarea>';
+			    modifyUI += ' 	<div id="mre_first" style="display: flex; margin: 0 540px;"><span class="letter-count">300/300</span>&nbsp;';
+				modifyUI += '  	<div id="mre_second" class="align-right" style="display: flex;">';
+				modifyUI += '    	<input type="submit" value="수정" class="button9" onclick=backfunc("'+re_num+'");>';
+				modifyUI += '    	<input type="button" value="취소" class="re-reset button9" onclick=backfunc("'+re_num+'");>';
 				modifyUI += '  	</div>';
-				modifyUI += '  	<hr size="1" noshade width="96%">';
+				modifyUI += '  	</div>';
 				modifyUI += '</form>';
 				
-				initModifyForm(); //수정버튼 클릭시 숨김 및 폼 초기화?
-				$(this).parent().hide();
+				initModifyForm(); //수정버튼 클릭시 기존 댓글 가림
+				$(this).parents('.sub-item').hide();
 				$(this).parents('.item').append(modifyUI);
 				
 				var inputLength = $('#mre_content').val().length;
@@ -177,7 +178,7 @@
 				$('#mre_first .letter-count').text(remain);
 		});
 		//수정폼에서 취소버튼 클릭시 수정폼 초기화
-		$(document).on('click','re-reset',function(){
+		$(document).on('click','.re-reset',function(){
 			initModifyForm();
 		});
 		//댓글 수정 폼 초기화
@@ -258,11 +259,18 @@
 		selectData(1);
 	});
 	
-	function modifyfunc(re_num){//수정 버튼 클릭
+	function modifyfunc(re_num){//리스트에서 수정, 취소 버튼 뜨게함
 		var mshow = '#modify-choice-'+re_num;
 		var mhide = '#modify-'+re_num;
 		$(mshow).show();
 		$(mhide).hide();
+	}
+	
+	function backfunc(re_num){//리스트에서 ...표시 뜨게함
+		var mshow = '#modify-choice-'+re_num;
+		var mhide = '#modify-'+re_num;
+		$(mshow).hide();
+		$(mhide).show();
 	}
 </script>
 </head>

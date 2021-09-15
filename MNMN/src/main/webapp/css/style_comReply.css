@@ -37,7 +37,7 @@
    float: right;
    color: gray;
 }
-.modify-btn, .delete-btn{
+.modify-btn, .delete-btn, .button9{
    margin-left:5px;
    padding:5px 10px;
    background:   #A2DBFA;
@@ -64,4 +64,7 @@
 }
 .letter-count{
 	font-size: 13px;
+}
+.mre_form{
+	background-color: red;
 }
