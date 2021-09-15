@@ -17,12 +17,6 @@
 		var count;
 		var rowCount;
 		
-		//수정 버튼 클릭
-		$('#modify').click(function(){
-			$('#modify-choice').show();
-			//$(this).hide();
-		});
-		
 		//댓글 리스트
 		function selectData(pageNum){
 			currentPage = pageNum;
@@ -55,7 +49,7 @@
 							//로그인 회원번호와 작성자 회원번호 일치
 							if($('#user_num').val() == item.member_num){
 				
-								output += '<button id="modify"><i class="fas fa-ellipsis-v fa-xs"></i></button>';
+								output += '<button id="modify" onclick="modifyfunc();"><i class="fas fa-ellipsis-v fa-xs"></i></button>';
 						
 								output += '<div id="modify-choice-btn">';
 								output += '<div id="modify-choice" style="display:none;">';
@@ -264,6 +258,11 @@
 		//게시물 들어가면 댓글목록 처음 호출하게 함
 		selectData(1);
 	});
+	
+	function modifyfunc(){//수정 버튼 클릭
+		$('#modify-choice').show();
+		$("#modify").hide();
+	}
 </script>
 </head>
 <body>
