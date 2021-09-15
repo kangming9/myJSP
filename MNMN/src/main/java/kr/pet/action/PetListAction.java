@@ -1,6 +1,5 @@
 package kr.pet.action;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,23 +20,22 @@ public class PetListAction implements Action{
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null)pageNum = "1";
 		
+		String keyfield = request.getParameter("keyfield");
+		String keyword = request.getParameter("keyword");
+		
+		if(keyfield == null) keyfield = "";
+		if(keyword == null) keyword = "";
+		
 		PetDAO dao = PetDAO.getInstance();
 		int count = dao.getPetCount();
 		
-		//其捞瘤 贸府
-		//currentPage, count, rowCount, pageCount, url
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,12,12,"petList.do");
+		//其捞隆 贸府
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum),count,12,12,"petList.do");
 		
 		List<PetVO> list = null;
 		if(count > 0) {
-			list = dao.getListPet(page.getStartCount(), page.getEndCount());
+			list = dao.getListPet(page.getStartCount(), page.getEndCount(), keyfield, keyword);
 		}
-		
-		/*new 酒捞能
-		 * LocalDate now = LocalDate.now();
-		 * 
-		 * request.setAttribute("now", now);
-		 */
 	    
 	    request.setAttribute("count", count);
 		request.setAttribute("list", list);
