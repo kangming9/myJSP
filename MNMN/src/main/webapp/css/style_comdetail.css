@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* detail */
+.container{
+	background:#E8F0F2;
+	padding:50px;
+}
+
+.box{
+	background:white;
+	padding:10px;
+	margin-bottom:50px;
+	line-height:2;
+}
+
+h2.title{
+	text-align:center;
+}
+
+p{
+	padding:20px 40px;
+	
+}
+
+#btns{
+	padding-right:10px;
+}
+
+.btn-style{
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding:5px 10px;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+}

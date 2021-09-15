@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>글상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comdetail.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -250,24 +251,26 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>게시판 글상세</h2>
+	<div class="container">
+	<div class="box">
+	<h2 class="title">게시판 글상세</h2>
 	<ul>
 		<li>글번호 : ${com.com_num}</li>
 		<li>글제목 : ${com.com_title}</li>
 		<li>작성자 : ${com.com_member_id}</li>
 		<li>조회수 : ${com.com_hit}</li>
 	</ul>
-	<hr size="1" noshade width="100%">
+	<hr size="1" noshade width="90%">
 	<p style="word-break:break-all;">
       ${com.com_content}
    </p>
-	<hr size="1" noshade width="100%">
-	<div class="align-right">
+	<hr size="1" noshade width="90%">
+	<div class="align-right" id="btns">
 		작성일 : ${com.com_date}
 		<%-- 로그인한 회원번호 == 작성자 회원번호 --%>
 		<c:if test="${user_num == com.com_member_num}">
-		<input type="button" value="수정" onclick="location.href='updateCommunityForm.do?com_num=${com.com_num}'">
-		<input type="button" value="삭제" id="delete_btn">	
+		<input type="button" value="수정" onclick="location.href='updateCommunityForm.do?com_num=${com.com_num}'" class="btn-style">
+		<input type="button" value="삭제" id="delete_btn" class="btn-style">	
 		<script type="text/javascript">
 			var delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -279,7 +282,8 @@
 			};
 		</script>
 		</c:if>
-		<input type="button" value="목록" onclick="location.href='communityList.do'">
+		<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style">
+	</div>
 	</div>
 	<!-- 댓글 시작 -->
 	<div id="reply_div">
@@ -311,6 +315,7 @@
 	</div>
 	<!-- 댓글 목록 끝 -->
 </div>
+</div><!-- 같은 배경 안하실 거면 이걸 댓글 시작 전으로 옮겨주세요 -->
 </body>
 </html>
 
