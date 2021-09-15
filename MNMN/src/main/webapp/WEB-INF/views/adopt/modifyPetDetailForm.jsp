@@ -98,17 +98,19 @@
 				<textarea rows="5" cols="27" name="detail" id="content">${pet.pet_detail}</textarea>
 			</li>
 			<li>
-				<label for="photo" class="photo-modify">사진</label>
+				<label for="photo" id="photo-modify-label">사진</label>
 				<img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" width="100" height="100" class="pet-photo">
 			</li>
 			<li>
 				<div class="align-center">
 					<input type="button" value="변경" id="photo_btn">
 				</div>
-				<div id="photo_choice" style="display:none;" class="photo-modify">
+				<div id="photo-choice-btn">
+				<div id="photo_choice" style="display:none;">
 					<input type="file" id="photo" name="photoname" accept="image/gif,image/png,image/jpeg"><br>
 					<input type="button" value="전송" id="photo_submit">
 					<input type="button" value="취소" id="photo_reset">
+				</div>
 				</div>
 			</li>
 		</ul>
