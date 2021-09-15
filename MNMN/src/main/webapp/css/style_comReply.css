@@ -2,7 +2,6 @@
 
 /*community reply*/
 /*reply list*/
-
 .item{
 	margin: 10px 0 10px 0;
 }
@@ -46,4 +45,24 @@
    color:white;
    border:none;
    border-radius:15%;
+}
+/*댓글 작성*/
+#re_form{
+	padding: 10px 2px;
+	width: 100%;
+	border: none;
+}
+#re_content{
+	width: 99%;
+	height: 65px;
+	margin: 0;
+	border: none;
+	resize: none;
+}
+#re_first, #re_second{
+	margin: 1px 9px 5px 10px;
+	float: right;
+}
+.letter-count{
+	font-size: 13px;
 }
