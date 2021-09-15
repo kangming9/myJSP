@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.page-main{
+	background-color: #f4f7f7;
+}
+
+ul{
+	margin: 0;
+    padding: 0;
+}
+
+ul li{
+	margin: 0 auto;
+}
+
+.modify-container{
+	border: 1px solid #D7E2EB;
+	border-radius: 10px;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 100px;
+	text-align:center;
+	background-color: #ffffff;
+	margin-bottom: 100px;
+}
+
+.modify-form{
+	border: 0;
+	padding: 0;
+	display:inline-block;
+}
+
+.modify-container .info-content{
+	width: 100%;
+	margin: 30px 0px 30px 0px;
+}
+
+.modify-container label{
+	text-align: left;
+	font-size: 14px;
+}
+
+.modify-container .info-content ul input {
+	border: 0;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: #F4EEED;
+}
+
+.modify-container input:focus {
+	outline:none;
+}
+
+.modify-container ul{
+}
+
+.modify-container ul li{
+	margin-bottom: 20px;
+	width: 70%;
+}
+
+.cpass{
+	height: 20px;
+}
+
+#message_cpasswd, #message_id{
+	font-size: 10px;	
+}
+
+.btns{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.update_btn{
+	border: 0px;
+	border-radius: 10px;
+	background-color: #A2DBFA;
+	width: 80px;
+	padding: 3px;
+	color: #FFFFFF;
+}
+
+.cancel_btn{
+	border: 0;
+	border-radius: 10px;
+	background-color: #F0F0F0;
+	color: #C9C9C9;
+	width: 50px;
+	padding: 3px;
+}

@@ -14,6 +14,9 @@
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_memDetail.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -35,30 +38,37 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>${member.member_id}의 정보 수정</h2>
-	<form action="detailUser.do" method="post" id="detail_form">
+	<div class="modify-page">
+	<div class="modify-container">
+		<form action="detailUser.do" method="post" id="detail_form" class="modify-form">
+		<div class="info-content">
+		<h3>${member.member_id}의 정보 수정</h3>
 		<input type="hidden" name="mem_num" value="${member.member_num}">
 		<ul>
 			<li>
-				<label for="grade">등급</label>
+				<label for="grade"><i class="fas fa-paw"></i> 등급</label>
 				<input type="radio" name="grade" value="1" id="grade1" <c:if test="${member.member_grade == 1}">checked</c:if>/>관리
 				<input type="radio" name="grade" value="2" id="grade2" <c:if test="${member.member_grade == 2}">checked</c:if>/>입양
 				<input type="radio" name="grade" value="3" id="grade3" <c:if test="${member.member_grade == 3}">checked</c:if>>일반
 			</li>
 			<li>
-				<label for="name">이름</label>
+				<label for="name"><i class="fas fa-paw"></i> 이름</label>
 				<input type="text" name="name" id="name" value="${member.member_detail_name}" maxlength="10">
 			</li>
 			<li>
-				<label for="phone">전화번호</label>
+				<label for="phone"><i class="fas fa-paw"></i> 휴대전화</label>
 				<input type="text" name="phone" id="phone" value="${member.member_detail_phone}" maxlength="15">
 			</li>
 		</ul>
-		<div class="align-center">
-			<input type="submit" value="수정하기">
-			<input type="button" value="목록" onclick="location.href='memberList.do'">
+		<div class="btns">
+			<input type="submit" value="수정하기" class="update_btn">
+			<input type="button" value="목록" class="cancel_btn" onclick="location.href='memberList.do'">
+		</div>
 		</div>
 	</form>
+	</div>
+	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
 </body>
 </html>
