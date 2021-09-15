@@ -67,21 +67,21 @@
 		<div class="card">
 			<a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="rounded-circle mb-3"></a>
 			<div class="card-body">
-			${pet.pet_num}<br>
-			COMMENT : <br>
-			${pet.pet_name}	/ ${pet.pet_type}<br>
-			${pet.pet_date}
-			</div>
+			${pet.pet_num}
 			<c:set var="now" value="<%= new java.util.Date() %>" />
 			<c:set var="fnow"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set>
 			<c:choose>
 				<c:when test="${pet.pet_date eq fnow}">
-					<p id ="new" style="color:#A2DBFA;">새로왔냥!</p>
+					<p id ="new" style="color:#A2DBFA; margin-bottom:0px;">새로왔냥!</p>
 				</c:when>
 				<c:otherwise>
 					<p></p>
 				</c:otherwise>
 			</c:choose>
+			COMMENT : <br>
+			${pet.pet_name}	/ ${pet.pet_type}<br>
+			${pet.pet_date}
+			</div>
 		</div>
 	</div>
 	</c:forEach>
