@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body{
 	margin: 0;
 }
@@ -102,6 +109,7 @@ input[id="zipcode"]{
 	margin:200px 0px 0px 0px;
 }
 .menu > a{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	text-decoration: none;
 	font-size : 15px;
 	font-weight : bold;
@@ -123,6 +131,7 @@ a:hover, a:visited, a:link, a:active
 	border-bottom: 2px solid #39A2DB;
 }
 .login{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	text-align: center;
 	margin: 0px 20px 0px 0px;
 }
