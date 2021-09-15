@@ -7,6 +7,7 @@
 <title>About 멍냥멍냥</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_intro.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 </head>
 <body>
 	<div class="page-main">
@@ -34,6 +35,9 @@
 		<p>반려동물을 사랑하고 유기동물을 걱정하는 여러분의 많은 관심이 필요합니다.</p>
 		</div>
 	</div>
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 	</div>
 </body>
 </html>
