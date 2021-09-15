@@ -13,16 +13,30 @@
     font-style: normal;
 }
 
-.site-footer
-{
+.foot{
+	display: flex;
+	flex-direction: column;
+	width:100%;
+	height: 100%;
+}
+
+.site-footer{
  	width:100%;
 	margin: 0 auto;
 	background-color: #A2DBFA;
 	height:200px;
+    margin-top: auto;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	color : white;
+}
+
+.fcontainer{
+	width: 90%;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #fabout{
@@ -42,12 +56,4 @@
 }
 .text-justify{
 	    font-family: 'WONTitle';
-}
-
-.copysns{
-	margin : 30px 50px 0px 0px;
-}
-
-.fcontainer{
-	margin : 0px 0px 0px 30px;
 }
