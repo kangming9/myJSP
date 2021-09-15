@@ -155,7 +155,7 @@ ul{
 	color: #FFFFFF;
 }
 
-/*modifyPassword*/
+/*modifyPassword, modifyUser, deleteUser*/
 .modify-container{
 	border: 1px solid #D7E2EB;
 	border-radius: 10px;
@@ -205,7 +205,7 @@ ul{
 	height: 20px;
 }
 
-#message_cpasswd{
+#message_cpasswd, #message_id{
 	font-size: 10px;	
 }
 

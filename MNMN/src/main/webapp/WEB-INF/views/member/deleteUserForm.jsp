@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>회원 탈퇴</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_mypage.css" type="text/css">
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -53,28 +55,32 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>회원 탈퇴</h2>
-	<form action="deleteUser.do" method="post" id="delete_form">
+	<div class="modify-container">
+	<form action="deleteUser.do" method="post" id="delete_form" class="modify-form">
+		<div class="info-content">
+		<h3>회원 탈퇴</h3>
 		<ul>
 			<li>
-				<label for="id">아이디</label>
+				<label for="id"><i class="fas fa-paw"></i> 아이디</label>
 				<input type="text" name="id" id="id" maxlength="12">
 			</li>
 			<li>
-				<label for="passwd">비밀번호</label>
+				<label for="passwd"><i class="fas fa-paw"></i> 비밀번호</label>
 				<input type="password" name="passwd" id="passwd" maxlength="12">
 			</li>
 			<li>
-				<label for="cpasswd">비밀번호 확인</label>
-				<input type="password" name="cpasswd" id="cpasswd" maxlength="12">
-				<span id="message_id"></span>
+				<label for="cpasswd"><i class="fas fa-paw"></i> 비밀번호 확인</label>
+				<div class="cpass"><input type="password" name="cpasswd" id="cpasswd" maxlength="12">
+				<div id="message_id"></div></div>
 			</li>
 		</ul>
-		<div class="align-center">
-			<input type="submit" value="회원 탈퇴">
-			<input type="button" value="취소" onclick="location.href='myPage.do'">
+		<div class="btns">
+			<input type="submit" value="탈퇴하기" class="update_btn">
+			<input type="button" value="취소" onclick="location.href='myPage.do'" class="cancel_btn">
+		</div>
 		</div>
 	</form>
+	</div>
 </div>
 </body>
 </html>

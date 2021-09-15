@@ -1,8 +1,17 @@
 @charset "UTF-8";
 
+html,body{
+	margin: 0;
+}
+
 h3{
 	text-align: center;	
 	margin:30px 0px 10px 0px;
+}
+
+.page-main{
+	height: 100vh;
+	background:#E8F0F2;
 }
 
 .login-container{
@@ -38,6 +47,17 @@ h3{
 	font-weight: bold;
   	font-size:18px;
 	color: #053742;
+	display: block;
+	text-align:center;
+}
+
+.result-content{
+	margin: 0 auto;
+	margin-bottom: 10px;
+	width:100%;
+	display:inline-block;
+	margin-top:80px;
+	
 }
 
 .home_btn{
@@ -45,5 +65,6 @@ h3{
 	border-radius: 10px;
 	background-color: #38A2DB;
 	padding: 8px;
+	margin-top: 10px;
 	color: #FFFFFF;
 }
