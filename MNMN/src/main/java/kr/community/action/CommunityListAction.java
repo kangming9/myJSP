@@ -23,7 +23,7 @@ public class CommunityListAction implements Action{
 		
 		//페이지 처리
 		//currentPage, count, rowCount, pageCount, url
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,20,10,"list.do");
+		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,20,10,"communityList.do");
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {
