@@ -14,15 +14,14 @@
 <body>		
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="title">
-		<h2>입양 동물 리스트</h2>
-	</div>
+	
+	<div class="wrap">
+	<h2 class="title">입양 동물 리스트</h2>
 	<c:if test="${user_grade == 1}">
-	<div class="align-right">
+	<div id="register-button">
 		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'">
 	</div>
 	</c:if>
-	
 	<!-- 등록된 입양 예정 동물이 없는 경우 -->
 	<c:if test="${count == 0}">
 	<div class="result-display">
@@ -54,6 +53,7 @@
 		${pagingHtml}
 	</div>
 	</c:if>
+</div>
 </div>
 </body>
 </html>
