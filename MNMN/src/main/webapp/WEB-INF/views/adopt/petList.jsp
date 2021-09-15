@@ -27,7 +27,8 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="wrap-list">
-	<h2 class="title">입양 동물 리스트</h2>
+	<h2 class="title">기다리개</h2>
+	<div class="intro"><p>입양을 기다리는 친구들</p></div>
 	<form class="search-form" id="search_form" action="petList.do" method="get" style="border:none;">
 		<ul class="align-center">
 			<li>

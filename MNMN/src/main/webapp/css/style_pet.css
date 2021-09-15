@@ -40,6 +40,11 @@
     margin: 20px;
     padding: 20px 0 0 0;
   }
+  
+div.intro p{
+	width:100%;
+	text-align:center;
+}
 
 #container{
 	padding:10px;
