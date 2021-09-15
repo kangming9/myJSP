@@ -3,23 +3,47 @@
 /*community reply*/
 /*reply list*/
 
+.item{
+	margin: 10px 0 10px 0;
+}
 #replyList{
 	/*댓글 리스트 전체*/
 	font-size: 13px;
 	
 }
 #replyListContent{
+	margin: 3px 0 10px 0;
 	padding: 0;	
+	clear: both;
 }
 #repltListId{
-	margin: 0 5px 0 0;
+	float: left;
+	margin: 0 5px 1px 0;
 	font-weight: bold;
 }
 #repltListDate{
+	float: left;
+	margin: 5px 0 3px 0;
 	font-size: 10px;
 	color: gray;
 }
 .modify{
 	background: none;
+	border: none;
+    color: gray;
+    float: right;
 	
+}
+#modify-choice-btn{
+   border: none;
+   float: right;
+   color: gray;
+}
+.modify-btn, .delete-btn{
+   margin-left:5px;
+   padding:5px 10px;
+   background:   #A2DBFA;
+   color:white;
+   border:none;
+   border-radius:15%;
 }

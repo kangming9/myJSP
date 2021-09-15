@@ -43,22 +43,17 @@
 						output += '<span id="repltListId">' + item.member_id + '</span>';
 						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';
-						output += '<p style="word-break:break-all;" id="replyListContent">' + item.re_content + '</p>';
-						//output += item.re_date;
-						
 							//로그인 회원번호와 작성자 회원번호 일치
 							if($('#user_num').val() == item.member_num){
-				
 								output += "<button id='modify-"+item.re_num+"' onclick=modifyfunc("+item.re_num+"); class='modify'><i class='fas fa-ellipsis-v fa-xs'></i></button>";
-						
 								output += '<div id="modify-choice-btn">';
 								output += '<div id="modify-choice-'+item.re_num+'" style="display:none;">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="수정" class="modify-btn">';
 								output += '<input type="button" data-renum="'+item.re_num+'" data-memnum="'+item.member_num+'" value="삭제" class="delete-btn">';
-								output += '<i class="fas fa-ellipsis-v fa-xs"></i>';
 								output += '</div>';
 								output += '</div>';
 							}
+							output += '<p style="word-break:break-all;" id="replyListContent">' + item.re_content + '</p>';
 						output += '<hr color="#d3e0e3" size="1"; width="100%">';
 						output += '</div>';
 						output += '</div">';
@@ -66,6 +61,8 @@
 						//배열로 반환받은 태그 문서객체에 추가
 						$('#output').append(output);
 					});
+					
+					
 					
 					//페이지 button 처리
 					if(currentPage>=Math.ceil(count/rowCount)){//currentPage가 큼 =다음 페이지 없음
@@ -152,7 +149,7 @@
 		$(document).on('click','.modify-btn',function(){
 			var re_num = $(this).attr('data-renum'); //댓 번호
 			var num = $(this).attr('data-memnum');
-			var content = $(this).parent().find('p').html();
+			var content = $(this).parents().find('#replyListContent').html();
 			
 			var modifyUI = '<form id="mre_form">';
 				modifyUI += '	<input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
