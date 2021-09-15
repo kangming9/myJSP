@@ -196,13 +196,16 @@
 		<c:if test="${user_grade == 1}">
 		<div id="admin" style="display:none;">
 			<h3>관리자 메뉴</h3>
-			<span class="info">입양 신청 및 봉사 신청을 관리하세요.</span>
+			<span class="info">회원 및 입양/봉사 신청을 관리하세요.</span>
 			<ul>
 				<li>
-					<input type="button" value="신규 입양  목록" onclick="location.href='${pageContext.request.contextPath}/adopt/listAdopt.do'" class="check_btn">
+					<input type="button" value="회원 관리" onclick="location.href='memberList.do'" class="check_btn">
 				</li>
 				<li>
-					<input type="button" value="신규 봉사 목록" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'" class="check_btn">
+					<input type="button" value="신규 입양  관리" onclick="location.href='${pageContext.request.contextPath}/adopt/listAdopt.do'" class="check_btn">
+				</li>
+				<li>
+					<input type="button" value="신규 봉사 관리" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'" class="check_btn">
 				</li>
 			</ul>
 		</div>

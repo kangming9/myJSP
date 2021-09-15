@@ -3,6 +3,8 @@ package kr.member.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
@@ -239,6 +241,106 @@ public class MemberDAO {
 			DBUtil.executeClose(null, pstmt2, null);
 			DBUtil.executeClose(null, pstmt, conn);
 		}
+	}
+	
+	public int getMemberCountByAdmin(String keyfield, String keyword) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			if(keyword == null || "".equals(keyword)) {
+				//전체글 갯수
+				sql = "SELECT COUNT(*) FROM member m LEFT OUTER JOIN member_detail d ON m.member_num=d.member_detail_num";
+				pstmt = conn.prepareStatement(sql);
+			}else {
+				//검색글 갯수
+				if(keyfield.equals("1")) sub_sql = "member_id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "member_detail_name LIKE ?";
+				
+				sql = "SELECT COUNT(*) FROM member m LEFT OUTER JOIN "
+					+ "member_detail d ON m.member_num=d.member_detail_num WHERE " + sub_sql;
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
+			}
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
+	//목록,검색 글 목록
+	public List<MemberVO> getListMemberByAdmin(int start, int end, String keyfield, String keyword) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberVO> list = null;
+		String sql = null;
+		String sub_sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			if(keyword == null || "".equals(keyword)) {
+				//전체글 보기
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+					+ "(SELECT * FROM member m LEFT OUTER JOIN member_detail d "
+					+ "ON m.member_num=d.member_detail_num ORDER BY member_detail_reg_date DESC NULLS LAST)a) "
+					+ "WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+			}else {
+				//검색글 보기
+				if(keyfield.equals("1")) sub_sql = "member_id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "member_detail_name LIKE ?";
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+					+ "(SELECT * FROM member m LEFT OUTER JOIN member_detail d "
+					+ "ON m.member_num=d.member_detail_num WHERE " + sub_sql 
+					+ " ORDER BY member_detail_reg_date DESC NULLS LAST)a) "
+					+ "WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<MemberVO>();
+			while(rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setMember_num(rs.getInt("member_num"));
+				member.setMember_id(rs.getString("member_id"));
+				member.setMember_grade(rs.getInt("member_grade"));
+				member.setMember_detail_pw(rs.getString("member_detail_pw"));
+				member.setMember_detail_name(rs.getString("member_detail_name"));
+				member.setMember_detail_phone(rs.getString("member_detail_phone"));
+				member.setMember_detail_reg_date(rs.getDate("member_detail_reg_date"));
+				member.setMember_detail_new_date(rs.getDate("member_detail_new_date"));
+				
+				list.add(member);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
 	}
 }
 
