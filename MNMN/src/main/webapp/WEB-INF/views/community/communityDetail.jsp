@@ -39,7 +39,7 @@
 						var output = '<div class="item">';
 						output += '<h4>' + item.member_id + '</h4>';
 						output += '<div class="sub-item">';
-						output += '<p>' + item.re_content + '</p>';
+						output += '<p style="word-break:break-all;">' + item.re_content + '</p>';
 						output += item.re_date;
 						
 							//로그인 회원번호와 작성자 회원번호 일치
