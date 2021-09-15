@@ -32,7 +32,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="login-container">
-		<form id="login_form" action="login.do" method="post">
+		<form id="login_form" action="login.do" method="post" autocomplete="off">
 			<h3>어서오시개</h3>
 			<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
 			<div class="login-content">
