@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>		
 <div class="page-main">
@@ -43,6 +45,16 @@
 			${pet.pet_name}	/ ${pet.pet_type}<br>
 			${pet.pet_date}
 			</div>
+			<c:set var="now" value="<%= new java.util.Date() %>" />
+			<c:set var="fnow"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set>
+			<c:choose>
+				<c:when test="${pet.pet_date eq fnow}">
+					<p id ="new" style="color:#A2DBFA;">새로왔냥!</p>
+				</c:when>
+				<c:otherwise>
+					<p></p>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	</c:forEach>
