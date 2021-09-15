@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+html, body{
+	margin: 0;
+}
+
 .page-main{
 	width:800px;/*넓이*/
 	margin:0 auto;/*중앙 정렬*/
