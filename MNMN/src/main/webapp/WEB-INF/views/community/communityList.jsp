@@ -50,6 +50,25 @@
 		${pagingHtml}
 	</div>
 	</c:if>
+	<!-- 검색창 시작 -->
+	<form class="search-form" id="search_form" action="communityList.do" method="get" style="border:none;">
+		<ul class="align-center">
+			<li>
+				<select name="keyfield">
+					<option value="1">제목</option>
+					<option value="2">글쓴이</option>
+					<option value="3">내용</option>
+				</select>
+			</li>
+			<li>
+				<input type="search" size="16" name="keyword" id="keyword">
+			</li>
+			<li>
+				<input type="submit" value="검색" class="btn-style-cancel">
+			</li>
+		</ul>
+	</form>
+	<!-- 검색창 끝 -->
 	</div>
 		<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

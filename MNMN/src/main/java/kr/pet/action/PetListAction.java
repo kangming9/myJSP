@@ -27,7 +27,7 @@ public class PetListAction implements Action{
 		if(keyword == null) keyword = "";
 		
 		PetDAO dao = PetDAO.getInstance();
-		int count = dao.getPetCount();
+		int count = dao.getPetCount(keyfield, keyword);
 		
 		//페이징 처리
 		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum),count,12,12,"petList.do");

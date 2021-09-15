@@ -100,3 +100,37 @@ a#title-css:link, a#title-css:visited{
 a#title-css:hover, a#title-css:active{
 	color:#86b8c4;
 }
+
+/* 검색창 */
+
+.btn-style-cancel{
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding: 5px 10px;
+	background:	#d1d1d1;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
+
+
+form.search-form{
+	width:100%;
+	text-align:center;
+	justify-content:center;
+}
+
+form.search-form ul{
+	width:300px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+
+form.search-form ul li{
+	margin: 0 0 9px 0;
+	padding:0;
+	display:inline;
+}
+

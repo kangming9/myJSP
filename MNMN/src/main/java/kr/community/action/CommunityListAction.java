@@ -17,17 +17,22 @@ public class CommunityListAction implements Action{
 		
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null)pageNum = "1";
+
+		String keyfield = request.getParameter("keyfield");
+		String keyword = request.getParameter("keyword");
+		
+		if(keyfield == null) keyfield = "";
+		if(keyword == null) keyword = "";
 		
 		CommunityDAO dao = CommunityDAO.getInstance();
-		int count = dao.getCommunityCount();
+		int count = dao.getCommunityCount(keyfield, keyword);
 		
 		//페이지 처리
-		//currentPage, count, rowCount, pageCount, url
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,20,10,"communityList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, Integer.parseInt(pageNum),count,20,10,"communityList.do");
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {
-			list = dao.getCommunityList(page.getStartCount(), page.getEndCount());
+			list = dao.getCommunityList(page.getStartCount(), page.getEndCount(), keyfield, keyword);
 		}
 		
 		request.setAttribute("count", count);

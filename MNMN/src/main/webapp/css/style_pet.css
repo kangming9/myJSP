@@ -92,6 +92,16 @@ form.search-form ul li{
 	display:inline;
 }
 
+#search-form-li{
+	margin:5px;
+	padding:0;
+	font-size:9pt;
+}
+
+.li-font{
+	font-size:10pt;	
+}
+
 /*Pet Detail*/
 
 .wrap-list{

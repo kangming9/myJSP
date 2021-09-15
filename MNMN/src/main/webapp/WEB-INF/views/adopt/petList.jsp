@@ -30,15 +30,16 @@
 	<div class="wrap-list">
 	<h2 class="title">기다리개</h2>
 	<div class="intro"><p>입양을 기다리는 친구들</p></div>
+	<!-- 검색창 시작 -->
 	<form class="search-form" id="search_form" action="petList.do" method="get" style="border:none;">
 		<ul class="align-center">
-			<li>
+			<li class="li-font">
 				<select name="keyfield">
 					<option value="1">이름</option>
 					<option value="2">종류</option>
 				</select>
 			</li>
-			<li>
+			<li id="search-form-li">
 				<input type="search" size="16" name="keyword" id="keyword">
 			</li>
 			<li>
@@ -46,11 +47,21 @@
 			</li>
 		</ul>
 	</form>
+	<!-- 검색창 끝 -->
+	<!-- 관리자의 동물 등록 버튼 시작 -->
 	<c:if test="${user_grade == 1}">
 	<div id="register-button">
 		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'"class="btn-style">
 	</div>
 	</c:if>
+	<!-- 관리자의 동물 등록 버튼 끝 -->
+	<!-- 등록된 입양 예정 동물이 없는 경우 -->
+	<c:if test="${count == 0}">
+	<div class="result-display">
+		모든 친구들이 가족을 만났어요!
+	</div>
+	</c:if>
+	<!-- 끝 -->
 	<!-- 등록된 입양 예정 동물이 없는 경우 -->
 	<c:if test="${count == 0}">
 	<div class="result-display">

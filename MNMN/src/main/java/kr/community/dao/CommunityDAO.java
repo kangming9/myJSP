@@ -42,18 +42,33 @@ public class CommunityDAO {
 		}
 	}
 	//총 레코드 수
-	public int getCommunityCount()throws Exception{
+	public int getCommunityCount(String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		String sub_sql = null;
 		int count = 0;
 		
 		try {
 			conn = DBUtil.getConnection();
+			if(keyword == null || "".equals(keyword)) {
 			sql = "select count(*) from community c join member m on c.com_member_num = m.member_num";
-			
 			pstmt = conn.prepareStatement(sql);
+			}else {
+				//검색글 갯수
+				if(keyfield.equals("1")) sub_sql = "c.com_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "m.member_id = ?";
+				else if(keyfield.equals("3")) sub_sql = "c.com_content LIKE ?";
+				
+				sql = "select count(*) from community c join member m on c.com_member_num = m.member_num where (" + sub_sql + ")";
+				pstmt = conn.prepareStatement(sql);
+				if(keyfield.equals("2")) {
+					pstmt.setString(1, keyword);
+				}else{
+					pstmt.setString(1, "%"+keyword+"%");
+				}	
+			}
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -69,20 +84,39 @@ public class CommunityDAO {
 	}
 	
 	//글 목록
-	public List<CommunityVO> getCommunityList(int start, int end)throws Exception{
+	public List<CommunityVO> getCommunityList(int start, int end, String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<CommunityVO> list = null;
 		String sql = null;
+		String sub_sql = null;
 		
 		try {
 			conn = DBUtil.getConnection();
+			
+			if(keyword == null || "".equals(keyword)) {
 			sql = "select * from (select a.*, rownum rnum from (select * from community c join member m on c.com_member_num = m.member_num order by c.com_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
+		}else {
+			if(keyfield.equals("1")) sub_sql = "c.com_title LIKE ?";
+			else if(keyfield.equals("2")) sub_sql = "m.member_id = ?";
+			else if(keyfield.equals("3")) sub_sql = "c.com_content LIKE ?";
+			sql = "select * from (select a.*, rownum rnum from (select * from community c join member m on c.com_member_num = m.member_num where ("+sub_sql+") order by c.com_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			if(keyfield.equals("2")) {
+				pstmt.setString(1, keyword);
+			}else {
+				pstmt.setString(1, "%"+keyword+"%");
+			}
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+		}
 			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<CommunityVO>();

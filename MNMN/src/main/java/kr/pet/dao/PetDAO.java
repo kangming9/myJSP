@@ -64,17 +64,30 @@ public class PetDAO {
 	}
 	
 	//ÃÑ ·¹ÄÚµå ¼ö
-	public int getPetCount() throws Exception {
+	public int getPetCount(String keyfield, String keyword) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		String sub_sql = null;
 		int count = 0;
 	
 		try {
 			conn = DBUtil.getConnection();
+
+			if(keyword == null || "".equals(keyword)) {
 			sql = "select count(*) from pet where pet_adopt=0";
 			pstmt = conn.prepareStatement(sql);
+			}else {
+				//°Ë»ö±Û °¹¼ö
+				if(keyfield.equals("1")) sub_sql = "pet_name LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "pet_type LIKE ?";
+				sql = "select count(*) from pet where pet_adopt=0 and " + sub_sql;
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+keyword+"%");
+			
+		}
+			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -110,20 +123,18 @@ public class PetDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
-		}else {
+		
+			}else {
+				
 			if(keyfield.equals("1")) sub_sql = "p.pet_name LIKE ?";
 			else if(keyfield.equals("2")) sub_sql = "p.pet_type LIKE ?";
-			sql = "select * from (select a.*, rownum rnum from (select * from pet p where " + sub_sql +" order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
+			
+			sql = "select * from (select a.*, rownum rnum from (select * from pet p where pet_adopt=0 and (" + sub_sql +") order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
 			pstmt = conn.prepareStatement(sql);
 			
-			if(keyfield.equals("2")) {
-				pstmt.setString(1, keyword);
-			}else {
-				pstmt.setString(1, "%"+keyword+"%");
-			}
+			pstmt.setString(1, "%"+keyword+"%");
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);
-			
 			
 			}
 			
