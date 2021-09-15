@@ -41,7 +41,7 @@
 		<input type="hidden" name="com_member_num" value="${user_num}">
 		<ul>
 			<li>
-				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
+				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 제목</label>
 				<input type="text" name="com_title" id="com_title" size="33" maxlength="50" value="${com.com_title}">
 			</li>
 			<li>
@@ -50,7 +50,7 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="게시글 수정" class="btn-style">
+			<input type="submit" value="수정" class="btn-style">
 			<input type="button" value="취소" onclick="location.href='communityList.do'" class="btn-style-cancel">
 		</div>
 	</form>
