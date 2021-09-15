@@ -8,6 +8,7 @@
 <title>동물 상세 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_pet.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 			$(document).ready(function(){
@@ -60,6 +61,9 @@
 	</div>
 	</div>
 	</div>
+		<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 	</div>
 </body>
 </html>

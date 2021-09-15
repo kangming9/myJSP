@@ -9,6 +9,7 @@
 <title>회원 탈퇴 완료</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_signup.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
@@ -19,6 +20,9 @@
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="home_btn">
 		</div>
 	</div>
+		<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div>
 </body>
 </html>

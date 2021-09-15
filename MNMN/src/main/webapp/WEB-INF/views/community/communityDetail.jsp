@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comdetail.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comReply.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -303,7 +305,7 @@
 	<!-- 댓글 목록 시작 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+		<input type="button" class="btn btn-secondary btn-sm" value="다음글 보기">
 	</div>
 	<div id="loading" style="display: none;">
 		<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
@@ -311,7 +313,6 @@
 	<!-- 댓글 목록 끝 -->
 	<!-- 댓글 시작 -->
 	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
 		<form id="re_form">
 			<input type="hidden" name="com_num" value="${com.com_num}" id="com_num">
 			<input type="hidden" name="com_member_num" value="${user_num}" id="user_num">
@@ -319,17 +320,20 @@
 			   <c:if test="${empty user_num}">disabled="disabled"</c:if>
 			><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user_num}">
+			<div id="re_second" class="align-right">
+				<input type="submit" class="btn btn-danger btn-sm" value="전송">
+			</div>
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
 			</div>	
-			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
-			</div>
 			</c:if>
 		</form>
 	</div>
 	<!-- 댓글 끝 -->
 </div>
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div><!-- 같은 배경 안하실 거면 이걸 댓글 시작 전으로 옮겨주세요 -->
 </body>
 </html>

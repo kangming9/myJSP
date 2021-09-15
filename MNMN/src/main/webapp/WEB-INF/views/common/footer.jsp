@@ -4,7 +4,7 @@
 
 
 <footer class="site-footer">
-      <div class="container">
+      <div class="fcontainer">
        <h6 id="fabout">About</h6>
         <div>
             <p class="text-justify">｜ 서울시 마포구 어딘가 가나다로 12 ｜<br>

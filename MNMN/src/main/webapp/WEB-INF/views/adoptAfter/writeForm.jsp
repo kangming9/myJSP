@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -56,6 +57,9 @@
 			<input type="button" value="목록" onclick="location.href='list.do'" class="btn btn-outline-dark">
 		</div>
 	</form>
+		<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div>
 <p>
 </body>

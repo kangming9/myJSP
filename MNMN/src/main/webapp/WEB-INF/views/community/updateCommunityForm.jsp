@@ -7,6 +7,7 @@
 <title>게시글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_com_write_modify.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -40,7 +41,7 @@
 		<input type="hidden" name="com_member_num" value="${user_num}">
 		<ul>
 			<li>
-				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
+				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 제목</label>
 				<input type="text" name="com_title" id="com_title" size="33" maxlength="50" value="${com.com_title}">
 			</li>
 			<li>
@@ -49,12 +50,15 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="게시글 수정" class="btn-style">
+			<input type="submit" value="수정" class="btn-style">
 			<input type="button" value="취소" onclick="location.href='communityList.do'" class="btn-style-cancel">
 		</div>
 	</form>
 	</div>
 </div>
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div>
 </body>
 </html>

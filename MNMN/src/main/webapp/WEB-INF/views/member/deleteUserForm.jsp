@@ -7,6 +7,7 @@
 <title>회원 탈퇴</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_mypage.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -81,6 +82,9 @@
 		</div>
 	</form>
 	</div>
+		<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div>
 </body>
 </html>
