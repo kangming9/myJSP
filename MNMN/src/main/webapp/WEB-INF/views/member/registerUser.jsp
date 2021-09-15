@@ -12,10 +12,8 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="result-display">
-		<div class="align-center">
-			<div>회원가입이 완료되었습니다.</div>
-		</div>
-		<div class="align-center">
+		<div class="result-content">
+			<div>회원가입이 완료되었습니다.<br></div>
 			<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="home_btn">
 		</div>
 	</div>
