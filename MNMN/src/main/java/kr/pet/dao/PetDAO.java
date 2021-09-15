@@ -93,20 +93,40 @@ public class PetDAO {
 
 	
 	//Æê ¸ñ·Ï
-	public List<PetVO> getListPet(int start, int end)throws Exception {
+	public List<PetVO> getListPet(int start, int end, String keyfield, String keyword)throws Exception {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
 		List<PetVO> list = null;
+		String sub_sql = null;
 		
 		try {
 			conn = DBUtil.getConnection();
+			if(keyword == null || "".equals(keyword)) {
 			sql = "select * from (select a.*, rownum rnum from (select * from pet p where pet_adopt=0 order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
+		}else {
+			if(keyfield.equals("1")) sub_sql = "p.pet_name LIKE ?";
+			else if(keyfield.equals("2")) sub_sql = "p.pet_type LIKE ?";
+			sql = "select * from (select a.*, rownum rnum from (select * from pet p where " + sub_sql +" order by p.pet_num desc)a) where rnum >= ? and rnum <=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			if(keyfield.equals("2")) {
+				pstmt.setString(1, keyword);
+			}else {
+				pstmt.setString(1, "%"+keyword+"%");
+			}
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			
+			}
+			
 			rs = pstmt.executeQuery();
 			
 			list = new ArrayList<PetVO>();
