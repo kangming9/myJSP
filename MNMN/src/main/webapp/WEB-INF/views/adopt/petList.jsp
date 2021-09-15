@@ -14,8 +14,7 @@
 <body>		
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	
-	<div class="wrap">
+	<div class="wrap-list">
 	<h2 class="title">입양 동물 리스트</h2>
 	<c:if test="${user_grade == 1}">
 	<div id="register-button">

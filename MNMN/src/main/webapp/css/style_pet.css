@@ -71,6 +71,13 @@
 
 /*Pet Detail*/
 
+.wrap-list{
+	padding-top:20px;
+	padding-bottom:50px;
+ 	width: 100%;
+	background:#E8F0F2;
+}
+
 .wrap {
 	padding-bottom:50px;
  	width: 100%;
