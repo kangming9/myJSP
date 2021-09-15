@@ -21,6 +21,11 @@
 				$('#content').val('').focus();
 				return false;
 			}
+			if($('#title').val().length > 20){
+				alert("제목의 길이가 너무 깁니다!");
+				$('#title').val('').focus();
+				return false;
+			}
 		});
 	});
 </script>
