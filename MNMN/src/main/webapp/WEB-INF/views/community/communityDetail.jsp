@@ -330,6 +330,9 @@
 	</div>
 	<!-- 댓글 끝 -->
 </div>
+	<!-- footer 시작 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<!-- footer 끝 -->
 </div><!-- 같은 배경 안하실 거면 이걸 댓글 시작 전으로 옮겨주세요 -->
 </body>
 </html>
