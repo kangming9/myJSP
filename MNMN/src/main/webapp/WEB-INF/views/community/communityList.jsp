@@ -29,7 +29,7 @@
 		</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table>
+		<table id="tb">
 			<tr>
 				<th class="th">글번호</th>
 				<th class="th">제목</th>
@@ -38,9 +38,9 @@
 				<th class="th">조회</th>
 			</tr>
 			<c:forEach var="com" items="${list}">
-			<tr>
+			<tr id="tbtr">
 				<td class="td" id="num">${com.com_num}</td>
-				<td class="td" id="tit"><a id="title-css" href="communityDetail.do?com_num=${com.com_num}">${com.com_title}</a></td>
+				<td class="td" id="tit"><a id="title-css" href="communityDetail.do?com_num=${com.com_num}">${com.com_title}</a> (${com.com_reply_cnt})</td>
 				<td class="td" id="member">${com.com_member_id }</td>
 				<td class="td" id="date">${com.com_date}</td>
 				<td class="td" id="see">${com.com_hit}</td>

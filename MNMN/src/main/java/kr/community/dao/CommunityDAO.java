@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.community.vo.CommunityVO;
+import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 
 public class CommunityDAO {
@@ -88,9 +89,13 @@ public class CommunityDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<CommunityVO> list = null;
+		List<CommunityVO> list = new ArrayList<CommunityVO>();;
+		List<Integer> numlist = new ArrayList<Integer>();
 		String sql = null;
 		String sub_sql = null;
+		int count = 0;
+		
+		CommunityVO com = new CommunityVO();
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -119,9 +124,8 @@ public class CommunityDAO {
 		}
 			
 			rs = pstmt.executeQuery();
-			list = new ArrayList<CommunityVO>();
+			
 			while(rs.next()) {
-				CommunityVO com = new CommunityVO();
 				com.setCom_num(rs.getInt("com_num"));
 				com.setCom_title(rs.getString("com_title"));
 				com.setCom_member_num(rs.getInt("com_member_num"));
@@ -131,12 +135,20 @@ public class CommunityDAO {
 				com.setCom_hit(rs.getInt("com_hit"));
 				
 				list.add(com);
+				System.out.println("DB°ª : " + com.getCom_num());
+				numlist.add(count, com.getCom_num());
+				count++;
 			}
 			
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
 			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		
+		for(int i = 0; i < numlist.size(); i++) {
+			list.get(i).setCom_num(numlist.get(i));
+			list.get(i).setCom_reply_cnt(getReplyCount(numlist.get(i)));
 		}
 		return list;
 	}
@@ -242,4 +254,37 @@ public class CommunityDAO {
 	}
 	
 	}
+	
+	//´ñ±Û ¼ö
+		public int getReplyCount(int com_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			int count = 0;
+			
+			try {
+				conn = DBUtil.getConnection();
+
+				sql = "SELECT count(*) as count\r\n"
+						+ "FROM community\r\n"
+						+ "INNER JOIN community_reply\r\n"
+						+ "    ON community.com_num = community_reply.com_num\r\n"
+						+ "WHERE community.com_num = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, com_num);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return count;
+		}
 }
