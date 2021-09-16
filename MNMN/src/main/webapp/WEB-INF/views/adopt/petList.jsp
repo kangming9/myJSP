@@ -28,11 +28,18 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="wrap-list">
-	<h2 class="title">기다리개</h2>
+	<h2 class="title-list">기다리개</h2>
 	<div class="intro"><p>입양을 기다리는 친구들</p></div>
+	<!-- 관리자의 동물 등록 버튼 시작 -->
+	<c:if test="${user_grade == 1}">
+	<div id="register-button">
+		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'"class="btn-style">
+	</div>
+	</c:if>
+	<!-- 관리자의 동물 등록 버튼 끝 -->
 	<!-- 검색창 시작 -->
 	<form class="search-form" id="search_form" action="petList.do" method="get" style="border:none;">
-		<ul class="align-center">
+		<ul class="align-right">
 			<li class="li-font">
 				<select name="keyfield">
 					<option value="1">이름</option>
@@ -48,13 +55,6 @@
 		</ul>
 	</form>
 	<!-- 검색창 끝 -->
-	<!-- 관리자의 동물 등록 버튼 시작 -->
-	<c:if test="${user_grade == 1}">
-	<div id="register-button">
-		<input type="button" value="동물 등록" onclick="location.href='registerPetForm.do'"class="btn-style">
-	</div>
-	</c:if>
-	<!-- 관리자의 동물 등록 버튼 끝 -->
 	<!-- 등록된 입양 예정 동물이 없는 경우 -->
 	<c:if test="${count == 0}">
 	<div class="result-display">

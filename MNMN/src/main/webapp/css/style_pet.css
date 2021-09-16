@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 공통 */
 
 .btn-style{
 	font-size:11pt;
@@ -32,13 +33,24 @@
 	border-radius:15%;
 }
 
-/*PetList*/
 
  h2.title {
  	text-align:center;
  	font-size:20pt;
     margin: 20px;
     padding: 20px 0 0 0;
+  }
+
+/*PetList*/
+
+  
+  h2.title-list{
+ 	text-align:center;
+ 	font-size:20pt;
+    margin : 20px 300px;
+	padding: 5px 20px;
+  	background-color:#A2DBFA;
+    color:white;
   }
   
 div.intro p{
@@ -75,15 +87,14 @@ div.intro p{
 
 form.search-form{
 	width:100%;
-	text-align:center;
-	justify-content:center;
 }
 
 form.search-form ul{
-	width:300px;
+	width:100%;
 	list-style:none;
 	padding:0;
 	margin:0 auto;
+	text-align:right;
 }
 
 form.search-form ul li{
