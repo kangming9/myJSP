@@ -68,7 +68,7 @@
 			<ul>
 				<li><span class="info-title">아이디</span><span class="info-content">${adopt.adopt_member_id}</span></li>	
 				<li><span class="info-title">이름</span><span class="info-content">${adopt.adopt_member_name}</span></li>
-				<li><span class="info-title">주소</span><input type="text" name="adopt_house" id="adopt_house"></li>
+				<li><span class="info-title">주소</span><input type="text" name="adopt_house" id="adopt_house" class="input-text"></li>
 				<li><span class="info-title">결혼 여부</span> 	
 					<input type="radio" name="checkboxVal" id="checkMarried1" value="0" checked>미혼
 					<input type="radio" name="checkboxVal" id="checkMarried2" value="1">결혼 예정
@@ -79,7 +79,7 @@
 		<hr size="1" noshade width="100%">
 		<div class="form-content">
 			<span><i class="fas fa-marker fa-2x"></i></span>
-			<textarea rows="10" cols="30" placeholder="${adopt.adopt_pet_name}의 가족이 될 분을 소개를 해 주세요!" name="adopt_intro" id="adopt_intro" style="width:'70%';"></textarea>
+			<textarea rows="10" cols="30" placeholder="${adopt.adopt_pet_name}의 가족이 될 분을 소개를 해 주세요!" name="adopt_intro" id="adopt_intro" class="text-text"></textarea>
 		</div>
 		<hr size="1" noshade width="100%">
 		<p>

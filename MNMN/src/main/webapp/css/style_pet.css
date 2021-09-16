@@ -1,7 +1,21 @@
 @charset "UTF-8";
 /* 공통 */
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .btn-style{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
 	margin-left:5px;
@@ -13,6 +27,7 @@
 }
 
 .btn-style-cancel{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
 	margin-left:5px;
@@ -24,6 +39,7 @@
 }
 
 .btn-style-modify{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:10pt;
 	font-weight:bold;
 	padding: 5px 10px;
@@ -35,6 +51,7 @@
 
 
  h2.title {
+ 	font-family: 'NEXON Lv1 Gothic OTF Bold';
  	text-align:center;
  	font-size:20pt;
     margin: 20px;
@@ -45,6 +62,7 @@
 
   
   h2.title-list{
+  	font-family: 'NEXON Lv1 Gothic OTF Bold';
  	text-align:center;
  	font-size:20pt;
     margin : 20px 300px;
@@ -54,15 +72,18 @@
   }
   
 div.intro p{
+	font-family: 'WONTitle';
 	width:100%;
 	text-align:center;
 }
 
 #container{
+	font-family: 'WONTitle';
 	padding:10px;
 }
 
 .card{
+	font-family: 'WONTitle';
 	padding:10px;
 	text-align:center;
 }
@@ -98,6 +119,7 @@ form.search-form ul{
 }
 
 form.search-form ul li{
+	font-family: 'WONTitle';
 	margin: 0 0 9px 0;
 	padding:0;
 	display:inline;
@@ -123,6 +145,7 @@ form.search-form ul li{
 }
 
 .wrap {
+	font-family: 'WONTitle';
 	padding-bottom:50px;
  	width: 100%;
   	height: auto;
@@ -161,6 +184,7 @@ form.search-form ul li{
 }
 
 .detail-title {
+  	font-family: 'NEXON Lv1 Gothic OTF Bold';
   text-align: top;
   font-size: 20px;
 }

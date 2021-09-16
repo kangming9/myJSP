@@ -53,14 +53,14 @@
 	<!-- 검색창 시작 -->
 	<form class="search-form" id="search_form" action="communityList.do" method="get" style="border:none;">
 		<ul class="align-center">
-			<li>
+			<li class="li-font">
 				<select name="keyfield">
 					<option value="1">제목</option>
 					<option value="2">글쓴이</option>
 					<option value="3">내용</option>
 				</select>
 			</li>
-			<li>
+			<li id="search-form-li">
 				<input type="search" size="16" name="keyword" id="keyword">
 			</li>
 			<li>

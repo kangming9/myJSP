@@ -9,8 +9,8 @@
 }
 
 @font-face {
-    font-family: 'NEXON Lv2 Gothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -44,7 +44,7 @@
 /*count = 0*/
 
 .result-display{
-	font-family: 'NEXON Lv1 Gothic OTF Bold';
+    font-family: 'WONTitle';
 	color : white;
 	border-radius : 5px;
 	border : 1px solid #A2DBFA;
@@ -65,14 +65,14 @@ table{
 	border-radius: 5px;
 	border-style : none;
 	background-color : #A2DBFA;
-	font-family: 'NEXON Lv2 Gothic';
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
 }
 
 .td{
+    font-family: 'WONTitle';
 	border-radius: 5px;
 	border-style : none;
 	background-color : #c8dee3;
-	font-family: 'NEXON Lv2 Gothic';
 	text-align: center;
 	color : #787878;
 }
@@ -104,6 +104,7 @@ a#title-css:hover, a#title-css:active{
 /* 검색창 */
 
 .btn-style-cancel{
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
 	margin-left:5px;
@@ -116,12 +117,14 @@ a#title-css:hover, a#title-css:active{
 
 
 form.search-form{
+    font-family: 'WONTitle';
 	width:100%;
 	text-align:center;
 	justify-content:center;
 }
 
 form.search-form ul{
+    font-family: 'WONTitle';
 	width:300px;
 	list-style:none;
 	padding:0;
@@ -129,8 +132,23 @@ form.search-form ul{
 }
 
 form.search-form ul li{
+    font-family: 'WONTitle';
 	margin: 0 0 9px 0;
 	padding:0;
 	display:inline;
 }
+#search-form-li{
+    font-family: 'WONTitle';
+	margin:5px;
+	padding:0;
+	font-size:9pt;
+}
 
+.li-font{
+    font-family: 'WONTitle';
+	font-size:10pt;	
+}
+
+input{
+    font-family: 'WONTitle';
+}
