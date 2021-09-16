@@ -56,10 +56,12 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="page-container">
+	<span class="page-name">회원 탈퇴</span>
 	<div class="modify-container">
 	<form action="deleteUser.do" method="post" id="delete_form" class="modify-form">
 		<div class="info-content">
-		<h3>회원 탈퇴</h3>
+		<h3>탈퇴 확인 </h3>
 		<ul>
 			<li>
 				<label for="id"><i class="fas fa-paw"></i> 아이디</label>
@@ -81,6 +83,7 @@
 		</div>
 		</div>
 	</form>
+	</div>
 	</div>
 		<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
