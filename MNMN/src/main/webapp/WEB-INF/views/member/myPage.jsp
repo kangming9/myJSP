@@ -274,6 +274,9 @@
 					<li>
 						<input type="button" value="봉사 관리" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'" class="check_btn">
 					</li>
+					<li>
+						<input type="button" value="후원 관리" onclick="location.href='${pageContext.request.contextPath}/donation/listDonation.do'" class="check_btn">
+					</li>
 				</ul>
 			</div>
 			</c:if>

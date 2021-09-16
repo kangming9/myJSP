@@ -11,7 +11,7 @@ public class DonationVO {
 	private int tel_rec;
 	private String mail;
 	private int mail_rec;
-	private int roution;
+	private int routine;
 	private int money;
 	private String bank;
 	private String account;
@@ -65,11 +65,11 @@ public class DonationVO {
 	public void setMail_rec(int mail_rec) {
 		this.mail_rec = mail_rec;
 	}
-	public int getRoution() {
-		return roution;
+	public int getRoutine() {
+		return routine;
 	}
-	public void setRoution(int roution) {
-		this.roution = roution;
+	public void setRoution(int routine) {
+		this.routine = routine;
 	}
 	public int getMoney() {
 		return money;
