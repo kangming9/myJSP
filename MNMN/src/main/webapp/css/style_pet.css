@@ -61,7 +61,7 @@
 /*PetList*/
 
 .wrap-list{
-	padding:100px 50px;
+	padding:100px 0;
 	padding-bottom:50px;
  	width: 100%;
 	background:#E8F0F2;
@@ -72,6 +72,7 @@ span#title-list{
   	margin : 20px 0px;
  	text-align:center;
  	padding: 5px 20px;
+ 	margin-left:50px;
  	font-size:20pt;
   	background-color:#A2DBFA;
     color:white;
@@ -81,6 +82,7 @@ div.intro p{
 	font-family: 'WONTitle';
 	width:100%;
 	padding-top:20px;
+	margin-left:50px;
 }
 
 #container{
