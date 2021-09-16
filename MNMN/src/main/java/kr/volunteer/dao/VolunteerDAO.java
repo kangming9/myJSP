@@ -95,7 +95,40 @@ private static VolunteerDAO instance = new VolunteerDAO();
 			executeClose(null, pstmt, conn);
 		}
 	}
-	
+	public int[] countDateVolunteer(String date) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int day[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		
+		try {
+			//커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			for(int i = 0; i < day.length; i++) {
+				sql = "SELECT count(*) as count FROM volunteer WHERE to_char(vol_date, 'YY/MM/DD') = ? and vol_time = ?";
+				
+				//PreparedStatement 객체 생성
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, date);
+				pstmt.setInt(2, (i + 9));
+				
+				//SQL문을 실행해서 결과행을 ResultSet에 담음
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					day[i] = rs.getInt("count");
+				}
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return day;
+	}
 	public int checkDateVolunteer(String date)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;

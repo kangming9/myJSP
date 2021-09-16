@@ -34,20 +34,73 @@ $(function(){
 			}else{
 
 				var v=e[c].day;
-				var m=g(new Date(t,n-1,v))?'<div class="today">':"<div>";
+				var m=g(new Date(t,n-1,v))?'<div id="today">':"<div class='day'>";
 				
 				var str = m+""+v + " (<strong>";
 				var newstr = Voldata(str);
-				console.log(newstr);
-				
 			}
 		}
 		
 		a.find("h1").text(i[n-1]+" "+t);
 		
-		d()
+		d();
+		
+		addClick();
 	}
 	
+	function addClick(){
+		var days = document.getElementsByClassName('day');
+		for(var i = 0; i < days.length; i++)
+			days[i].addEventListener('click',function(){
+				var clickday = this.innerHTML;
+				var theday = clickday.substring(0, clickday.indexOf("("));
+				
+				theday = theday.slice(0, -1);
+				
+				if(theday < 10) theday = '0' + theday;
+				
+				var themonth = n;
+				if(n < 10) themonth = '0' + themonth;
+				
+				var theyear = (t+"").substring(2, 5);
+				
+				clickday = theyear + "/" + themonth + "/" + theday;
+				console.log(clickday);
+				
+				
+				$.ajax({
+					url:"CountDateVolunteer.do",
+					type:"post",
+					data:{"date":clickday},
+					dataType:"json",
+					async:false,
+					cache:false,
+					timeout:30000,
+					success:function(param){
+						if(param.result){
+							console.log(param.result);
+							alert("09시 : " + (param.result).toString().charAt(0)
+								+ "\n10시 : " + (param.result).toString().charAt(1)
+								+ "\n11시 : " + (param.result).toString().charAt(2)
+								+ "\n12시 : " + (param.result).toString().charAt(3)
+								+ "\n13시 : " + (param.result).toString().charAt(4)
+								+ "\n14시 : " + (param.result).toString().charAt(5)
+								+ "\n15시 : " + (param.result).toString().charAt(6)
+								+ "\n16시 : " + (param.result).toString().charAt(7)
+								+ "\n17시 : " + (param.result).toString().charAt(8)
+								+ "\n18시 : " + (param.result).toString().charAt(9));
+						}else{
+							alert("오류 발생");
+						}
+					},
+					error:function(){
+						alert("네트워크 오류 발생");
+					}
+					
+				});
+				
+			});
+	}
 	
 	function Voldata(str){ 
 		
@@ -130,7 +183,7 @@ $(function(){
 	
 	var datecheck = "1999/01/01";
 	var e=480;
-	var t=2013;
+	var t=2021;
 	var n=9;
 	var r=[];
 	var i=["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"];
@@ -163,7 +216,8 @@ $(function(){
 														};
 														r("next")
 									})
-	})
+	});
+
 </script>
 </head>
 <body>
@@ -194,11 +248,6 @@ $(function(){
 		<div style="text-align: center;">
 		<span style="text-align: center; color:#39A2DB;">봉사자 현황을 보시고 부족한 날짜에 신청해주시면 큰 도움이 됩니다! 고맙습니다:D</span>
 		</div>
-	</div>
-	
-	<div class="align-center">
-		<input type="button" value="홈으로" id="button_home"
-			        onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</div>
 </div>
 	<!-- footer 시작 -->
