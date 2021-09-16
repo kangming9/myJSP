@@ -43,7 +43,7 @@
 			<span class="detail-description-text">등록일자 : ${pet.pet_date}</span>
 				</div>
 				<div class="detail-content">
-					${pet.pet_detail}
+					${pet.pet_detail} 
 				</div>
 			</div>
 			<div class="buttons">
