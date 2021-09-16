@@ -60,13 +60,19 @@
 
 /*PetList*/
 
+.wrap-list{
+	padding:100px 50px;
+	padding-bottom:50px;
+ 	width: 100%;
+	background:#E8F0F2;
+}
   
-  h2.title-list{
+span#title-list{
   	font-family: 'NEXON Lv1 Gothic OTF Bold';
+  	margin : 20px 0px;
  	text-align:center;
+ 	padding: 5px 20px;
  	font-size:20pt;
-    margin : 20px 300px;
-	padding: 5px 20px;
   	background-color:#A2DBFA;
     color:white;
   }
@@ -74,12 +80,13 @@
 div.intro p{
 	font-family: 'WONTitle';
 	width:100%;
-	text-align:center;
+	padding-top:20px;
 }
 
 #container{
 	font-family: 'WONTitle';
-	padding:10px;
+	background-color:#E8F0F2;
+	padding: 10px;
 }
 
 .card{
@@ -136,13 +143,6 @@ form.search-form ul li{
 }
 
 /*Pet Detail*/
-
-.wrap-list{
-	padding-top:20px;
-	padding-bottom:50px;
- 	width: 100%;
-	background:#E8F0F2;
-}
 
 .wrap {
 	font-family: 'WONTitle';
