@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.util.PagingUtil;
@@ -15,25 +16,42 @@ public class ListVolunteerAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum==null)pageNum = "1";
+		HttpSession session = request.getSession();
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num == null) {
+			return "redirect:/member/loginForm.do";
+		}
 		
-		VolunteerDAO dao = VolunteerDAO.getInstance();
-		int count = dao.getVolunteerCount();
+		Integer user_grade = (Integer)session.getAttribute("user_grade");
+		boolean check= false;
 		
-		//페이지 처리
-		//currentPage, count, rowCount, pageCount, url
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,20,10,"listVolunteer.do");
-		
-		List<VolunteerVO> list = null;
-		if(count > 0) {
-			list = dao.getListVolunteer(page.getStartCount(), page.getEndCount());
+		if(user_grade == 1) {
+			check = true;
+			
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum==null)pageNum = "1";
+			
+			String keyfield = request.getParameter("keyfield");
+			if(keyfield == null) keyfield = "";
+			
+			VolunteerDAO dao = VolunteerDAO.getInstance();
+			int count = dao.getVolunteerCount(keyfield);
+			
+			PagingUtil page = new PagingUtil(keyfield, "", Integer.parseInt(pageNum),count,10,10,"listVolunteer.do");
+			
+			List<VolunteerVO> list = null;
+			if(count > 0) {
+				list = dao.getListVolunteer(page.getStartCount(), page.getEndCount(), keyfield);
+				
+			}
+			
+			request.setAttribute("count", count);
+			request.setAttribute("list", list);
+			request.setAttribute("pagingHtml", page.getPagingHtml());
 			
 		}
 		
-		request.setAttribute("count", count);
-		request.setAttribute("list", list);
-		request.setAttribute("pagingHtml", page.getPagingHtml());
+		request.setAttribute("check", check);
 		
 		return "/WEB-INF/views/volunteer/listVolunteer.jsp";
 	}

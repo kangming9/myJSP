@@ -270,19 +270,31 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		return Requested;
 	}
 	
-	//신규 봉사 신청 개수
-	public int getVolunteerCount() throws Exception {
+	//봉사 신청 개수
+	public int getVolunteerCount(String keyfield) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		String sub_sql = null;
 		int count = 0;
 			
 		try {
 			conn = DBUtil.getConnection();
+			
+			if(keyfield == null || "".equals(keyfield)) {
+				sql = "SELECT COUNT(*) FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num";
+				pstmt = conn.prepareStatement(sql);
+			}else {
+				if(keyfield.equals("1")) sub_sql = "vol_checked=0";
+				else if(keyfield.equals("2")) sub_sql = "vol_checked=1";
+				else if(keyfield.equals("3")) sub_sql = "vol_checked=2";
 				
-			sql = "SELECT COUNT(*) FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num WHERE vol_checked=0";
-				
+				sql = "SELECT COUNT(*) FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num "
+					+ "WHERE " + sub_sql;
+				pstmt = conn.prepareStatement(sql);
+			}
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -298,24 +310,38 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		return count;
 	}
 		
-	//신규 봉사 신청 목록
-	public List<VolunteerVO> getListVolunteer(int start, int end) throws Exception{
+	//봉사 신청 목록
+	public List<VolunteerVO> getListVolunteer(int start, int end, String keyfield) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<VolunteerVO> list = null;
 		String sql = null;
+		String sub_sql = null;
 			
 		try {
 			conn = DBUtil.getConnection();
+			
+			if(keyfield == null || "".equals(keyfield)) {
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ "(SELECT * FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num "
+						+ "ORDER BY v.vol_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
 				
-			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-				+ "(SELECT * FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num "
-				+ "WHERE vol_checked=0 ORDER BY v.vol_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			}else {
+				if(keyfield.equals("1")) sub_sql = "vol_checked=0";
+				else if(keyfield.equals("2")) sub_sql = "vol_checked=1";
+				else if(keyfield.equals("3")) sub_sql = "vol_checked=2";
 				
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ "(SELECT * FROM volunteer v JOIN member m ON v.vol_member_num = m.member_num "
+						+ "WHERE "+sub_sql+" ORDER BY v.vol_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+			}
 				
 			rs = pstmt.executeQuery();
 			list = new ArrayList<VolunteerVO>();
@@ -374,9 +400,10 @@ private static VolunteerDAO instance = new VolunteerDAO();
 		try {
 			conn = DBUtil.getConnection();
 				
-			sql = "DELETE volunteer WHERE vol_num=?";
+			sql = "UPDATE volunteer SET vol_checked=? WHERE vol_num=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vol_num);
+			pstmt.setInt(1, 2);
+			pstmt.setInt(2, vol_num);
 				
 			pstmt.executeUpdate();
 			
