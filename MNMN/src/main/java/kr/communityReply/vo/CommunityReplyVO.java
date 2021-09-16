@@ -9,7 +9,14 @@ public class CommunityReplyVO {
 	private int com_num;
 	private int member_num;
 	private String member_id;
+	private int rrr;
 	
+	public int getRrr() {
+		return rrr;
+	}
+	public void setRrr(int rrr) {
+		this.rrr = rrr;
+	}
 	public int getRe_num() {
 		return re_num;
 	}

@@ -1,37 +1,79 @@
 @charset "UTF-8";
-html,
-body {
-	margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+
+/*font-face*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-      
-h3{
-	text-align: center;	
-	color: #ffffff;
-	margin:30px 0px 30px 0px;
+
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.page-main{
+	font-family : 'NEXON Lv1 Gothic OTF Bold';
+	background-color: #f4f7f7;
+}
+
+.page-container{
+	font-family: 'WONTitle';
+	padding: 100px 50px;
+	overflow:hidden;
+	height:auto;
+	background-image: url('https://images.unsplash.com/photo-1560743641-3914f2c45636?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.page-name{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+  	margin : 20px 0px;
+  	padding: 5px 20px;
+  	background-color:#A2DBFA;
+  	text-align: center;
+  	font-size: 20px;
+  	color: white;
+}
+
+.form-container{
+	padding: 50px 20px;
 }
 
 input:focus {
 	outline:none;
 }
 
-.page-main{
-	height:100%;
+input{
+	font-family: 'WONTitle';
 }
 
-.login-container{
-	height:100%;
-	background-image: url('https://images.unsplash.com/photo-1560743641-3914f2c45636?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGRvZ3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
-    background-repeat: no-repeat;	
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
+input[type=password]{
+	font-family: sans-serif;
 }
 
-.login-container form{
-	width: 50%;
+h3{
+	text-align: center;	
+	color: #ffffff;
+	margin:30px 0px 30px 0px;
+}
+
+.logo{
+	text-align: center;
+}
+
+label{
+	color: #ffffff;
+}
+
+.form-container form{
+	width: 60%;
 	height: 65%;
 	border: 0px;
 	padding: 5px;

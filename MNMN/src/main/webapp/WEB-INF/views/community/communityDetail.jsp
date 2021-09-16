@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>글상세</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comdetail.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_comReply.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -42,6 +42,7 @@
 					
 					$(param.list).each(function(index,item){
 						var output = '<div class="item" id="replyList">';
+						output += '<span>' + count + '</span>';
 						output += '<span id="repltListId">' + item.member_id + '</span>';
 						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';
