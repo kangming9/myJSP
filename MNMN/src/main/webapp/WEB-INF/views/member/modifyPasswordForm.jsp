@@ -64,7 +64,8 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="modify-page">
+	<div class="page-container">
+	<span class="page-name">회원 정보 수정</span>
 	<div class="modify-container">
 		<form action="modifyPassword.do" method="post" id="password_form" class="modify-form">
 		<div class="info-content">
