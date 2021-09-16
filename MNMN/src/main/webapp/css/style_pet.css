@@ -59,7 +59,15 @@
   }
 
 /*PetList*/
-
+/* 입양 동물 없을 때 */
+.result-display {
+    font-family: 'WONTitle';
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #A2DBFA;
+    background-color: #A2DBFA;
+}
+/* 입양 동물 있을 때 */
 .wrap-list{
 	padding:100px 0;
 	padding-bottom:50px;
