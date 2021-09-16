@@ -42,6 +42,7 @@
 					
 					$(param.list).each(function(index,item){
 						var output = '<div class="item" id="replyList">';
+						output += '<span>' + count + '</span>';
 						output += '<span id="repltListId">' + item.member_id + '</span>';
 						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';
