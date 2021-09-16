@@ -13,7 +13,8 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>신규 입양 신청자</h2>
+	<div class="page-container">
+	<span class="page-name">신규 입양 신청자</span>
 	<div class="list-space align-right">
 		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="home_btn">
 	</div>
@@ -49,7 +50,8 @@
 		${pagingHtml}
 	</div>
 	</c:if>
-		<!-- footer 시작 -->
+	</div>
+	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<!-- footer 끝 -->
 </div>
