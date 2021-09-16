@@ -220,6 +220,7 @@ form.search-form ul li{
 
 /* register, updatePet */
 .form-css{
+    font-family: 'WONTitle';
 	padding-top:20px;
 	padding-bottom:40px;
 	border:none;
@@ -251,7 +252,16 @@ form.search-form ul li{
 .form-content label#detail{
 	margin: 25px 10px;
 	text-align:center;
-	
+		
+}
+
+.text-li{
+    font-family: 'WONTitle';
+}
+
+.text-text{
+	resize:none;
+    font-family: 'WONTitle';
 }
 
 #photo-modify-label{

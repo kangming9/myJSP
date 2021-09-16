@@ -1,6 +1,19 @@
 @charset "UTF-8";
 /*writeCommunity, updateCommunity*/
-/* 전체 디자인 */
+/*font*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .container{
 	background:#E8F0F2;
 	padding:50px;
@@ -24,6 +37,7 @@
 }
 
 h2.title{
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
 	margin-top:20px;
 	text-align:center;
  	font-size:20pt;
@@ -34,6 +48,7 @@ ul{
 }
 
 li{
+    font-family: 'WONTitle';
 	width:80%;
 	margin:15px 20px 20px 40px;
 	padding:15px 0px;
@@ -56,11 +71,13 @@ label.label-detail{
 }
 
 li input[type=text]{
+    font-family: 'WONTitle';
 	border:none;
 	padding:5px;
 }
 
 textarea{
+    font-family: 'WONTitle';
 	border:none;
 	resize:none;
 }
@@ -68,6 +85,7 @@ textarea{
 
 /* 버튼 */
 .btn-style{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
 	margin-left:5px;
@@ -79,6 +97,7 @@ textarea{
 }
 
 .btn-style-cancel{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
 	margin-left:5px;
