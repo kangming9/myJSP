@@ -95,7 +95,6 @@ public class CommunityDAO {
 		String sub_sql = null;
 		
 		CommunityVO com = new CommunityVO();
-		CommunityVO cv = new CommunityVO();
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -144,43 +143,7 @@ public class CommunityDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		
-		List<CommunityVO> newlist = new ArrayList<CommunityVO>();
-		
-		for(int i = 0; i < numlist.size(); i++) {	
-			try {
-				conn = DBUtil.getConnection();
-
-				sql = "SELECT com_num, com_title, com_member_num, com_content, com_date, com_hit\r\n"
-						+ "FROM community\r\n"
-						+ "WHERE community.com_num = ?";
-				
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, numlist.get(i));
-				
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					cv.setCom_num(rs.getInt(1));
-					cv.setCom_title(rs.getString(2));
-					cv.setCom_member_num(rs.getInt(3));
-					cv.setCom_content(rs.getString(4));
-					cv.setCom_date(rs.getDate(5));
-					cv.setCom_hit(rs.getInt(6));
-				}
-			}catch(Exception e) {
-				throw new Exception(e);
-			}finally {
-				DBUtil.executeClose(rs, pstmt, conn);
-			}
-
-			cv.setCom_reply_cnt(getReplyCount(numlist.get(i)));
-			
-			newlist.add(cv);
-			System.out.println(newlist.get(i).getCom_num());
-		}
-		System.out.println(newlist.get(0).getCom_num());
-		System.out.println(newlist.get(19).getCom_num());
-		return newlist;
+		return list;
 	}
 	
 	//±Û»ó¼¼

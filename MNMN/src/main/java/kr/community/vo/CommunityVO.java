@@ -10,7 +10,6 @@ public class CommunityVO {
 	private Date com_date;
 	private int com_hit;
 	private String com_member_id;
-	private int com_reply_cnt;
 	
 	public int getCom_num() {
 		return com_num;
@@ -54,13 +53,7 @@ public class CommunityVO {
 	public void setCom_member_id(String com_member_id) {
 		this.com_member_id = com_member_id;
 	}
-	public int getCom_reply_cnt() {
-		return com_reply_cnt;
-	}
-	public void setCom_reply_cnt(int com_reply_cnt) {
-		this.com_reply_cnt = com_reply_cnt;
-	}
-	
+
 	
 	
 }
