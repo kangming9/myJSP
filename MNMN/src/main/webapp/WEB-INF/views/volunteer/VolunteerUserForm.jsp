@@ -11,8 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var dateChecked = 0;
-		var cancelChecked = 0;
+		var fullChecked = 0;
+		var alreadyChecked = 0;
 		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
@@ -30,70 +30,30 @@
 				return;
 			}
 			
-			$('#message_date').text("");
-			
-			$.ajax({
-				url:"checkDateFull.do",
-				type:"post",
-				data:{date:$("#date").val(), time:$("#time").val()},
-				dataType:"json",
-				cache:false,
-				timeout:30000,
-				success:function(param){
-					if(param.result == "LessThan"){
-						dateChecked = 1;
-						$("#message_date").css("color", "blue").text("신청 가능");
-					}
-					else if(param.result == "MoreThan"){
-						dateChecked = 0;
-						$("#message_date").css("color", "red").text("신청 불가");
-					}
-					else{
-						dateChecked = 0;
-						alert("오류 발생");
-					}
-				},
-				error:function(){
-					dateChecked = 0;
-					alert("네트워크 오류 발생");
-				}
-			});
-			
+			$('#message_date').text("");	
 			$('#message_already').text("");
 			
-			$.ajax({
-				url:"checkAlready.do",
-				type:"post",
-				data:{date:$("#date").val(), time:$("#time").val()},
-				dataType:"json",
-				cache:false,
-				timeout:30000,
-				success:function(param){
-					if(param.result == "Yet"){
-						dateChecked = 1;
-						$("#message_date").css("color", "blue").text("신청 가능");
-						$('#message_already').text("");
-					}
-					else if(param.result == "Already"){
-						dateChecked = 0;
-						$("#message_date").css("color", "red").text("신청 불가");
-						$("#message_already").css("color", "red").text("봉사활동은 한 번에 1회만 신청 가능합니다.");
-					}
-					else{
-						dateChecked = 0;
-						alert("오류 발생");
-					}
-				},
-				error:function(){
-					dateChecked = 0;
-					alert("네트워크 오류 발생");
+			DateFull();
+			DateAlready();
+			
+			if (fullChecked == 1){
+				if(alreadyChecked == 1){
+					$("#message_date").css("color", "blue").text("신청 가능");
+					$('#message_already').css("color", "blue").text("선택하신 날짜와 시간에 봉사 신청이 가능합니다:D");
+				}else{
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
-			});
-		});
-		
-		$("#volunteer_form #date").keydown(function(){
-			dateChecked = 0;
-			$("#message_date").text("");
+			}else{
+				if(alreadyChecked == 1){
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
+				}else{
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
+				}
+			}
+			
 		});
 		
 		$('#volunteer_form').submit(function(){
@@ -114,6 +74,63 @@
 				return false;
 			}
 		});
+		
+		
+		
+		function DateFull(){
+			$.ajax({
+				url:"checkDateFull.do",
+				type:"post",
+				data:{date:$("#date").val(), time:$("#time").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "LessThan"){
+						fullChecked = 1;
+					}
+					else if(param.result == "MoreThan"){
+						fullChecked = 0;
+					}
+					else{
+						fullChecked = 0;
+						alert("오류 발생");
+					}
+				},
+				error:function(){
+					fullChecked = 0;
+					alert("네트워크 오류 발생");
+				}
+			});
+		}
+		
+		function DateAlready(){
+			$.ajax({
+				url:"checkAlready.do",
+				type:"post",
+				data:{date:$("#date").val(), time:$("#time").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "Yet"){
+						alreadyChecked = 1;
+						
+					}
+					else if(param.result == "Already"){
+						alreadyChecked = 0;
+					}
+					else{
+						alreadyChecked = 0;
+						alert("오류 발생");
+					}
+				},
+				error:function(){
+					alreadyChecked = 0;
+					alert("네트워크 오류 발생");
+				}
+			});
+		}
 		
 	});
 </script>
