@@ -62,13 +62,6 @@
 	</div>
 	</c:if>
 	<!-- 끝 -->
-	<!-- 등록된 입양 예정 동물이 없는 경우 -->
-	<c:if test="${count == 0}">
-	<div class="result-display">
-		모든 친구들이 가족을 만났어요!
-	</div>
-	</c:if>
-	<!-- 끝 -->
 	<!-- 등록된 입양 예정 동물이 있는 경우 -->
 	<c:if test="${count > 0}">
 	<div id="container">
