@@ -21,6 +21,8 @@
 			$('#account').hide();
 			$('#admin').hide();
 			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#account_nav').click(function(){
@@ -32,6 +34,8 @@
 			$('#account').show();
 			$('#admin').hide();
 			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#admin_nav').click(function(){
@@ -43,6 +47,8 @@
 			$('#account').hide();
 			$('#admin').show();
 			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#deactivate_nav').click(function(){
@@ -54,6 +60,8 @@
 			$('#account').hide();
 			$('#admin').hide();
 			$('#deactivate').show();
+			
+			return false;
 		});
 		
 		$('#photo_btn').click(function(){
