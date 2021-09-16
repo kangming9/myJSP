@@ -23,6 +23,12 @@ public class MyPageAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
 		
+		int member_volunteer = dao.getVolunteer(user_num)*3;
+		member.setMember_volunteer(member_volunteer);
+		
+		int member_adopt = dao.getAdopt(user_num);
+		member.setMember_adopt(member_adopt);
+		
 		request.setAttribute("member", member);
 		
 		return "/WEB-INF/views/member/myPage.jsp";

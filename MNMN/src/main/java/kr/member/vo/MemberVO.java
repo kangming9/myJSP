@@ -12,6 +12,8 @@ public class MemberVO {
 	private String member_detail_photo;
 	private Date member_detail_reg_date;
 	private Date member_detail_new_date;
+	private int member_volunteer;
+	private int member_adopt;
 	
 	//비밀번호 일치 여부 체크
 	public boolean isCheckedPassword(String userPasswd) {
@@ -93,7 +95,22 @@ public class MemberVO {
 	public void setMember_detail_new_date(Date member_detail_new_date) {
 		this.member_detail_new_date = member_detail_new_date;
 	}
-	
+
+	public int getMember_volunteer() {
+		return member_volunteer;
+	}
+
+	public void setMember_volunteer(int member_volunteer) {
+		this.member_volunteer = member_volunteer;
+	}
+
+	public int getMember_adopt() {
+		return member_adopt;
+	}
+
+	public void setMember_adopt(int member_adopt) {
+		this.member_adopt = member_adopt;
+	}
 	
 }
 
