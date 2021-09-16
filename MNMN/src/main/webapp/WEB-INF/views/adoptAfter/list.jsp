@@ -20,6 +20,21 @@
 	<span id="title">찾았냥</span>
 	<span id="title3">${count}개의 글</span>
 	<span id="title2">입양후기 게시판</span>
+	<%-- 검색기능 --%>
+	<form id="search_form" action="list.do" method="get">
+		<ul class="search">
+			<li class="search2">
+				<select name="keyfield" class="search3">
+					<option value="1">제목</option>
+					<option value="2">작성자</option>
+					<option value="3">내용</option>
+				</select>
+				<input type="search" size="16" name="keyword" id="keyword">
+				<input type="submit" value="찾기" class="search4">
+			</li>
+		</ul>
+	</form>
+	<%-- 검색기능 끝 --%>
 	<div class="list-space align-right">
 		<c:if test="${!empty user_num || user_grade=='2'}">
 			<input type="button" value="글쓰기" id="write-bt" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'">

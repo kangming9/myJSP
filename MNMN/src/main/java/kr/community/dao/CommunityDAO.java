@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.community.vo.CommunityVO;
-import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 
 public class CommunityDAO {
@@ -89,12 +88,9 @@ public class CommunityDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<CommunityVO> list = new ArrayList<CommunityVO>();
-		List<Integer> numlist = new ArrayList<Integer>();
+		List<CommunityVO> list = null;
 		String sql = null;
 		String sub_sql = null;
-		
-		CommunityVO com = new CommunityVO();
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -123,8 +119,9 @@ public class CommunityDAO {
 		}
 			
 			rs = pstmt.executeQuery();
-			
+			list = new ArrayList<CommunityVO>();
 			while(rs.next()) {
+				CommunityVO com = new CommunityVO();
 				com.setCom_num(rs.getInt("com_num"));
 				com.setCom_title(rs.getString("com_title"));
 				com.setCom_member_num(rs.getInt("com_member_num"));
@@ -134,7 +131,6 @@ public class CommunityDAO {
 				com.setCom_hit(rs.getInt("com_hit"));
 				
 				list.add(com);
-				numlist.add(com.getCom_num());
 			}
 			
 		}catch(Exception e) {

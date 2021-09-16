@@ -14,6 +14,13 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /* 후기 아무것도 없을 때 */
 .result-display {
     font-family: 'WONTitle';
@@ -25,16 +32,16 @@
 
 /* 후기 1개 이상 */
 #container{
-	padding: 0 10px;
+	padding: 80px 0;
 	background-color :#E8F0F2;
 	font-family : 'NEXON Lv1 Gothic OTF Bold';
 }
 
 #title{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	margin : 20px 20px;
-    padding: 5px 20px;
+    padding: 6px 25px;
 	background-color: #A2DBFA;
-	border-radius: 50%;
 	color: white;
 	font-size: 20px;
 }
@@ -72,6 +79,43 @@
 	color:#39A2DB;
 }
 /*리스트*/
+/*검색기능*/
+#search_form{
+	padding: 0; 
+	margin: 0; 
+	text-align: right; 
+	width: 100%;
+	border: none;
+}
+.search, .search2{
+	padding: 0; 
+	margin: 0;
+}
+.search3{
+	padding: 0; 
+	margin: 0;
+	height: 31px;
+	width: 40px;
+	clear: both;
+	font-size:11pt;
+	font-weight:bold;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+	text-align: center;
+}
+.search4{
+	height: 31px;
+	clear: both;
+	font-size:11pt;
+	font-weight:bold;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+	text-align: center;
+}
 .card{
 	margin: 20px 0;
 	background-color: #f5f5f5;

@@ -63,18 +63,35 @@ public class AdoptAfterDAO {
 		
 	}
 	//입양후기 게시판 총 레코드 수
-	public int getAfterBoardCount()throws Exception{
+	public int getAfterBoardCount(String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
+		String sub_sql = null;
 		int count = 0;
 		
 		try{
 			conn = DBUtil.getConnection();
-			sql = "select count(*) from adopt_after";
 			
-			pstmt = conn.prepareStatement(sql);
+			if(keyword == null || "".equals(keyword)) {
+				//전체글
+				sql = "select count(*) from adopt_after b join member m on b.after_member_num = m.member_num";
+				pstmt = conn.prepareStatement(sql);
+			}else {
+				//검색글
+				if(keyfield.equals("1")) sub_sql = "b.after_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "m.member_id = ?";
+				else if(keyfield.equals("3")) sub_sql = "b.after_content LIKE ?";
+				
+				sql = "select count(*) from adopt_after b join member m on b.after_member_num = m.member_num where " + sub_sql;
+				pstmt = conn.prepareStatement(sql);
+				if(keyfield.equals("2")) {
+					pstmt.setString(1, keyword);
+				}else {
+					pstmt.setString(1, "%"+keyword+"%");	
+				}
+			}
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				count = rs.getInt(1);
@@ -89,20 +106,41 @@ public class AdoptAfterDAO {
 	}
 	
 	//입양후기 게시판 글 목록
-	public List<AdoptAfterVO> getAfterListBoard(int start, int end)throws Exception{
+	public List<AdoptAfterVO> getAfterListBoard(int start, int end, String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<AdoptAfterVO> list = null;
 		String sql = null;
+		String sub_sql = null;
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from (select a.*, rownum rnum from (select * from adopt_after a join member m on a.after_member_num=m.member_num order by after_num desc)a) where rnum >= ? and rnum <=?";
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			if(keyword == null || "".equals(keyword)) {
+				//전체글
+				sql = "select * from (select a.*, rownum rnum from (select * from adopt_after b join member m on b.after_member_num=m.member_num order by after_num desc)a) where rnum >= ? and rnum <=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);	
+			}else {
+				//검색글
+				if(keyfield.equals("1")) sub_sql = "b.after_title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "m.member_id = ?";
+				else if(keyfield.equals("3")) sub_sql = "b.after_content LIKE ?";
+				
+				sql = "select * from (select a.*, rownum rnum from (select * from adopt_after b join member m on b.after_member_num=m.member_num where " + sub_sql + " order by b.after_num desc)a) where rnum >= ? and rnum <=?";
+				pstmt = conn.prepareStatement(sql);
+				
+				if(keyfield.equals("2")) {
+					pstmt.setString(1, keyword);
+				}else {
+					pstmt.setString(1, "%"+keyword+"%");
+				}
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+			}
 			
 			rs = pstmt.executeQuery();
 			list = new ArrayList<AdoptAfterVO>();

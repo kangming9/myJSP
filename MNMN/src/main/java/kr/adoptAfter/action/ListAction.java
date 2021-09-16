@@ -18,14 +18,21 @@ public class ListAction implements Action{
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) pageNum = "1";
 		
+		//키필드
+		String keyfield = request.getParameter("keyfield");
+		String keyword = request.getParameter("keyword");
+		
+		if(keyfield == null) keyfield = "";
+		if(keyword == null) keyword = "";
+		
 		AdoptAfterDAO dao = AdoptAfterDAO.getInstance();
-		int count = dao.getAfterBoardCount(); //게시판 총 레코드 수
+		int count = dao.getAfterBoardCount(keyfield, keyword); //게시판 총 레코드 수********************
 		
 		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count, 6, 5, "list.do");
 		
 		List<AdoptAfterVO> list = null;
 		if(count > 0) {
-			list = dao.getAfterListBoard(page.getStartCount(), page.getEndCount());
+			list = dao.getAfterListBoard(page.getStartCount(), page.getEndCount(), keyfield, keyword);
 		}
 		
 		request.setAttribute("count", count);

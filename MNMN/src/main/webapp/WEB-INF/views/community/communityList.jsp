@@ -18,9 +18,9 @@
 		<div class="list-container">
 		<span id="title">게시판 목록</span>
 		<div class="list-space align-right">
-			<input class="button" type="button" value="글쓰기" onclick="location.href='writeCommunityForm.do'"
-				<c:if test="${empty user_num}">disabled="disabled"</c:if>
-			>
+			<c:if test="${!empty user_num}">
+			<input class="button" type="button" value="글쓰기" onclick="location.href='writeCommunityForm.do'">
+			</c:if>
 			<input class="button" type="button" value="목록" onclick="location.href='communityList.do'">
 			<input class="button" type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
