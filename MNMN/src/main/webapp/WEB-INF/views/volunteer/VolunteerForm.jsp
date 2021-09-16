@@ -80,15 +80,15 @@ $(function(){
 						if(param.result){
 							console.log(param.result);
 							alert("09시 : " + (param.result).toString().charAt(0)
-								+ "\n10시 : " + (param.result).toString().charAt(1)
-								+ "\n11시 : " + (param.result).toString().charAt(2)
-								+ "\n12시 : " + (param.result).toString().charAt(3)
-								+ "\n13시 : " + (param.result).toString().charAt(4)
-								+ "\n14시 : " + (param.result).toString().charAt(5)
-								+ "\n15시 : " + (param.result).toString().charAt(6)
-								+ "\n16시 : " + (param.result).toString().charAt(7)
-								+ "\n17시 : " + (param.result).toString().charAt(8)
-								+ "\n18시 : " + (param.result).toString().charAt(9));
+								+ "명\n10시 : " + (param.result).toString().charAt(1)
+								+ "명\n11시 : " + (param.result).toString().charAt(2)
+								+ "명\n12시 : " + (param.result).toString().charAt(3)
+								+ "명\n13시 : " + (param.result).toString().charAt(4)
+								+ "명\n14시 : " + (param.result).toString().charAt(5)
+								+ "명\n15시 : " + (param.result).toString().charAt(6)
+								+ "명\n16시 : " + (param.result).toString().charAt(7)
+								+ "명\n17시 : " + (param.result).toString().charAt(8)
+								+ "명\n18시 : " + (param.result).toString().charAt(9) + "명");
 						}else{
 							alert("오류 발생");
 						}
