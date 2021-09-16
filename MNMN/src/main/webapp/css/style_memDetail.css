@@ -1,7 +1,46 @@
 @charset "UTF-8";
 
+/*font-face*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input{
+	font-family: 'WONTitle';
+}
+
 .page-main{
+	font-family : 'NEXON Lv1 Gothic OTF Bold';
 	background-color: #f4f7f7;
+}
+
+.page-container{
+	font-family: 'WONTitle';
+	margin: 20px;
+	padding: 100px 50px;
+	overflow:hidden;
+	height:auto;
+}
+
+.page-name{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+  	margin : 20px 0px;
+  	padding: 5px 20px;
+  	background-color:#A2DBFA;
+  	text-align: center;
+  	font-size: 20px;
+  	color: white;
 }
 
 ul{
@@ -31,13 +70,14 @@ ul li{
 }
 
 .modify-container .info-content{
-	width: 100%;
-	margin: 30px 0px 30px 0px;
+	width: 90%;
+	margin: 0 auto;
 }
 
 .modify-container label{
 	text-align: left;
 	font-size: 14px;
+	width: 30%;
 }
 
 .modify-container .info-content ul input {

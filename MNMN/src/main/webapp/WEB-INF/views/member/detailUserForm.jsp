@@ -38,11 +38,12 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="modify-page">
+	<div class="page-container">
+	<span class="page-name">회원 정보 수정</span>
 	<div class="modify-container">
 		<form action="detailUser.do" method="post" id="detail_form" class="modify-form">
 		<div class="info-content">
-		<h3>${member.member_id}의 정보 수정</h3>
+		<h3>${member.member_id} 정보 수정</h3>
 		<input type="hidden" name="mem_num" value="${member.member_num}">
 		<ul>
 			<li>
