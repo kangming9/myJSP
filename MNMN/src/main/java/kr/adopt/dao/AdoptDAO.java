@@ -287,5 +287,37 @@ public class AdoptDAO {
 			
 			return true;
 		}
+		
+		//입양 중복 체크
+		public AdoptVO adoptCountCheck(int user_num, int pet_num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			AdoptVO adopt = null;
+			String sql = null;
 			
+			try {
+				conn = DBUtil.getConnection();
+
+				sql = "select * from adopt a join member m on a.adopt_member_num=m.member_num where a.adopt_member_num=? and a.adopt_pet_num=?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, user_num);
+				pstmt.setInt(2, pet_num);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					adopt = new AdoptVO();
+					adopt.setAdopt_member_num(rs.getInt("adopt_member_num"));
+					adopt.setAdopt_member_id(rs.getString("adopt_member_id"));
+					adopt.setAdopt_pet_num(rs.getInt("adopt_pet_num"));
+				}
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+			return adopt;
+		}			
 }
