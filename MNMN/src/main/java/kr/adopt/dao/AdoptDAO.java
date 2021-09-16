@@ -79,7 +79,7 @@ public class AdoptDAO {
 		}	
 		
 		
-		//신규 입양 신청 개수
+		//입양 신청 개수
 		public int getAdoptCount(String keyfield) throws Exception {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -119,7 +119,7 @@ public class AdoptDAO {
 			return count;
 		}
 			
-		//신규 입양 신청 목록
+		//입양 신청 목록
 		public List<AdoptVO> getListAdopt(int start, int end, String keyfield) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
