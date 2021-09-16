@@ -51,7 +51,7 @@ public class ListReplyAction implements Action{
 		String ajaxData = mapper.writeValueAsString(mapAjax);
 		
 		request.setAttribute("ajaxData", ajaxData);
-
+		
 		return "/WEB-INF/views/common/ajax_view.jsp";
 	}
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.community.dao.CommunityDAO;
 import kr.community.vo.CommunityVO;
+import kr.communityReply.dao.CommunityReplyDAO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
@@ -38,6 +39,12 @@ public class CommunityDetailAction implements Action{
 		com.setCom_content(com.getCom_content());
 		
 		request.setAttribute("com", com);
+		
+		//skr
+		CommunityReplyDAO dao2 = CommunityReplyDAO.getInstance();
+		int Rcount = dao2.getReplyCount(com_num);
+		request.setAttribute("Rcount", Rcount);
+		System.out.println(Rcount);
 		
 		return "/WEB-INF/views/community/communityDetail.jsp";
 	}

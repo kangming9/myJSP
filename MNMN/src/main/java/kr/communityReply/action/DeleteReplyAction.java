@@ -19,13 +19,13 @@ public class DeleteReplyAction implements Action{
 		
 		//전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
-		System.out.println("1");	
+		
 		int re_num = Integer.parseInt(request.getParameter("re_num"));
-		System.out.println("2");
+		
 		int writer_num = Integer.parseInt(request.getParameter("mem_num"));
-		System.out.println("3");	
+		
 		Map<String,String> mapAjax = new HashMap<String,String>();
-		System.out.println("4");	
+			
 		//로그인 확인
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");

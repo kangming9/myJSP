@@ -19,6 +19,8 @@
 		var count;
 		var rowCount;
 		
+		
+		
 		//댓글 리스트
 		function selectData(pageNum){
 			currentPage = pageNum;
@@ -42,7 +44,6 @@
 					
 					$(param.list).each(function(index,item){
 						var output = '<div class="item" id="replyList">';
-						output += '<span>' + count + '</span>';
 						output += '<span id="repltListId">' + item.member_id + '</span>';
 						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';
@@ -93,7 +94,7 @@
 				$('#re_content').val('').focus();
 				return false;
 			}
-			
+		
 			//form 이하의 태그에 입력한 데이터를 모두 읽어옴
 			var form_data = $(this).serialize();
 			
@@ -177,7 +178,7 @@
 				
 				//문서 객체 반영
 				$('#mre_first .letter-count').text(remain);
-		});
+		});	
 		//수정폼에서 취소버튼 클릭시 수정폼 초기화
 		$(document).on('click','.re-reset',function(){
 			initModifyForm();
@@ -255,9 +256,11 @@
 				}
 			});
 		});
-		
+			
 		//게시물 들어가면 댓글목록 처음 호출하게 함
 		selectData(1);
+		
+		
 	});
 	
 	function modifyfunc(re_num){//리스트에서 수정, 취소 버튼 뜨게함
@@ -311,10 +314,15 @@
 		<input type="button" value="목록" onclick="location.href='communityList.do'" class="btn-style-cancel">
 	</div>
 	</div>
+	<!-- 댓글 수 -->
+	<div id="rCount">
+		댓글 ${Rcount} >
+	</div>
 	<!-- 댓글 목록 시작 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
 		<input type="button" class="btn btn-secondary btn-sm" value="다음글 보기">
+		<span>${Rcount}</span>
 	</div>
 	<div id="loading" style="display: none;">
 		<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
@@ -330,7 +338,7 @@
 			><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user_num}">
 			<div id="re_second" class="align-right">
-				<input type="submit" class="btn btn-danger btn-sm" value="전송">
+				<input type="submit" class="btn btn-danger btn-sm" value="전송" id="replysubmit-btn" onClick="top.location='javascript:location.reload()'">
 			</div>
 			<div id="re_first">
 				<span class="letter-count">300/300</span>
