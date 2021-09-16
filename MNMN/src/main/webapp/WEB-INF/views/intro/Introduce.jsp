@@ -30,9 +30,10 @@
 			센터 동물들의 입양 지원<br>
 			동물보호 캠페인 및 교육</p>
 			</div>
-			<div>
+			<div style="margin-bottom:50px;">
 			<p>반려동물을 사랑하고 유기동물을 걱정하는 여러분의 많은 관심이 필요합니다.</p>
 			</div>
+			<span id="donabtn" onclick="location.href='${pageContext.request.contextPath}/donation/donation.do'">후원하기</span>
 		</div>
 		
 	</div>
