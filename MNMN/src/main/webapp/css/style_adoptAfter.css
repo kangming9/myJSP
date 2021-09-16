@@ -91,20 +91,7 @@
 	padding: 0; 
 	margin: 0;
 }
-.search3{
-	padding: 0; 
-	margin: 0;
-	height: 31px;
-	width: 40px;
-	clear: both;
-	font-size:11pt;
-	font-weight:bold;
-	background:	#A2DBFA;
-	color:white;
-	border:none;
-	border-radius:15%;
-	text-align: center;
-}
+
 .search4{
 	height: 31px;
 	clear: both;
@@ -217,7 +204,7 @@
 	border-radius:15%;
 }
 
-.btn-style-cancel{
+.btn-style-cancel, .search3{
 	font-family: 'NEXON Lv1 Gothic OTF Bold';
 	font-size:11pt;
 	font-weight:bold;
