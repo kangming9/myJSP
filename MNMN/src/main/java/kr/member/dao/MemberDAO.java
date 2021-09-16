@@ -504,7 +504,7 @@ public class MemberDAO {
 		return list;
 	}
 	
-	//내가 쓴 글 카운트
+	//내가 쓴 댓글 카운트
 	public int getMyReplyCount(int member_num)throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

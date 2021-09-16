@@ -13,3 +13,10 @@
 		history.go(-1);
 	</script>
 </c:if>
+<c:if test="${checkCount > 0 }">
+	<script>
+		alert('이미 입양 신청이 완료되었습니다.');
+		history.go(-1);
+	</script>
+
+</c:if>
