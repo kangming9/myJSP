@@ -54,6 +54,14 @@
 	border-radius: 5px;
 }
 
+#comReply{
+	font-size: 13px;
+	border: 1px solid white;
+	border-radius: 50%;
+	padding: 0 4px;
+	margin: 3px;	
+}
+
 /*count = 0*/
 
 .result-display{

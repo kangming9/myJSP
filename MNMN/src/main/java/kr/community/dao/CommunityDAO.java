@@ -95,17 +95,17 @@ public class CommunityDAO {
 		try {
 			conn = DBUtil.getConnection();
 			
-			if(keyword == null || "".equals(keyword)) {
-			sql = "select * from (select a.*, rownum rnum from (select * from community c join member m on c.com_member_num = m.member_num order by c.com_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			if(keyword == null || "".equals(keyword)) {//여기수정
+			sql = "select * from (select f.*, rownum rnum from (select a.com_num, a.com_title, a.com_content, m.member_id, a.com_date, a.com_hit, a.com_member_num, (select count(*) from community_reply b where b.com_num=a.com_num) as reply from community a, member m where a.com_member_num=m.member_num order by a.com_num desc)f) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 		}else {
-			if(keyfield.equals("1")) sub_sql = "c.com_title LIKE ?";
+			if(keyfield.equals("1")) sub_sql = "a.com_title LIKE ?";
 			else if(keyfield.equals("2")) sub_sql = "m.member_id = ?";
-			else if(keyfield.equals("3")) sub_sql = "c.com_content LIKE ?";
-			sql = "select * from (select a.*, rownum rnum from (select * from community c join member m on c.com_member_num = m.member_num where ("+sub_sql+") order by c.com_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			else if(keyfield.equals("3")) sub_sql = "a.com_content LIKE ?";
+			sql = "select * from (select f.*, rownum rnum from (select a.com_num, a.com_title, a.com_content, m.member_id, a.com_date, a.com_hit, a.com_member_num, (select count(*) from community_reply b where b.com_num=a.com_num) as reply from community a, member m where a.com_member_num=m.member_num and ("+sub_sql+") order by a.com_num desc)f) WHERE rnum >= ? AND rnum <= ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -129,6 +129,7 @@ public class CommunityDAO {
 				com.setCom_content(rs.getString("com_content"));
 				com.setCom_date(rs.getDate("com_date"));
 				com.setCom_hit(rs.getInt("com_hit"));
+				com.setReply(rs.getInt("reply"));
 				
 				list.add(com);
 			}

@@ -10,7 +10,14 @@ public class CommunityVO {
 	private Date com_date;
 	private int com_hit;
 	private String com_member_id;
+	private int reply;
 	
+	public int getReply() {
+		return reply;
+	}
+	public void setReply(int reply) {
+		this.reply = reply;
+	}
 	public int getCom_num() {
 		return com_num;
 	}
