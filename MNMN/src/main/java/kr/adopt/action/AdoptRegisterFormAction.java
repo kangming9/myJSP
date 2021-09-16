@@ -29,9 +29,12 @@ public class AdoptRegisterFormAction implements Action{
 		
 		int count = dao.adoptCheck(user_num);
 		
-		//60 미만이면 alert해야 함 -> 수정 필요
-		if(count*3 < 60) {
+		Integer user_grade = (Integer)session.getAttribute("user_grade");
+		
+		//60시간 미만이나 2등급 아닌 경우
+		if(count*3 < 60 && user_grade != 2) {
 			request.setAttribute("count", count);
+			request.setAttribute("user_grade", user_grade);
 			return "/WEB-INF/views/adopt/adoptRegister.jsp";
 		}
 		

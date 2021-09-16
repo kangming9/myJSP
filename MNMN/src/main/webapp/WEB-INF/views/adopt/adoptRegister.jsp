@@ -7,7 +7,7 @@
 		location.href='petList.do';
 	</script>
 </c:if>
-<c:if test = "${count < 60}">
+<c:if test = "${count < 60 && user_grade != 2}">
 	<script>
 		alert('봉사활동 60시간 이상인 경우에만 입양이 가능합니다.');
 		history.go(-1);
