@@ -50,7 +50,7 @@
 				<input type="search" size="16" name="keyword" id="keyword">
 			</li>
 			<li>
-				<input type="submit" value="검색" class="btn-style-cancel">
+				<input type="submit" value="검색" class="btn-style-cancel" style="margin-right:10px;">
 			</li>
 		</ul>
 	</form>
@@ -68,7 +68,7 @@
 	<div class="row">
 	<c:forEach var="pet" items="${list}">
 	<div class="col-sm-12 col-md-6 col-xl-4">
-		<div class="card">
+		<div class="card" style="height:400px;">
 			<a href="petDetail.do?pet_num=${pet.pet_num}"><img src="${pageContext.request.contextPath}/upload/${pet.pet_photo}" class="rounded-circle mb-3"></a>
 			<div class="card-body">
 			${pet.pet_num}
