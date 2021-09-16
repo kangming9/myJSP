@@ -103,12 +103,13 @@ private static DonationDAO instance = new DonationDAO();
 		}
 		
 		//봉사 신청 목록
-		public List<DonationVO> getListDonation(int start, int end) throws Exception{
+		public List<DonationVO> getListDonation(int start, int end, int key) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			List<DonationVO> list = null;
 			String sql = null;
+			String subsql = null;
 				
 			try {
 				conn = DBUtil.getConnection();
@@ -116,11 +117,17 @@ private static DonationDAO instance = new DonationDAO();
 				sql = "SELECT * FROM\r\n"
 						+ "(SELECT a.*, rownum rnum FROM\r\n"
 						+ "(SELECT * FROM donation d ORDER BY d.don_num DESC)a)\r\n"
-						+ "WHERE rnum >= ? AND rnum <= ?";
+						+ "WHERE rnum >= ? AND rnum <= ?\r\n";
+				
+				if(key < 2) subsql = "AND don_routine = ?";
+				else subsql = "";
+				
+				sql = sql + subsql;
+				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, end);
-				
+				if(key < 2) pstmt.setInt(3, key);
 					
 				rs = pstmt.executeQuery();
 				list = new ArrayList<DonationVO>();

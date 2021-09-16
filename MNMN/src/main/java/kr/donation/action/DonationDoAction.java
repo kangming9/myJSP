@@ -16,8 +16,7 @@ public class DonationDoAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		request.setCharacterEncoding("UTF-8");
-		
-		//로그인 된 경우
+
 		DonationVO don = new DonationVO();
 		
 		don.setName(request.getParameter("name"));

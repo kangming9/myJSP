@@ -16,7 +16,6 @@
     font-style: normal;
 }
 
-
 input, select{
 	font-family: 'WONTitle';
 }
@@ -53,6 +52,67 @@ input, select{
 	display: flex;
     align-items: center;
     justify-content: space-between;
+	
+}
+
+form{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.search{
+	margin-left: 5px;
+	display: flex;
+    align-items: center;
+}
+
+.search select, #keyword{
+	padding: 3px;
+}
+
+#keyword{
+	margin-left: 15px;
+}
+
+.btn-container{
+	margin: 0;
+	padding: 0;
+	width: 25%;
+	display: flex;
+	align-itmes: center;
+	justify-content: right;
+}
+
+.btns{
+	padding: 5px;
+	border: 0px;
+	border-radius: 10px;
+	width: 50px;
+}
+
+.submit{
+	background-color: #88898C;
+	margin-left: 3px;
+	margin-bottom: 0;
+	float: left;
+}
+
+.cancel{
+	margin-right: 3px;
+	background-color: #F2ACB9;
+	color: #FFFFFF;
+}
+
+.home{
+	width: 70px;
+	background-color: #38A2DB;
+	color: #FFFFFF;
+}
+
+.detail{
+	background-color: #dae9f4;
+	margin: 0 auto;
 }
 
 .result-display{
@@ -63,6 +123,10 @@ input, select{
 	color: #053742;
 }
 
+.memlist{
+}
+
+
 table {
 	width: 100%;
     border-collapse: separate;
@@ -70,10 +134,19 @@ table {
     margin-bottom: 30px;
 }
 
+table a,table a:visited,table a:link,table a:active{
+	text-decoration: none;
+	color: #000000;
+}
+
+table a:hover{
+	text-decoration: none;
+	color: #39a2db;
+}
 
 table th, table td{
 	border: 0px;
-    padding: 10px;
+    padding: 5px;
 }
 
 th{
@@ -100,13 +173,12 @@ td{
 
 .tb-container{
 	width : 100%;
-	overflow: auto;
+	overflow : auto;
 }
-.tb-container table{
+.tb-container{
 	white-space:nowrap;
 	border-collapse:collapse;
 }
-
 /* 스크롤바 설정*/
 .tb-container::-webkit-scrollbar{
     width: 6px;

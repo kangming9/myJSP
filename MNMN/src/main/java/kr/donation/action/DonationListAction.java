@@ -30,16 +30,23 @@ public class DonationListAction implements Action{
 			
 			String pageNum = request.getParameter("pageNum");
 			if(pageNum==null)pageNum = "1";
+
+			String keyfield = request.getParameter("keyfield");
+			if(keyfield == null) keyfield = "";
 			
+			int key = 0;
+			if("1".equals(keyfield)) key = 1;
+			else if("0".equals(keyfield)) key = 0;
+			else key = 2;
 			
 			DonationDAO dao = DonationDAO.getInstance();
 			int count = dao.getDonationCount();
 			
-			PagingUtil page = new PagingUtil(Integer.parseInt(pageNum),count,15,10,"listDonation.do");
+			PagingUtil page = new PagingUtil(keyfield, "",Integer.parseInt(pageNum),count,15,10,"listDonation.do");
 			
 			List<DonationVO> list = null;
 			if(count > 0) {
-				list = dao.getListDonation(page.getStartCount(), page.getEndCount());
+				list = dao.getListDonation(page.getStartCount(), page.getEndCount(), key);
 				
 			}
 			

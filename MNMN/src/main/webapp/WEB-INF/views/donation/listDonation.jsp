@@ -23,8 +23,18 @@
 	<span class="page-name">후원자</span>
 	<div class="list-container">
 		<div class="top">
+			<form id="search_form" action="listDonation.do" method="get">
+			<div class="search">
+				<select name="keyfield">
+						<option value="" selected>전체</option>
+						<option value="0">일시후원</option>
+						<option value="1">정기후원</option>
+				</select>
+				<input type="submit" value="검색" class="submit btns">
+			</div>
+			</form>
 			<div class="btn-container">
-				<input type="button" value="목록" class="cancel btns" onclick="location.href='listVolunteer.do'">
+				<input type="button" value="목록" class="cancel btns" onclick="location.href='listDonation.do'">
 				<input type="button" value="마이페이지" class="home btns" onclick="location.href='${pageContext.request.contextPath}/member/myPage.do'">
 			</div>
 		</div>
