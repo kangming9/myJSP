@@ -63,7 +63,7 @@
 		</ul>
 		<div class="btns">
 			<input type="submit" value="수정하기" class="update_btn">
-			<input type="button" value="목록" class="cancel_btn" onclick="location.href='memberList.do'">
+			<input type="button" value="취소" class="cancel_btn" onclick="location.href='myPage.do'">
 		</div>
 		</div>
 	</form>

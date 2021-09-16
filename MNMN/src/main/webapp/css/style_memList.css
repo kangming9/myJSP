@@ -78,11 +78,13 @@ form{
 .btn-container{
 	margin: 0;
 	padding: 0;
+	width: 25%;
+	display: flex;
+	align-itmes: center;
+	justify-content: right;
 }
 
 .btns{
-	margin-left: 5px;
-	margin-bottom: 10px;
 	padding: 5px;
 	border: 0px;
 	border-radius: 10px;
@@ -96,15 +98,15 @@ form{
 	float: left;
 }
 
-.home{
-	margin-right: 5px;
-	background-color: #38A2DB;
+.cancel{
+	margin-right: 3px;
+	background-color: #F2ACB9;
 	color: #FFFFFF;
-	float: left;
 }
 
-.cancel{
-	background-color: #F2ACB9;
+.home{
+	width: 70px;
+	background-color: #38A2DB;
 	color: #FFFFFF;
 }
 

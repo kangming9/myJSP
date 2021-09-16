@@ -47,7 +47,7 @@
 			</form>
 			<div class="btn-container">
 				<input type="button" value="목록" class="cancel btns" onclick="location.href='memberList.do'">
-				<input type="button" value="홈으로" class="home btns" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				<input type="button" value="마이페이지" class="home btns" onclick="location.href='myPage.do'">
 			</div>
 		</div>
 		<c:if test="${count == 0}">
