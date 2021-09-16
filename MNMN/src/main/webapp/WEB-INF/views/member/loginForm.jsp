@@ -32,28 +32,31 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="login-container">
-		<form id="login_form" action="login.do" method="post" autocomplete="off">
-			<h3>어서오시개</h3>
-			<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
-			<div class="login-content">
-				<div class="align-center field">
-					<label for="id"><i class="fas fa-user fa-lg"></i></label>
-					<input type="text" name="id" id="id" maxlength="12" placeholder="ID">
+	<div class="page-container">
+		<span class="page-name">어서오시개</span>
+		<div class="form-container">
+			<form id="login_form" action="login.do" method="post" autocomplete="off">
+				<h3>로그인</h3>
+				<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
+				<div class="login-content">
+					<div class="align-center field">
+						<label for="id"><i class="fas fa-user fa-lg"></i></label>
+						<input type="text" name="id" id="id" maxlength="12" placeholder="ID">
+					</div>
+					<div class="align-center field">
+						<label for="passwd"><i class="fas fa-lock fa-lg"></i></label>
+						<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="PASSWORD">
+					</div>
+					<div class="align-center">
+						<input type="submit" value="로그인" class="sign btn">
+					</div>
+					<div class="align-center">
+						<input type="button" value="회원가입" onclick="location.href='registerUserForm.do'" class="signup"> l
+						<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="cancel">
+					</div>
 				</div>
-				<div class="align-center field">
-					<label for="passwd"><i class="fas fa-lock fa-lg"></i></label>
-					<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="PASSWORD">
-				</div>
-				<div class="align-center">
-					<input type="submit" value="로그인" class="sign btn">
-				</div>
-				<div class="align-center">
-					<input type="button" value="회원가입" onclick="location.href='registerUserForm.do'" class="signup"> l
-					<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="cancel">
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 		<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
