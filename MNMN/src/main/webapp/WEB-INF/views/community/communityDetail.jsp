@@ -158,8 +158,8 @@
 				modifyUI += '	<input type="hidden" name="re_num" id="mre_num" value="'+re_num+'">';
 				modifyUI += '	<input type="hidden" name="mem_num" id="muser_num" value="'+num+'">';
 				modifyUI += '  	<textarea rows="3" cols="50" name="re_content" id="mre_content" class="rep-content" style="width:100%; height:60px; resize:none; margin: 5px 0;">'+content+'</textarea>';
-			    modifyUI += ' 	<div id="mre_first" style="display: flex; margin: 0 540px;"><span class="letter-count">300/300</span>&nbsp;';
-				modifyUI += '  	<div id="mre_second" class="align-right" style="display: flex;">';
+			    modifyUI += ' 	<div id="mre_first" style="text-align: right;"><span class="letter-count">300/300</span>&nbsp;';
+				modifyUI += '  	<div id="mre_second" class="align-right" style="display: flex; float:right;">';
 				modifyUI += '    	<input type="submit" value="수정" class="button9" onclick=backfunc("'+re_num+'");>';
 				modifyUI += '    	<input type="button" value="취소" class="re-reset button9" onclick=backfunc("'+re_num+'");>';
 				modifyUI += '  	</div>';
