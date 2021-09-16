@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/*font-face*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container_don{
+	font-family: 'WONTitle';
+	background-color:#E8F0F2;
+}
+
+#don_req{
+	margin : 20px 20px;
+	padding : 0px 20px;
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	width : 30px;
+	background-color : #A2DBFA;
+	color: white;
+	font-size: 20px;
+}
+
+#form{
+	padding : 20px 10px;
+}
+
+#donation_form{
+	padding : 20px;
+	border-color : white;
+	border-radius : 5%;
+	background-color : white;
+	text-align : center;
+}
+
+.form_title{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	margin : 10px 0px;
+	font-size : 20px;
+}
+
+input[type="text"], input[type="date"], 
+input[type="tel"], input[type="email"], input[type="number"]{
+	background-color : #cfeeff;
+	border: 1px solid #cfeeff;
+	border-radius : 5%;
+	font-family: 'WONTitle';
+	height : 20px;
+}
+
+#submit{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	margin : 20px;
+	padding : 0px 10px;
+	background-color : #A2DBFA;
+	color: white;
+	border-color : #A2DBFA;
+	border-radius : 5%;
+	outline : 0;
+	font-size : 15px;
+	
+}
+
+#explain{
+	padding : 20px;
+	text-align : center;
+	font-size: 15px;
+}
+
+#ex_title{
+	padding : 0px 20px;
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	width : 30px;
+	background-color : #A2DBFA;
+	color: white;
+	font-size: 20px;
+}
