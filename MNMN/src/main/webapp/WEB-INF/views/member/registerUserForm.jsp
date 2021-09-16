@@ -95,40 +95,45 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="login-container">
-		<form id="register_form" action="registerUser.do" method="post" autocomplete="off">
-			<h3>환영하개</h3>
-			<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
-			<div class="login-content">
-				<div class="align-center field">
-					<label for="id"><i class="fas fa-user fa-lg"></i></label>
-					<div><input type="text" name="id" id="id" maxlength="12" autocomplete="off" placeholder="ID">
-					<div id="message_id"></div></div>
-					<input type="button" value="중복확인" id="id_check">
+	<div class="page-container">
+		<span class="page-name">환영하개</span>
+		<div class="form-container">
+			<form id="register_form" action="registerUser.do" method="post" autocomplete="off">
+				<div class="info-content">
+					<h3>회원가입</h3>
+					<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
+					<div class="login-content">
+						<div class="align-center field">
+							<label for="id"><i class="fas fa-user fa-lg"></i></label>
+							<div class="ids"><input type="text" name="id" id="id" maxlength="12" autocomplete="off" placeholder="ID">
+							<div id="message_id"></div></div>
+							<input type="button" value="중복확인" id="id_check">
+						</div>
+						<div class="align-center field">
+							<label for="name"><i class="far fa-id-card fa-lg"></i></label>
+							<input type="text" name="name" id="name" maxlength="10" placeholder="NAME">
+						</div>
+						<div class="align-center field">
+							<label for="passwd"><i class="fas fa-lock fa-lg"></i></label>
+							<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="PASSWORD">
+						</div>
+						<div class="align-center field">
+							<label for="phone"><i class="fas fa-phone fa-lg"></i></label>
+							<input type="text" name="phone" id="phone" maxlength="15" placeholder="PHONE NUMBER">
+						</div>
+						<div class="align-center">
+							<input type="submit" value="회원가입" class="sign btn">
+						</div>
+						<div class="align-center">
+							<input type="button" value="로그인" onclick="location.href='loginForm.do'" class="signup"> l
+							<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="cancel">
+						</div>
+					</div>
 				</div>
-				<div class="align-center field">
-					<label for="name"><i class="far fa-id-card fa-lg"></i></label>
-					<input type="text" name="name" id="name" maxlength="10" placeholder="NAME">
-				</div>
-				<div class="align-center field">
-					<label for="passwd"><i class="fas fa-lock fa-lg"></i></label>
-					<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="PASSWORD">
-				</div>
-				<div class="align-center field">
-					<label for="phone"><i class="fas fa-phone fa-lg"></i></label>
-					<input type="text" name="phone" id="phone" maxlength="15" placeholder="PHONE NUMBER">
-				</div>
-				<div class="align-center">
-					<input type="submit" value="회원가입" class="sign btn">
-				</div>
-				<div class="align-center">
-					<input type="button" value="로그인" onclick="location.href='loginForm.do'" class="signup"> l
-					<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="cancel">
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-		<!-- footer 시작 -->
+	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<!-- footer 끝 -->
 </div>

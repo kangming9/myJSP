@@ -1,21 +1,12 @@
 @charset "UTF-8";
 
-html,body{
-	margin: 0;
-}
-
 h3{
-	text-align: center;	
 	margin:30px 0px 10px 0px;
 }
 
-.page-main{
-	height: 100vh;
-	background:#E8F0F2;
-}
-
-.login-container{
+.page-container{
 	background-image: url("https://images.unsplash.com/photo-1509628061459-1328d06c2ced?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=391&q=80");
+	background-repeat: no-repeat;
 }
 
 .login-content{
@@ -24,6 +15,14 @@ h3{
 
 .field{
 	margin-bottom: 10px;
+}
+
+.ids{
+	width: 35%;
+}
+
+#id{
+	 width:100%;
 }
 
 #id_check{
