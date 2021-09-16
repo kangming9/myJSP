@@ -34,7 +34,8 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양신청서 확인</h2>
+	<div class="page-container">
+	<span class="page-name">입양신청서 확인</span>
 	<div class="register_form">
 		<h3>입양신청서</h3>
 		<div class="form-content detail">
@@ -69,13 +70,13 @@
 		</div>
 	</div>
 	<br>
-	<div class="page-main" id="reject_container" style="display:none;">
-		<h2>반려 처리</h2>
+	<div class="reject-main" id="reject_container" style="display:none;">
+		<span class="page-name">반려 처리</span>
 		<div class="reject-form">
 		<h3>사유</h3>
 		<form id="reject_form" action="rejectAdopt.do" method="post">
 			<input type="hidden" name="adopt" value="${adopt.adopt_num}">
-			<textarea rows="5" cols="65" name="reason" id="reason"></textarea>
+			<textarea rows="5" cols="50" name="reason" id="reason"></textarea>
 			<div class="align-center">
 				<input type="submit" value="제출" id="reject_submit" class="approve btn">
 				<input type="button" value="취소" id="reject_reset" class="list btn">
@@ -83,7 +84,8 @@
 		</form>
 		</div>
 	</div>
-		<!-- footer 시작 -->
+	</div>
+	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<!-- footer 끝 -->
 </div>
