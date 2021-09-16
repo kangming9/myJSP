@@ -54,7 +54,7 @@ public class CommunityReplyDAO {
 		
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select count(*) from community_reply b join community m on b.member_num=m.com_member_num where b.com_num=?";
+			sql = "select count(*) from community_reply b join member m on b.member_num=m.member_num where b.com_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, com_num);
 			
@@ -69,6 +69,40 @@ public class CommunityReplyDAO {
 		}
 		return count;
 	}
+	
+	//먼지
+	public List<CommunityReplyVO> getReplyCountList(int com_num)throws Exception{
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<CommunityReplyVO> rrr = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql ="select count(*) from community_reply b join member m on b.member_num=m.member_num where b.com_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, com_num);
+			
+			rs = pstmt.executeQuery();
+			rrr = new ArrayList<CommunityReplyVO>();
+			while(rs.next()) {
+				CommunityReplyVO rrrr = new CommunityReplyVO();
+				//count = rs.getInt(1);
+				rrrr.setRrr(rs.getInt(1));
+				
+				rrr.add(rrrr);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return rrr;
+	}
+	
 	//댓글 목록
 	public List<CommunityReplyVO> getListReply(int start, int end, int com_num)throws Exception{
 		Connection conn = null;
