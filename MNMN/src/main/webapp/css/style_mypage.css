@@ -43,6 +43,12 @@
 	padding: 50px 20px;
 }
 
+.reply-cut{
+	width:30%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
 h3{
 	text-align: center;
 }

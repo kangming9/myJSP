@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.community.vo.CommunityVO;
+import kr.communityReply.vo.CommunityReplyVO;
 import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 
@@ -434,6 +436,140 @@ public class MemberDAO {
 		}
 	}
 	
+	
+	//내가 쓴 글 카운트
+	public int getMyContentCount(int member_num)throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select count(*) from community c join member m on c.com_member_num=m.member_num where m.member_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}catch (Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		return count;
+		
+	}
+	
+	//내가 쓴 글 목록
+	public List<CommunityVO> getMyContent(int member_num, int start, int end)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		List<CommunityVO> list = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from (select a.*, rownum rnum from (select * from community c join member m on c.com_member_num=m.member_num where m.member_num=? order by c.com_num desc)a) where rnum >= ? and rnum <=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<CommunityVO>();
+			while(rs.next()) {
+				CommunityVO com = new CommunityVO();
+				com.setCom_num(rs.getInt("com_num"));
+				com.setCom_title(rs.getString("com_title"));
+				com.setCom_content(rs.getString("com_content"));
+				com.setCom_date(rs.getDate("com_date"));
+				
+				list.add(com);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		return list;
+	}
+	
+	//내가 쓴 글 카운트
+	public int getMyReplyCount(int member_num)throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select count(*) from community_reply r join member m on r.member_num=m.member_num where m.member_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}catch (Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		return count;
+		
+	}
+	
+	//내가 쓴 댓글 목록
+	public List<CommunityReplyVO> getMyReply(int member_num, int start, int end)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		List<CommunityReplyVO> list = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from (select a.*, rownum rnum from (select * from community_reply r join member m on r.member_num=m.member_num where m.member_num=? order by r.re_num desc)a) where rnum >= ? and rnum <=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<CommunityReplyVO>();
+			while(rs.next()) {
+				CommunityReplyVO reply = new CommunityReplyVO();
+				reply.setRe_num(rs.getInt("re_num"));
+				reply.setRe_content(rs.getString("re_content"));
+				reply.setRe_date(rs.getDate("re_date"));
+				reply.setCom_num(rs.getInt("com_num"));
+				
+				list.add(reply);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+		
+		return list;
+	}
 	
 }
 

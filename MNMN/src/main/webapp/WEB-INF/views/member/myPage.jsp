@@ -278,16 +278,66 @@
 			</div>
 			</c:if>
 			<c:if test="${user_grade > 1}">
+			<!-- 작성한 글 시작 -->
 			<div id="memCom" style="display:none;">
 				<h3>작성한 글</h3>
 				<span class="info">작성한 글을 확인할 수 있습니다.</span>
-				
+				<c:if test="${count == 0 }">
+					<div class="result-display">
+						작성하신 글이 없습니다.
+					</div>
+				</c:if>
+				<c:if test="${count > 0 }">
+				<table>
+				<tr>
+					<th>글번호</th>
+					<th>제목</th>
+					<th>날짜</th>
+				</tr>
+				<c:forEach var="com" items="${list}">
+					<tr>
+						<td>${com.com_num}</td>
+						<td><a href="${pageContext.request.contextPath}/community/communityDetail.do?com_num=${com.com_num}">${com.com_title}</a></td>
+						<td>${com.com_date}</td>
+					</tr>
+				</c:forEach>
+				</table>
+				<div class="align-center">
+					${pagingHtml}
+				</div>
+				</c:if>
 			</div>
+			<!-- 작성한 글 끝 -->
+			<!-- 작성한 댓글 시작 -->
 			<div id="memRep" style="display:none;">
 				<h3>작성한 댓글</h3>
 				<span class="info">작성한 댓글을 확인할 수 있습니다.</span>
-				
+				<c:if test="${replyCount == 0 }">
+					<div class="result-display">
+						작성하신 글이 없습니다.
+					</div>
+				</c:if>
+				<c:if test="${replyCount > 0 }">
+				<table class="table table-sm table-borered table-hover" style="table-layout:fixed; height:10px; white-space: nowrap;">
+				<tr>
+					<th>글번호</th>
+					<th>댓글 내용</th>
+					<th>날짜</th>
+				</tr>
+				<c:forEach var="reply" items="${replyList}">
+					<tr>
+						<td>${reply.com_num}</td>
+						<td class="reply-cut"><a href="${pageContext.request.contextPath}/community/communityDetail.do?com_num=${reply.com_num}">${reply.re_content}</a></td>
+						<td>${reply.re_date}</td>
+					</tr>
+				</c:forEach>
+				</table>
+				<div class="align-center">
+					${replyPagingHtml}
+				</div>
+				</c:if>
 			</div>
+			<!-- 작성한 댓글 끝 -->
 			</c:if>
 			<div id="deactivate" style="display:none;">
 				<h3>회원 탈퇴</h3>
