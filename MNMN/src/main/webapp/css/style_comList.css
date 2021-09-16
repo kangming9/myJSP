@@ -16,9 +16,22 @@
 }
 
 /*title*/
+
+.page-main{
+	font-family : 'NEXON Lv1 Gothic OTF Bold';
+	background-color: #E8F0F2;
+}
+
 .container{
-	background-color:#E8F0F2;
+	font-family: 'WONTitle';
+	margin: 20px;
 	padding: 100px 50px;
+	overflow:hidden;
+	height:auto;
+}
+
+.list-container{
+	padding: 50px 20px;
 }
 
 #title{
@@ -149,6 +162,6 @@ form.search-form ul li{
 	font-size:10pt;	
 }
 
-input{
-    font-family: 'WONTitle';
+select{
+   font-family: 'WONTitle';
 }

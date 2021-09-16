@@ -28,7 +28,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="wrap-list">
-	<h2 class="title-list">기다리개</h2>
+	<span id="title-list">기다리개</span>
 	<div class="intro"><p>입양을 기다리는 친구들</p></div>
 	<!-- 관리자의 동물 등록 버튼 시작 -->
 	<c:if test="${user_grade == 1}">

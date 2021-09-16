@@ -88,15 +88,15 @@
 		<ul class="form-content">
 			<li>
 				<label for="name">이름</label>
-				<input type="text" name="name" id="name" maxlength="50" value="${pet.pet_name}">
+				<input type="text" name="name" id="name" maxlength="50" value="${pet.pet_name}" class="text-li">
 			</li>
 			<li>
 				<label for="type">종류</label>
-				<input type="text" name="type" id="type" maxlength="50" value="${pet.pet_type}">
+				<input type="text" name="type" id="type" maxlength="50" value="${pet.pet_type}" class="text-li">
 			</li>
 			<li>
 				<label for="detail" id="detail">소개글</label>
-				<textarea rows="5" cols="27" name="detail" id="content">${pet.pet_detail}</textarea>
+				<textarea rows="3" cols="27" name="detail" id="content" class="text-text">${pet.pet_detail}</textarea>
 			</li>
 			<li>
 				<label for="photo" id="photo-modify-label">사진</label>
