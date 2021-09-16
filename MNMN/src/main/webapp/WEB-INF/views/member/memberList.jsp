@@ -31,70 +31,74 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>회원 목록</h2>
-	<div class="top">
-		<form id="search_form" action="memberList.do" method="get">
-		<div class="search">
-			<select name="keyfield">
-					<option value="1">아이디</option>
-					<option value="2">이름</option>
-			</select>
-			<input type="search" size="25" name="keyword" id="keyword">
-			<input type="submit" value="검색" class="submit btns">
+	<div class="page-container">
+	<span class="page-name">회원 목록</span>
+	<div class="list-container">
+		<div class="top">
+			<form id="search_form" action="memberList.do" method="get">
+			<div class="search">
+				<select name="keyfield">
+						<option value="1">아이디</option>
+						<option value="2">이름</option>
+				</select>
+				<input type="search" size="25" name="keyword" id="keyword">
+				<input type="submit" value="검색" class="submit btns">
+			</div>
+			</form>
+			<div class="btn-container">
+				<input type="button" value="목록" class="cancel btns" onclick="location.href='memberList.do'">
+				<input type="button" value="홈으로" class="home btns" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			</div>
 		</div>
-		</form>
-		<div class="btn-container">
-			<input type="button" value="목록" class="cancel btns" onclick="location.href='memberList.do'">
-			<input type="button" value="홈으로" class="home btns" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<c:if test="${count == 0}">
+		<div class="result-display">
+			등록된 회원이 없습니다.
 		</div>
-	</div>
-	<c:if test="${count == 0}">
-	<div class="result-display">
-		등록된 회원이 없습니다.
-	</div>
-	</c:if>
-	<c:if test="${count > 0}">
-	<div class="tb-container">
-	<table>
-		<thead class="tb-header">
+		</c:if>
+		<c:if test="${count > 0}">
+		<div class="tb-container">
+		<table>
+			<thead class="tb-header">
+				<tr>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>가입일</th>
+					<th>등급</th>
+				</tr>
+			</thead>
+			<tbody class="tb-content">
+			<c:forEach var="member" items="${list}">
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>전화번호</th>
-				<th>가입일</th>
-				<th>등급</th>
+				<td>
+					<c:if test="${member.member_grade > 0}">
+					<a href="detailUserForm.do?mem_num=${member.member_num}">${member.member_id}</a>
+					</c:if>
+					<c:if test="${member.member_grade == 0}">
+					${member.member_id}
+					</c:if>
+				</td>
+				<td>${member.member_detail_name}</td>
+				<td>${member.member_detail_phone}</td>
+				<td>${member.member_detail_reg_date}</td>
+				<td>
+				<c:if test="${member.member_grade == 0}">탈퇴</c:if>
+				<c:if test="${member.member_grade == 1}">관리</c:if>
+				<c:if test="${member.member_grade == 2}">입양</c:if>
+				<c:if test="${member.member_grade == 3}">일반</c:if>
+				</td>
 			</tr>
-		</thead>
-		<tbody class="tb-content">
-		<c:forEach var="member" items="${list}">
-		<tr>
-			<td>
-				<c:if test="${member.member_grade > 0}">
-				<a href="detailUserForm.do?mem_num=${member.member_num}">${member.member_id}</a>
-				</c:if>
-				<c:if test="${member.member_grade == 0}">
-				${member.member_id}
-				</c:if>
-			</td>
-			<td>${member.member_detail_name}</td>
-			<td>${member.member_detail_phone}</td>
-			<td>${member.member_detail_reg_date}</td>
-			<td>
-			<c:if test="${member.member_grade == 0}">탈퇴</c:if>
-			<c:if test="${member.member_grade == 1}">관리</c:if>
-			<c:if test="${member.member_grade == 2}">입양</c:if>
-			<c:if test="${member.member_grade == 3}">일반</c:if>
-			</td>
-		</tr>
-		</c:forEach>
-		</tbody>
-	</table>
+			</c:forEach>
+			</tbody>
+		</table>
+		</div>
+		<div class="align-center memlist">
+			${pagingHtml}
+		</div>
+		</c:if>
 	</div>
-	<div class="align-center memlist">
-		${pagingHtml}
 	</div>
-	</c:if>
-		<!-- footer 시작 -->
+	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<!-- footer 끝 -->
 </div>

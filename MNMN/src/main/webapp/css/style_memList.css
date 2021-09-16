@@ -1,7 +1,50 @@
 @charset "UTF-8";
 
+/*font-face*/
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'WONTitle';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONTitle.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input, select{
+	font-family: 'WONTitle';
+}
+
 .page-main{
+	font-family : 'NEXON Lv1 Gothic OTF Bold';
 	background-color: #f4f7f7;
+}
+
+.page-container{
+	font-family: 'WONTitle';
+	margin: 20px;
+	padding: 100px 50px;
+	overflow:hidden;
+	height:auto;
+}
+
+.page-name{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+  	margin : 20px 0px;
+  	padding: 5px 20px;
+  	background-color:#A2DBFA;
+  	text-align: center;
+  	font-size: 20px;
+  	color: white;
+}
+
+.list-container{
+	padding: 50px 20px;
 }
 
 .top{
@@ -35,8 +78,6 @@ form{
 .btn-container{
 	margin: 0;
 	padding: 0;
-	height: 30px;
-	display: inline-block;
 }
 
 .btns{
@@ -46,6 +87,7 @@ form{
 	border: 0px;
 	border-radius: 10px;
 	width: 50px;
+	float: left;
 }
 
 .submit{
@@ -74,7 +116,6 @@ form{
 }
 
 .memlist{
-	margin-bottom: 100px;
 }
 
 
@@ -115,11 +156,9 @@ td{
 }
 
 .tb-header{
-	height: 50px;
 	background-color: #dae9f4;
 }
 
 .tb-content{
-	height: 40px;
   	background-color: #F0F8FF;
 }
