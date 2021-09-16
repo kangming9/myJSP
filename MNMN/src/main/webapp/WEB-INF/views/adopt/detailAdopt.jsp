@@ -54,14 +54,14 @@
 					<li><span class="info-title">결혼여부</span><span class="info-content">기혼</span></li>
 				</c:when>  
 			</c:choose> 
-			<li><span class="info-title">주소</span><span class="info-content">${adopt.adopt_house}</span></li>
+			<li class="addr"><span class="info-title">주소</span><span class="info-content">${adopt.adopt_house}</span></li>
 			<li><span class="info-title">신청일</span><span class="info-content">${adopt.adopt_date}</span></li>
 		</ul>
 		</div>
 		<hr size="1" noshade width="100%">
-		<p class="intro-content">
+		<div class="intro-content">
 			${adopt.adopt_intro}
-		</p>
+		</div>
 		<hr size="1" noshade width="100%">
 		<div class="align-right">
 			<c:if test="${adopt.adopt_now == 0}">

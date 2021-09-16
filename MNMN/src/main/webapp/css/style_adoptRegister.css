@@ -147,6 +147,12 @@ textarea.text-text{
     }
 
 /*detailAdopt*/
+.addr{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .approve{
 	background-color: #38A2DB;
 	color: #FFFFFF;
@@ -178,6 +184,7 @@ textarea.text-text{
 	width: 95%;
 	margin: 0 auto;
 	background-color: #E8F0F2;
+	overflow: hidden;
 }
 
 .reject-form{
