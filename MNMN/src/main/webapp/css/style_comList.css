@@ -162,6 +162,6 @@ form.search-form ul li{
 	font-size:10pt;	
 }
 
-input{
-    font-family: 'WONTitle';
+select{
+   font-family: 'WONTitle';
 }
