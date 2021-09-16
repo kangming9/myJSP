@@ -6,17 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>입양후기 게시글상세</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css">
 </head>
 <body>
-<div class="page-main">
+<div class="page-main back-color">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<p>
-	<div style="border: 1px solid;">
+	<div style="border: 1px solid; background: white;">
 		<ul>
 			<li class="tag">입양후기 게시판</li>
 			<p>
@@ -38,12 +38,9 @@
 	</div>
 	<p>
 	<div class="align-right">
-		<input type="button" value="수정" class="btn btn-outline-dark" onclick="location.href='afterModifyForm.do?after_num=${after.after_num}'"
-			<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
-		>
-		<input type="button" value="삭제" class="btn btn-outline-dark" id="delete_btn" 
-			<c:if test="${user_num != after.after_member_num}">disabled="disabled"</c:if>
-		>
+		<c:if test="${user_num == after.after_member_num}">
+		<input type="button" value="수정" class="btn-style" onclick="location.href='afterModifyForm.do?after_num=${after.after_num}'">
+		<input type="button" value="삭제" class="btn-style" id="delete_btn" >
 		<script type="text/javascript">
 			var delete_btn = document.getElementById('delete_btn');
 			delete_btn.onclick=function(){
@@ -53,7 +50,8 @@
 				}
 			};
 		</script>
-		<input type="button" value="목록" class="btn btn-outline-dark" onclick="location.href='list.do'">
+		</c:if>
+		<input type="button" value="목록" class="btn-style-cancel" onclick="location.href='list.do'">
 		</div>
 		<p>
 			<!-- footer 시작 -->

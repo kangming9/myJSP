@@ -147,3 +147,31 @@
 #detail_Id_Date{
 	text-align: right;
 }
+/*배경색*/
+.back-color{
+	background-color: #E8F0F2;
+}
+/*수정삭제취소버튼*/
+.btn-style{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding:5px 10px;
+	background:	#A2DBFA;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
+
+.btn-style-cancel{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	font-size:11pt;
+	font-weight:bold;
+	margin-left:5px;
+	padding: 5px 10px;
+	background:	#d1d1d1;
+	color:white;
+	border:none;
+	border-radius:15%;
+}
