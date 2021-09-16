@@ -37,7 +37,7 @@ public class ListVolunteerAction implements Action{
 			VolunteerDAO dao = VolunteerDAO.getInstance();
 			int count = dao.getVolunteerCount(keyfield);
 			
-			PagingUtil page = new PagingUtil(keyfield, "", Integer.parseInt(pageNum),count,10,10,"listVolunteer.do");
+			PagingUtil page = new PagingUtil(keyfield, "", Integer.parseInt(pageNum),count,15,10,"listVolunteer.do");
 			
 			List<VolunteerVO> list = null;
 			if(count > 0) {

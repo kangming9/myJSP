@@ -37,7 +37,7 @@ public class ListAdoptAction implements Action{
 			AdoptDAO dao = AdoptDAO.getInstance();
 			int count = dao.getAdoptCount(keyfield);
 			
-			PagingUtil page = new PagingUtil(keyfield, "", Integer.parseInt(pageNum),count,20,10,"listAdopt.do");
+			PagingUtil page = new PagingUtil(keyfield, "", Integer.parseInt(pageNum),count,15,10,"listAdopt.do");
 			
 			List<AdoptVO> list = null;
 			if(count > 0) {
