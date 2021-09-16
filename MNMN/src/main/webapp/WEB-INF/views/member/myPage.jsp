@@ -16,44 +16,102 @@
 			$(this).css('background-color','#E8F0F2');
 			$('#account_nav').css('background-color','#FFFFFF');
 			$('#admin_nav').css('background-color','#FFFFFF');
+			$('#memCom_nav').css('background-color','#FFFFFF');
+			$('#memRep_nav').css('background-color','#FFFFFF');
 			$('#deactivate_nav').css('background-color','#FFFFFF');
 			$('#profile').show();
 			$('#account').hide();
 			$('#admin').hide();
+			$('#memCom').hide();
+			$('#memRep').hide();
 			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#account_nav').click(function(){
 			$('#profile_nav').css('background-color','#FFFFFF');
 			$(this).css('background-color','#E8F0F2');
 			$('#admin_nav').css('background-color','#FFFFFF');
+			$('#memCom_nav').css('background-color','#FFFFFF');
+			$('#memRep_nav').css('background-color','#FFFFFF');
 			$('#deactivate_nav').css('background-color','#FFFFFF');
 			$('#profile').hide();
 			$('#account').show();
 			$('#admin').hide();
+			$('#memCom').hide();
+			$('#memRep').hide();
 			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#admin_nav').click(function(){
 			$('#profile_nav').css('background-color','#FFFFFF');
 			$('#account_nav').css('background-color','#FFFFFF');
 			$(this).css('background-color','#E8F0F2');
+			$('#memCom_nav').css('background-color','#FFFFFF');
+			$('#memRep_nav').css('background-color','#FFFFFF');
 			$('#deactivate_nav').css('background-color','#FFFFFF');
 			$('#profile').hide();
 			$('#account').hide();
 			$('#admin').show();
+			$('#memCom').hide();
+			$('#memRep').hide();
 			$('#deactivate').hide();
+			
+			return false;
+		});
+		
+		$('#memCom_nav').click(function(){
+			$('#profile_nav').css('background-color','#FFFFFF');
+			$('#account_nav').css('background-color','#FFFFFF');
+			$('#admin_nav').css('background-color','#FFFFFF');
+			$(this).css('background-color','#E8F0F2');
+			$('#memRep_nav').css('background-color','#FFFFFF');
+			$('#deactivate_nav').css('background-color','#FFFFFF');
+			$('#profile').hide();
+			$('#account').hide();
+			$('#admin').hide();
+			$('#memCom').show();
+			$('#memRep').hide();
+			$('#deactivate').hide();
+			
+			return false;
+		});
+		
+		$('#memRep_nav').click(function(){
+			$('#profile_nav').css('background-color','#FFFFFF');
+			$('#account_nav').css('background-color','#FFFFFF');
+			$('#admin_nav').css('background-color','#FFFFFF');
+			$('#memCom_nav').css('background-color','#FFFFFF');
+			$(this).css('background-color','#E8F0F2');
+			$('#deactivate_nav').css('background-color','#FFFFFF');
+			$('#profile').hide();
+			$('#account').hide();
+			$('#admin').hide();
+			$('#memCom').hide();
+			$('#memRep').show();
+			$('#deactivate').hide();
+			
+			return false;
 		});
 		
 		$('#deactivate_nav').click(function(){
 			$('#profile_nav').css('background-color','#FFFFFF');
 			$('#account_nav').css('background-color','#FFFFFF');
 			$('#admin_nav').css('background-color','#FFFFFF');
+			$('#memCom_nav').css('background-color','#FFFFFF');
+			$('#memRep_nav').css('background-color','#FFFFFF');
 			$(this).css('background-color','#E8F0F2');
 			$('#profile').hide();
 			$('#account').hide();
 			$('#admin').hide();
+			$('#memCom').hide();
+			$('#memRep').hide();
 			$('#deactivate').show();
+			
+			return false;
 		});
 		
 		$('#photo_btn').click(function(){
@@ -139,6 +197,8 @@
 				<li><a href="#profile" id="profile_nav">프로필</a></li>
 				<li><a href="#account" id="account_nav">계정 관리</a></li>
 				<c:if test="${user_grade == 1}"><li><a href="#admin" id="admin_nav">관리자 메뉴</a></c:if>
+				<c:if test="${user_grade > 1}"><li><a href="#memCom" id="memCom_nav">작성한 글</a></c:if>
+				<c:if test="${user_grade > 1}"><li><a href="#memRep" id="memRep_nav">작성한 댓글</a></c:if>
 				<li><a href="#deactivate" id="deactivate_nav">회원 탈퇴</a></li>
 			</ul>
 		</div>
@@ -189,8 +249,12 @@
 					<input type="button" value="수정하기" onclick="location.href='modifyUserForm.do'" class="update_btn">
 				</div>
 				<div class="info-content">
-					<div class="sub">가입 정보</div>
+					<div class="sub">활동 정보</div>
 					<ul>
+						<c:if test="${user_grade != 1}">
+						<li><span class="title">봉사</span>  ${member.member_volunteer} 시간</li>
+						<li><span class="title">입양</span>  ${member.member_adopt} 회</li>
+						</c:if>
 						<li><span class="title">가입일</span>  ${member.member_detail_reg_date}</li>
 						<li><span class="title">마지막 정보 수정일</span> ${member.member_detail_new_date}</li>
 					</ul>
@@ -205,12 +269,24 @@
 						<input type="button" value="회원 관리" onclick="location.href='memberList.do'" class="check_btn">
 					</li>
 					<li>
-						<input type="button" value="신규 입양  관리" onclick="location.href='${pageContext.request.contextPath}/adopt/listAdopt.do'" class="check_btn">
+						<input type="button" value="입양  관리" onclick="location.href='${pageContext.request.contextPath}/adopt/listAdopt.do'" class="check_btn">
 					</li>
 					<li>
-						<input type="button" value="신규 봉사 관리" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'" class="check_btn">
+						<input type="button" value="봉사 관리" onclick="location.href='${pageContext.request.contextPath}/volunteer/listVolunteer.do'" class="check_btn">
 					</li>
 				</ul>
+			</div>
+			</c:if>
+			<c:if test="${user_grade > 1}">
+			<div id="memCom" style="display:none;">
+				<h3>작성한 글</h3>
+				<span class="info">작성한 글을 확인할 수 있습니다.</span>
+				
+			</div>
+			<div id="memRep" style="display:none;">
+				<h3>작성한 댓글</h3>
+				<span class="info">작성한 댓글을 확인할 수 있습니다.</span>
+				
 			</div>
 			</c:if>
 			<div id="deactivate" style="display:none;">

@@ -140,6 +140,62 @@ public class MemberDAO {
 		return member;
 	}
 	
+	//회원 봉사 시간
+	public int getVolunteer(int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT COUNT(*) FROM volunteer v, member m where v.vol_member_num = m.member_num and v.vol_checked=1 "
+					+ "and m.member_num=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, member_num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
+	//회원 입양 회수
+	public int getAdopt(int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT COUNT(*) FROM adopt a, member m where a.adopt_member_num = m.member_num and a.adopt_now=1 "
+					+ "and m.member_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+				
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
 	//프로필 사진 수정
 	public void updateMyPhoto(String photo, int member_num) throws Exception {
 		Connection conn = null;

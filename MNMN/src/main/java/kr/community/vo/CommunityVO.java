@@ -53,8 +53,7 @@ public class CommunityVO {
 	public void setCom_member_id(String com_member_id) {
 		this.com_member_id = com_member_id;
 	}
-	
-	
+
 	
 	
 }
