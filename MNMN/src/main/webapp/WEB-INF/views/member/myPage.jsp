@@ -199,8 +199,10 @@
 				<div class="info-content">
 					<div class="sub">활동 정보</div>
 					<ul>
+						<c:if test="${user_grade != 1}">
 						<li><span class="title">봉사</span>  ${member.member_volunteer} 시간</li>
 						<li><span class="title">입양</span>  ${member.member_adopt} 회</li>
+						</c:if>
 						<li><span class="title">가입일</span>  ${member.member_detail_reg_date}</li>
 						<li><span class="title">마지막 정보 수정일</span> ${member.member_detail_new_date}</li>
 					</ul>
