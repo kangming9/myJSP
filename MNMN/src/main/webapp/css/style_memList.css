@@ -87,24 +87,30 @@ form{
 	border: 0px;
 	border-radius: 10px;
 	width: 50px;
-	float: left;
 }
 
 .submit{
 	background-color: #88898C;
 	margin-left: 3px;
 	margin-bottom: 0;
+	float: left;
 }
 
 .home{
 	margin-right: 5px;
 	background-color: #38A2DB;
 	color: #FFFFFF;
+	float: left;
 }
 
 .cancel{
 	background-color: #F2ACB9;
 	color: #FFFFFF;
+}
+
+.detail{
+	background-color: #dae9f4;
+	margin: 0 auto;
 }
 
 .result-display{

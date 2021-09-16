@@ -64,23 +64,28 @@
 		</p>
 		<hr size="1" noshade width="100%">
 		<div class="align-right">
+			<c:if test="${adopt.adopt_now == 0}">
 			<input type="button" value="승인" onclick="location.href='approveAdopt.do?adopt=${adopt.adopt_num}&pet=${adopt.adopt_pet_num}&mem=${adopt.adopt_member_num}'" class="approve btn">
 			<input type="button" value="반려" id="reject_btn" class="reject btn">
+			</c:if>
 			<input type="button" value="목록" onclick="location.href='listAdopt.do'" class="list btn">
 		</div>
 	</div>
 	<br>
-	<div class="reject-main" id="reject_container" style="display:none;">
+	
+	<div class="reject-main" id="reject_container" <c:if test="${adopt.adopt_now != 2}">style="display:none;"</c:if>>
 		<span class="page-name">반려 처리</span>
 		<div class="reject-form">
 		<h3>사유</h3>
 		<form id="reject_form" action="rejectAdopt.do" method="post">
 			<input type="hidden" name="adopt" value="${adopt.adopt_num}">
-			<textarea rows="5" cols="50" name="reason" id="reason"></textarea>
+			<textarea rows="5" cols="50" name="reason" id="reason"><c:if test="${adopt.adopt_now == 2}">${adopt.adopt_why}</c:if></textarea>
+			<c:if test="${adopt.adopt_now == 0}">
 			<div class="align-center">
 				<input type="submit" value="제출" id="reject_submit" class="approve btn">
 				<input type="button" value="취소" id="reject_reset" class="list btn">
 			</div>
+			</c:if>
 		</form>
 		</div>
 	</div>

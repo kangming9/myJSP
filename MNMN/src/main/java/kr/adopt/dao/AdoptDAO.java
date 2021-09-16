@@ -80,17 +80,29 @@ public class AdoptDAO {
 		
 		
 		//신규 입양 신청 개수
-		public int getAdoptCount() throws Exception {
+		public int getAdoptCount(String keyfield) throws Exception {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String sql = null;
+			String sub_sql = null;
 			int count = 0;
 				
 			try {
 				conn = DBUtil.getConnection();
+				
+				if(keyfield == null || "".equals(keyfield)) {
+					sql = "SELECT COUNT(*) FROM adopt a LEFT OUTER JOIN member_detail d ON a.adopt_member_num=d.member_detail_num";
+					pstmt = conn.prepareStatement(sql);
+				}else {
+					if(keyfield.equals("1")) sub_sql = "adopt_now=0";
+					else if(keyfield.equals("2")) sub_sql = "adopt_now=1";
+					else if(keyfield.equals("3")) sub_sql = "adopt_now=2";
 					
-				sql = "SELECT COUNT(*) FROM adopt WHERE adopt_now=0";
+					sql = "SELECT COUNT(*) FROM adopt a LEFT OUTER JOIN "
+						+ "member_detail d ON a.adopt_member_num=d.member_detail_num WHERE " + sub_sql;
+					pstmt = conn.prepareStatement(sql);
+				}
 					
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -108,25 +120,40 @@ public class AdoptDAO {
 		}
 			
 		//신규 입양 신청 목록
-		public List<AdoptVO> getListAdopt(int start, int end) throws Exception{
+		public List<AdoptVO> getListAdopt(int start, int end, String keyfield) throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			List<AdoptVO> list = null;
 			String sql = null;
-				
+			String sub_sql = null;
+			
 			try {
 				conn = DBUtil.getConnection();
+				
+				if(keyfield == null || "".equals(keyfield)) {
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+							+ "(SELECT * FROM adopt t JOIN member m ON t.adopt_member_num = m.member_num JOIN pet p ON t.adopt_pet_num = p.pet_num "
+							+ "ORDER BY t.adopt_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
 					
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
-					+ "(SELECT * FROM adopt t JOIN member m ON t.adopt_member_num = m.member_num JOIN pet p ON t.adopt_pet_num = p.pet_num "
-					+ "WHERE t.adopt_now=0 ORDER BY t.adopt_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+				}else {
+					if(keyfield.equals("1")) sub_sql = "adopt_now=0";
+					else if(keyfield.equals("2")) sub_sql = "adopt_now=1";
+					else if(keyfield.equals("3")) sub_sql = "adopt_now=2";
 					
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
-					
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+							+ "(SELECT * FROM adopt t JOIN member m ON t.adopt_member_num = m.member_num JOIN pet p ON t.adopt_pet_num = p.pet_num "
+							+ "WHERE "+sub_sql+" ORDER BY t.adopt_num DESC)a) WHERE rnum >= ? AND rnum <= ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+				}
+				
 				rs = pstmt.executeQuery();
+				
 				list = new ArrayList<AdoptVO>();
 				while(rs.next()) {
 					AdoptVO adopt = new AdoptVO();
