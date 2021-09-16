@@ -69,9 +69,9 @@
 		</div>
 	</form>
 	</div>
-</div>
 	<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<!-- footer 끝 -->
+</div>
 </body>
 </html>
