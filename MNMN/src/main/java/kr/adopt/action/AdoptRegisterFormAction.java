@@ -24,9 +24,19 @@ public class AdoptRegisterFormAction implements Action{
 			return "redirect:/member/loginForm.do";
 		}
 
-		//자격 미달 체크
-		AdoptDAO dao = AdoptDAO.getInstance();
+		int pet_num = Integer.parseInt(request.getParameter("pet_num"));
 		
+		AdoptDAO dao = AdoptDAO.getInstance();
+
+		//중복 테스트
+		int checkCount = dao.adoptCountCheck(user_num, pet_num);
+		if(checkCount != 0) {
+			request.setAttribute("checkCount", checkCount);
+			return "/WEB-INF/views/adopt/adoptRegister.jsp";
+		}
+		
+		
+		//자격 미달 체크
 		int count = dao.adoptCheck(user_num);
 		
 		Integer user_grade = (Integer)session.getAttribute("user_grade");
@@ -38,7 +48,6 @@ public class AdoptRegisterFormAction implements Action{
 			return "/WEB-INF/views/adopt/adoptRegister.jsp";
 		}
 		
-		int pet_num = Integer.parseInt(request.getParameter("pet_num"));
 		
 		PetDAO pdao = PetDAO.getInstance();
 		PetVO pet = pdao.getPet(pet_num);
@@ -55,6 +64,7 @@ public class AdoptRegisterFormAction implements Action{
 		adopt.setAdopt_member_name(member.getMember_detail_name());
 		
 		request.setAttribute("adopt", adopt);
+		request.setAttribute("checkCount", checkCount);
 		
 		return "/WEB-INF/views/adopt/adoptRegisterForm.jsp";
 	}

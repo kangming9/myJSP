@@ -51,3 +51,15 @@ p{
   padding: 0px 10px;
   color:#39A2DB;
 }
+
+#donabtn{
+	font-family: 'NEXON Lv1 Gothic OTF Bold';
+	color: white;
+	padding : 10px;
+	border: none;
+	border-radius: 5%;
+	background-color:#A2DBFA;
+}
+#donaimg{
+	width: 100px;
+}

@@ -20,41 +20,6 @@
 					}
 				});
 				
-				
-				//입양 중복 체크
-				
-				$("#r-g-btn").click(function(event) {
-					event.preventDefault(); // 버튼의 원래 이벤트 무효
-					$.ajax({
-						url:'CheckDuplicatedAdopt.do',
-						type:'get',
-						data:{
-							user_num:$('#user_num').val(),
-							pet_num:$('#check_pet_num').val()
-						},
-						dataType:'json',
-						cache:false,
-						timeout:30000,
-						success:function(param){
-							if(param.result == 'NotDuplicated'){
-								alert('입양 시작');
-							}else if(param.result == 'Duplicated'){
-								alert('이미 입양 신청 기록이 있습니다.');
-							}else{
-								alert('입양 중복 체크 오류');
-								event.preventDefault(); // 버튼의 원래 이벤트 무효
-							}
-						},
-						error:function(){
-							alert('네트워크 오류 발생');
-						}
-					});
-				});
-				
-					
-				});
-				
-				
 			});
 			
 </script>
@@ -73,13 +38,12 @@
 			<div class="detail-title"><h2>${pet.pet_name}</h2></div>
 			<div class="detail-description">
 			<div class="detail-sub">
-			<input type="hidden" value="${user_num}" id="user_num">
-			<span class="detail-description-text" id="check_pet_num">등록번호 : ${pet.pet_num}</span><br>
+			<span class="detail-description-text">등록번호 : ${pet.pet_num}</span><br>
 			<span class="detail-description-text">동물 종류 : ${pet.pet_type}</span><br>
 			<span class="detail-description-text">등록일자 : ${pet.pet_date}</span>
 				</div>
 				<div class="detail-content">
-					${pet.pet_detail}
+					${pet.pet_detail} 
 				</div>
 			</div>
 			<div class="buttons">
@@ -90,7 +54,7 @@
 			<input type="button" value="목록" onclick="location.href='petList.do'" class="btn-style-cancel">
 			</c:if>
 			<c:if test="${user_grade > 1 || user_grade == null}">
-			<input type="button" value="입양 신청" id="r-g-btn" onclick="location.href='adoptRegisterForm.do?pet_num=${pet.pet_num}'" class="btn-style">
+			<input type="button" value="입양 신청" onclick="location.href='adoptRegisterForm.do?pet_num=${pet.pet_num}'" class="btn-style">
 			<input type="button" value="목록" onclick="location.href='petList.do'" class="btn-style-cancel">
 		</c:if>
 		</div>

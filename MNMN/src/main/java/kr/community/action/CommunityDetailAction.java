@@ -40,11 +40,11 @@ public class CommunityDetailAction implements Action{
 		
 		request.setAttribute("com", com);
 		
-		//skr
+		
 		CommunityReplyDAO dao2 = CommunityReplyDAO.getInstance();
 		int Rcount = dao2.getReplyCount(com_num);
 		request.setAttribute("Rcount", Rcount);
-		System.out.println(Rcount);
+	
 		
 		return "/WEB-INF/views/community/communityDetail.jsp";
 	}

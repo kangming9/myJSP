@@ -340,3 +340,28 @@ create sequence reply_seq
 START WITH 1
 INCREMENT BY 1;
 
+
+-- donation Table Create SQL
+CREATE TABLE donation
+(
+    don_num          number           NOT NULL, 
+    don_name         VARCHAR2(20)     NOT NULL, 
+    don_birth        DATE             NOT NULL, 
+    don_addr         VARCHAR2(100)    NOT NULL, 
+    don_tel          VARCHAR2(20)     NOT NULL, 
+    don_tel_rec      NUMBER           NOT NULL, 
+    don_mail         VARCHAR2(20)     NOT NULL, 
+    don_mail_rec     NUMBER           NOT NULL, 
+    don_routine      NUMBER           NOT NULL, 
+    don_money        NUMBER           NOT NULL, 
+    don_bank         VARCHAR2(20)     NOT NULL, 
+    don_account      VARCHAR2(20)     NOT NULL, 
+    don_bank_name    VARCHAR2(20)     NOT NULL, 
+     PRIMARY KEY (don_num)
+)
+/
+
+CREATE SEQUENCE donation_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
