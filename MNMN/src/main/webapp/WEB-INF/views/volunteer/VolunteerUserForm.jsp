@@ -33,10 +33,68 @@
 			$('#message_date').text("");	
 			$('#message_already').text("");
 			
-			DateFull();
-			DateAlready();
+			$.ajax({
+				url:"checkDateFull.do",
+				type:"post",
+				async:false,
+				data:{date:$("#date").val(), time:$("#time").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "LessThan"){
+						alert('LessThan');
+						fullChecked = 1;
+						alert(fullChecked);
+					}
+					else if(param.result == "MoreThan"){
+						alert('MoreThan');
+						fullChecked = 0;
+					}
+					else{
+						fullChecked = 0;
+						alert("오류 발생");
+					}
+				},
+				error:function(){
+					fullChecked = 0;
+					alert("네트워크 오류 발생");
+				}
+			});
+			
+			
+			$.ajax({
+				url:"checkAlready.do",
+				type:"post",
+				async:false,
+				data:{date:$("#date").val(), time:$("#time").val()},
+				dataType:"json",
+				cache:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "Yet"){
+						alert('Yet');
+						alreadyChecked = 1;
+						alert(alreadyChecked);
+						
+					}
+					else if(param.result == "Already"){
+						alert('Already');
+						alreadyChecked = 0;
+					}
+					else{
+						alreadyChecked = 0;
+						alert("오류 발생");
+					}
+				},
+				error:function(){
+					alreadyChecked = 0;
+					alert("네트워크 오류 발생");
+				}
+			});
 			
 			if (fullChecked == 1){
+				alert('fullchecked=1');
 				if(alreadyChecked == 1){
 					$("#message_date").css("color", "blue").text("신청 가능");
 					$('#message_already').css("color", "blue").text("선택하신 날짜와 시간에 봉사 신청이 가능합니다:D");
@@ -45,6 +103,7 @@
 					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
 			}else{
+				alert('fullchecked=0');
 				if(alreadyChecked == 1){
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
@@ -53,7 +112,7 @@
 					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
 			}
-			
+		
 		});
 		
 		$('#volunteer_form').submit(function(){
@@ -74,64 +133,6 @@
 				return false;
 			}
 		});
-		
-		
-		
-		function DateFull(){
-			$.ajax({
-				url:"checkDateFull.do",
-				type:"post",
-				data:{date:$("#date").val(), time:$("#time").val()},
-				dataType:"json",
-				cache:false,
-				timeout:30000,
-				success:function(param){
-					if(param.result == "LessThan"){
-						fullChecked = 1;
-					}
-					else if(param.result == "MoreThan"){
-						fullChecked = 0;
-					}
-					else{
-						fullChecked = 0;
-						alert("오류 발생");
-					}
-				},
-				error:function(){
-					fullChecked = 0;
-					alert("네트워크 오류 발생");
-				}
-			});
-		}
-		
-		function DateAlready(){
-			$.ajax({
-				url:"checkAlready.do",
-				type:"post",
-				data:{date:$("#date").val(), time:$("#time").val()},
-				dataType:"json",
-				cache:false,
-				timeout:30000,
-				success:function(param){
-					if(param.result == "Yet"){
-						alreadyChecked = 1;
-						
-					}
-					else if(param.result == "Already"){
-						alreadyChecked = 0;
-					}
-					else{
-						alreadyChecked = 0;
-						alert("오류 발생");
-					}
-				},
-				error:function(){
-					alreadyChecked = 0;
-					alert("네트워크 오류 발생");
-				}
-			});
-		}
-		
 	});
 </script>
 </head>
