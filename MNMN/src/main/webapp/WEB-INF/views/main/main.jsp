@@ -84,7 +84,7 @@
 	<!-- header 시작 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<!-- header 끝 -->
-	<div class="container" id="about" style="background-color:#E8F0F2">
+	<div class="container" id="about">
 	  <div class="content" style="max-width:700px">
 	    <span class="tag wide"  style="background-color:#A2DBFA; color:white">멍냥멍냥 입양센터</span>
 	    <p>안녕하세요. 유기동물 입양센터, <strong>멍냥멍냥</strong>입니다.동물들과 공존하는 삶의 소중함과 그 가치를 널리 알리고, 함께 더불어 살아가는 삶을 위해 항상 힘쓰겠습니다. 오늘도 더 많은 생명에게 좋은 친구가 될 수 있도록, 따뜻한 가정의 품을 안겨줄 수 있도록 노력하겠습니다.</p>

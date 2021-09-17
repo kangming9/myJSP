@@ -290,7 +290,7 @@
 		<li>조회수 : ${com.com_hit}</li>
 	</ul>
 	<hr size="1" noshade width="90%">
-	<p style="word-break:break-all;">
+	<p class="com-content" style="word-break:break-all;">
       ${com.com_content}
    </p>
 	<hr size="1" noshade width="90%">

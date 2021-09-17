@@ -44,10 +44,23 @@
 }
 
 .form_title{
+	width:100%;
 	font-family: 'NEXON Lv1 Gothic OTF Bold';
-	margin : 10px 0px;
+	margin : 10px 100px 30px 100px;
 	font-size : 20px;
 }
+
+ul{
+	width:100%;
+}
+
+li{
+	margin-top:10px;
+	text-align:left;
+}
+
+
+
 
 input[type="text"], input[type="date"], 
 input[type="tel"], input[type="email"], input[type="number"]{

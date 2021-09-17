@@ -71,8 +71,7 @@
 .wrap-list{
 	padding:100px 0;
 	padding-bottom:50px;
- 	width: 100%;
-	background:#E8F0F2;
+ 	width: 100%;;
 }
   
 span#title-list{
@@ -96,7 +95,6 @@ div.intro p{
 
 #container{
 	font-family: 'WONTitle';
-	background-color:#E8F0F2;
 	padding: 10px;
 }
 
@@ -164,7 +162,7 @@ form.search-form ul li{
   	height: auto;
 	transform: translateY(-0.5rem) scale(1.0125);
 	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
-	background-color:#E8F0F2;
+	background-color:#f4f7f7;
 }
 
 .detail-main-image {
