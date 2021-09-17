@@ -28,17 +28,10 @@
 				async:false,
 				timeout:30000,
 				success:function(param){
-					if(param.result == "complete"){
-						alert("삭제 완료");
-					}else if (param.result == "fail"){
-						alert("삭제 실패");
-					}
-					else{
-						alert("삭제 오류");
-					}
+					alert("삭제 완료");
 					location.reload();
 				},
-				error:function(request,status,error){
+				error:function(){
 				    alert("네트워크 오류");
 				   }
 			});
