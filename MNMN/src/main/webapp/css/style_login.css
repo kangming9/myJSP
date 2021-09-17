@@ -64,8 +64,13 @@ h3{
 	margin:30px 0px 30px 0px;
 }
 
-.logo{
+.logo-login{
 	text-align: center;
+	background-color: transparent;
+}
+
+.logo-login img{
+	width: 200px;
 }
 
 label{

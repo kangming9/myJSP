@@ -101,7 +101,7 @@
 			<form id="register_form" action="registerUser.do" method="post" autocomplete="off">
 				<div class="info-content">
 					<h3>회원가입</h3>
-					<div class="logo"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo.png" width=200px></div>
+					<div class="logo-login"><img alt="멍냥멍냥 입양센터 로고" src="${pageContext.request.contextPath}/images/MN_logo_white.png" width=200px></div>
 					<div class="login-content">
 						<div class="align-center field">
 							<label for="id"><i class="fas fa-user fa-lg"></i></label>
