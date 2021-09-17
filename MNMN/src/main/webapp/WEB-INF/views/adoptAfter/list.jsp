@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptAfter.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 </head>
 <body>
 <div class="page-main">

@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_adoptRegister.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#adopt_register').submit(function(){
@@ -45,8 +44,11 @@
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<h2>입양 신청하기</h2>
-	<span class="info">가족이 되기 위해 상담에 필요한 정보를 작성하여 제출해주세요.</span>
+	<div class="page-container">
+	<div class="page-info">
+		<span class="page-name">입양 신청서</span>
+		<div class="info">가족이 되기 위해 상담에 필요한 정보를 작성하여 제출해주세요.</div>
+	</div>
 	<div class="list-space align-right">
 		<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'" class="home btn">
 	</div>
@@ -94,6 +96,7 @@
 			<input type="button" value="취소" onclick="location.href='petList.do'" class="cancel btn">
 		</div>
 	</form>
+	</div>
 	</div>
 		<!-- footer 시작 -->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
