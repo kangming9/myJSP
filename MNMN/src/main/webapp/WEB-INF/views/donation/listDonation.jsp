@@ -89,7 +89,7 @@
 			<c:forEach var="donation" items="${list}">
 			<tr>
 				<td>${donation.num}</td>
-				<td onclick="deleteDon(${donation.num});">${donation.name}</td>
+				<td style="background-color : #63bbeb; color : white" onclick="deleteDon(${donation.num});">${donation.name}</td>
 				<td>${donation.birth}</td>
 				<td>${donation.addr}</td>
 				<td>${donation.tel}</td>
@@ -115,6 +115,7 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="align-center" id="exp_del">후원자명을 클릭하면 후원 삭제가 가능합니다:)</div>
 	<div class="align-center">
 		${pagingHtml}
 	</div>

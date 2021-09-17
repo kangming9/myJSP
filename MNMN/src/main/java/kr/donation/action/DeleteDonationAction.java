@@ -1,13 +1,9 @@
 package kr.donation.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.map.ObjectMapper;
 
 import kr.controller.Action;
 import kr.donation.dao.DonationDAO;
@@ -36,7 +32,6 @@ public class DeleteDonationAction implements Action{
 			String comp = dao.DeleteDonation(num);
 
 		}
-		
 		
 		return "/WEB-INF/views/donation/listDonation.jsp";
 	}
