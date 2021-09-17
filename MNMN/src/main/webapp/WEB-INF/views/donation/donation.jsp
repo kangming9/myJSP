@@ -79,44 +79,69 @@ $(document).ready(function(){
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="container_don">
 		<div id="form">
-			<form id ="donation_form" action="donationDo.do" method="post">
-				<span class="form_title">후원자 정보</span><br>
-				<label>성명(단체명)</label><br>
-				<input type="text" name="name" id="name"><br>
-				<label>생년월일</label><br>
-				<input type="date" name="birth" id="birth"><br>
-				<label>주소</label><br>
-				<input type="text" name="addr" id="addr"><br>
-				<label>전화번호</label>
-				<br>
-				<input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" />
-				<select name="susin_m" id="susin_m">
-					<option>수신 동의</option>
-					<option>수신 거부</option>
-				</select><br>
-				<label>이메일</label>
-				<br>
-				<input type="email" name="email" id="email">
-				<select name="susin_e" id="susin_e">
-					<option>수신 동의</option>
-					<option>수신 거부</option>
-				</select><br>
+			<form id ="donation_form" action="donationDo.do" method="post" class="don-form">
+				<span class="form_title">후원자 정보</span>
+				<ul>
+					<li>
+					<label>성명(단체명)</label>
+					<input type="text" name="name" id="name">
+					</li>
+					<li>
+					<label>생년월일</label>
+					<input type="date" name="birth" id="birth">
+					</li>
+					<li>
+					<label>주소</label>
+					<input type="text" name="addr" id="addr">
+					</li>
+					<li>
+					<label>전화번호</label>
+					<input type="tel" name="phone" id="phone" size="27" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" />
+					<select name="susin_m" id="susin_m">
+						<option>수신 동의</option>
+						<option>수신 거부</option>
+					</select>
+					</li>
+					<li>
+					<label>이메일</label>
+					<input type="email" name="email" id="email">
+					<select name="susin_e" id="susin_e">
+						<option>수신 동의</option>
+						<option>수신 거부</option>
+					</select>
+					</li>
+				</ul>
+				
 				<br><br>
 				<span class="form_title">후원자 계좌 정보</span><br>
-				<label>후원 구분</label><br>
+				<ul>
+				<li>
+				<label>후원 구분</label>
 				<select name="division" id="division">
 					<option>정기 후원</option>
 					<option>일시 후원</option>
-				</select><br>
-				<label>후원금액</label><br>
-				<input type="number" name="money" id="money" value="1000" min="1000" step="1000"> 원<br>
-				<label>은행명</label><br>
-				<input type="text" name="bank" id="bank"><br>
-				<label>계좌번호</label><br>
-				<input type="text" name="account" id="account"><br>
-				<label>예금주명</label><br>
-				<input type="text" name="acname" id="acname"><br>
+				</select>
+				</li>
+				<li>
+				<label>후원금액</label>
+				<input type="number" name="money" id="money" value="1000" min="1000" step="1000"> 원
+				</li>
+				<li>
+				<label>은행명</label>
+				<input type="text" name="bank" id="bank">
+				</li>
+				<li>
+				<label>계좌번호</label>
+				<input type="text" name="account" id="account">
+				</li>
+				<li>
+				<label>예금주명</label>
+				<input type="text" name="acname" id="acname">
+				</li>
+				</ul>
+				<div>
 				<input type="submit" id="submit" value="후원">
+				</div>
 			</form>
 		</div>
 		<div id="explain">
