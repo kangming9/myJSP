@@ -41,13 +41,13 @@
 	<hr size="1" width="90%">
 	<form id="write_form" action="writeCommunity.do" method="post" class="form-css">
 		<ul>
-			<li>
+			<li class="li-background">
 				<label for="title" class="label-detail">
 					<span class="line-color">&ensp;</span>&ensp;&ensp; 제목
 				</label>
 				<input type="text" name="com_title" id="title" size="33" maxlength="50">
 			</li>
-			<li>
+			<li class="li-background">
 				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
 				<textarea rows="5" cols="30" name="com_content" id="content" placeholder="회원 간 욕설이나 폭력적인 언어는 삼가해 주세요"></textarea>
 			</li>
