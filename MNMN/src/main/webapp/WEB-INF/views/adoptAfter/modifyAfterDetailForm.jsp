@@ -37,7 +37,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<p>
 		<p class="tag">입양후기 게시판</p>
-		<form id="modify_form" action="afterModify.do" method="post" enctype="multipart/form-data">
+		<form id="modify_form" action="afterModify.do" method="post" enctype="multipart/form-data" style="background: white;">
 			<input type="hidden" name="after_num" value="${after.after_num}">
 			<ul id="ul_border">
 				<li>
