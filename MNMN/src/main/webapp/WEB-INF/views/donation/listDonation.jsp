@@ -7,6 +7,7 @@
 		history.go(-1);
 	</script>
 </c:if> 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,34 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_donList.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	 function deleteDon(num){
+		 $.ajax({
+				url:"deleteDonation.do",
+				type:"post",
+				data:{dnum:num},
+				dataType:"text",
+				cache:false,
+				async:false,
+				timeout:30000,
+				success:function(param){
+					if(param.result == "complete"){
+						alert("삭제 완료");
+					}else if (param.result == "fail"){
+						alert("삭제 실패");
+					}
+					else{
+						alert("삭제 오류");
+					}
+					location.reload();
+				},
+				error:function(request,status,error){
+				    alert("네트워크 오류");
+				   }
+			});
+	 }
+ </script>
 </head>
 <body>
 <div class="page-main">
@@ -48,6 +77,7 @@
 		<table>
 			<thead class="tb-header">
 				<tr>
+					<th>후원번호</th>
 					<th>후원자</th>
 					<th>생년월일</th>
 					<th>주소</th>
@@ -65,7 +95,8 @@
 			<tbody class="tb-content">
 			<c:forEach var="donation" items="${list}">
 			<tr>
-				<td>${donation.name}</td>
+				<td>${donation.num}</td>
+				<td onclick="deleteDon(${donation.num});">${donation.name}</td>
 				<td>${donation.birth}</td>
 				<td>${donation.addr}</td>
 				<td>${donation.tel}</td>
@@ -102,4 +133,5 @@
 	<!-- footer 끝 -->
 </div>
 </body>
+
 </html>

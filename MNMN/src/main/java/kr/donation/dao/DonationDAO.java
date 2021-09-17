@@ -133,6 +133,7 @@ private static DonationDAO instance = new DonationDAO();
 				list = new ArrayList<DonationVO>();
 				while(rs.next()) {
 					DonationVO don = new DonationVO();
+					don.setNum(rs.getInt("don_num"));
 					don.setName(rs.getString("don_name"));
 					don.setBirth(rs.getDate("don_birth"));
 					don.setAddr(rs.getString("don_addr"));
@@ -155,5 +156,36 @@ private static DonationDAO instance = new DonationDAO();
 				DBUtil.executeClose(rs, pstmt, conn);
 			}
 			return list;
+		}
+		
+		public String DeleteDonation(int num) throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			
+			String comp = "fail";
+			
+			try{
+				//커넥션풀로부터 커넥션을 할당
+				conn = DBUtil.getConnection();
+				
+				//봉사번호(vol_num) 생성
+				sql = "DELETE FROM donation WHERE don_num = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				pstmt.executeUpdate();
+				
+				comp = "complete";
+				
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				executeClose(null, pstmt, conn);
+			}
+			
+			return comp;
 		}
 }
