@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_footer.css" type="text/css">
 </head>
 <body>
-<div class="page-main back-color">
+<div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<p>
 	<div style="border: 1px solid; background: white;">

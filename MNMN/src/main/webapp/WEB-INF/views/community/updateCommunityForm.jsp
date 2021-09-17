@@ -40,11 +40,11 @@
 		<input type="hidden" name="com_num" value="${com.com_num}">
 		<input type="hidden" name="com_member_num" value="${user_num}">
 		<ul>
-			<li>
+			<li class="li-background">
 				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 제목</label>
 				<input type="text" name="com_title" id="com_title" size="33" maxlength="50" value="${com.com_title}">
 			</li>
-			<li>
+			<li class="li-background">
 				<label for="content" class="label-detail"><span class="line-color">&ensp;</span>&ensp;&ensp; 내용</label>
 				<textarea rows="5" cols="30" name="com_content" id="com_content">${com.com_content}</textarea>
 			</li>
