@@ -9,6 +9,7 @@ public class CommunityReplyVO {
 	private int com_num;
 	private int member_num;
 	private String member_id;
+	private String img;
 	private int rrr;
 	
 	public int getRrr() {
@@ -53,7 +54,12 @@ public class CommunityReplyVO {
 	public void setMember_num(int member_num) {
 		this.member_num = member_num;
 	}
-	
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getImg() {
+		return img;
+	}
 	
 	
 	

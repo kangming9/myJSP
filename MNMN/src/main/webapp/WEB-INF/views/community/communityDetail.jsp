@@ -44,6 +44,12 @@
 					
 					$(param.list).each(function(index,item){
 						var output = '<div class="item" id="replyList">';
+						var pimg = null;
+						if(item.img != null)
+							pimg = "${pageContext.request.contextPath}/images/animal/" + item.img;
+						else
+							pimg = "${pageContext.request.contextPath}/images/default_profile.png"
+						output += '<br><div style="width:50px; height: 50px; border-radius: 70%; overflow: hidden;" id="repltListImg"><img id="pimg" style="width:100%; object-fit:cover" src=' + pimg + '></div>';
 						output += '<span id="repltListId">' + item.member_id + '</span>';
 						output += '<span id="repltListDate">' + item.re_date + '</span>';
 						output += '<div class="sub-item">';

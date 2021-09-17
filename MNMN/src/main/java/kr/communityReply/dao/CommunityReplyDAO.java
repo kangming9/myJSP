@@ -78,7 +78,6 @@ public class CommunityReplyDAO {
 		ResultSet rs = null;
 		List<CommunityReplyVO> rrr = null;
 		String sql = null;
-		int count = 0;
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -114,10 +113,10 @@ public class CommunityReplyDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "select * from (select a.*, rownum rnum from "
-				+ "(select b.re_num, re_date, b.re_content, b.com_num, b.member_num, m.member_id "
-				+ "from community_reply b join member m on b.member_num=m.member_num "
-				+ "where b.com_num=? order by b.re_num desc)a) "
-				+ "where rnum >= ? and rnum <= ?";
+					+ "(select b.re_num, re_date, b.re_content, b.com_num, b.member_num, m.member_id, md.member_detail_photo "
+					+ "from community_reply b join member m on b.member_num=m.member_num join member m on b.member_num=m.member_num join member_detail md on b.member_num=md.member_detail_num "
+					+ "where b.com_num=? order by b.re_num desc)a) "
+					+ "where rnum >= ? and rnum <= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, com_num);
 			pstmt.setInt(2, start);
@@ -133,6 +132,7 @@ public class CommunityReplyDAO {
 				reply.setCom_num(rs.getInt("com_num"));
 				reply.setMember_num(rs.getInt("member_num"));
 				reply.setMember_id(rs.getString("member_id"));
+				reply.setImg(rs.getString("member_detail_photo"));
 				
 				list.add(reply);
 			}
