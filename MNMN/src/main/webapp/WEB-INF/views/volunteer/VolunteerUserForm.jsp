@@ -14,6 +14,7 @@
 		var fullChecked=0;
 		var alreadyChecked=0;
 		
+		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
 			if($("#date").val() == ""){
@@ -29,6 +30,21 @@
 				$("time").val("");
 				return;
 			}
+			
+			var nyear = new Date().getFullYear();
+			var nmonth = new Date().getMonth() + 1;
+			var nday = new Date().getDate();
+			
+			var date = $("#date").val();
+			date = date + "";
+			var date_arr = date.split("-");
+			
+			var now = new Date(nyear, nmonth, nday);
+			var pick = new Date(date_arr[0], date_arr[1], date_arr[2]);
+			
+			if(now >= pick)
+				alert("지난 날짜는 신청이 불가능합니다:(");
+
 			
 			$('#message_date').text("");	
 			$('#message_already').text("");
@@ -103,6 +119,11 @@
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
+			}
+		
+			if(now >= pick){
+				$("#message_date").css("color", "red").text("신청 불가");
+				$('#message_already').css("color", "red").text("지나간 날짜와 오늘은 신청이 불가능합니다:(");
 			}
 		
 		});
