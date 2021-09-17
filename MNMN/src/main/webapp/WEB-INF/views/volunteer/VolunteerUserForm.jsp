@@ -11,8 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var fullChecked = 0;
-		var alreadyChecked = 0;
+		var fullChecked=0;
+		var alreadyChecked=0;
 		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
@@ -43,12 +43,9 @@
 				timeout:30000,
 				success:function(param){
 					if(param.result == "LessThan"){
-						alert('LessThan');
 						fullChecked = 1;
-						alert(fullChecked);
 					}
 					else if(param.result == "MoreThan"){
-						alert('MoreThan');
 						fullChecked = 0;
 					}
 					else{
@@ -73,13 +70,10 @@
 				timeout:30000,
 				success:function(param){
 					if(param.result == "Yet"){
-						alert('Yet');
 						alreadyChecked = 1;
-						alert(alreadyChecked);
 						
 					}
 					else if(param.result == "Already"){
-						alert('Already');
 						alreadyChecked = 0;
 					}
 					else{
@@ -94,7 +88,6 @@
 			});
 			
 			if (fullChecked == 1){
-				alert('fullchecked=1');
 				if(alreadyChecked == 1){
 					$("#message_date").css("color", "blue").text("신청 가능");
 					$('#message_already').css("color", "blue").text("선택하신 날짜와 시간에 봉사 신청이 가능합니다:D");
@@ -102,8 +95,7 @@
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
-			}else{
-				alert('fullchecked=0');
+			}else if(fullChecked == 0){
 				if(alreadyChecked == 1){
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
