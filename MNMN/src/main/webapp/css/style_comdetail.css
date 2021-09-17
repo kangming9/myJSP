@@ -15,7 +15,6 @@
 }
 /* detail */
 .container{
-	background:#E8F0F2;
 	padding:50px;
 }
 
@@ -32,6 +31,11 @@ h2.title{
 	text-align:center;
 }
 
+.com-content{
+    font-family: 'WONTitle';
+	padding:20px 40px;
+	
+}
 
 #btns{
     font-family: 'NEXON Lv1 Gothic OTF Bold';

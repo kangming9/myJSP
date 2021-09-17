@@ -224,7 +224,7 @@ $(function(){
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
-	<div class="container" style="background-color:#E8F0F2">
+	<div class="container">
 	
 		<div><span class="tag wide"  style="background-color:#A2DBFA; color:white">날짜별 봉사활동 신청 현황</span></div>
 	

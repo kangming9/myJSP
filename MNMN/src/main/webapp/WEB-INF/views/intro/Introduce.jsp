@@ -15,7 +15,7 @@
 	<div class="container">
 		<span class="intro">About 멍냥멍냥</span>
 		<div class="content">
-			유기동물 입양센터<h3 style="color:white;">멍냥멍냥</h3>
+			유기동물 입양센터<h3 style="color:#39A2DB;">멍냥멍냥</h3>
 			<h5>새 보금자리를 찾을 때까지 유기동물을 보호하고<br>
 			새로운 가족과 함께 할 수 있는 자리를 마련하고 있습니다.</h5>
 			<p id="adopt"><strong>사지 말고 입양하세요</strong></p>
