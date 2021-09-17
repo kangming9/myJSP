@@ -11,8 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var fullChecked = 0;
-		var alreadyChecked = 0;
+		var fullChecked;
+		var alreadyChecked;
 		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
@@ -44,7 +44,7 @@
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
 				}
-			}else{
+			}else if(fullChecked == 0){
 				if(alreadyChecked == 1){
 					$("#message_date").css("color", "red").text("신청 불가");
 					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
