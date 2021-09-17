@@ -134,11 +134,21 @@
 		
 		$('#volunteer_form #date').keydown(function(){
 	         checked = 0;
+
+		$("#date").on("propertychange change keyup paste input", function() {
+			checked = 0;
+			$('#message_date').text("");   
+		    $('#message_already').text("");
 	    });
 	      
 	    $('#volunteer_form #time').keydown(function(){
 	         checked = 0;
 	    });
+		$("#time").on("propertychange change keyup paste input", function() {
+			checked = 0;
+			$('#message_date').text("");   
+	        $('#message_already').text("")
+		});
 				
 		$('#volunteer_form').submit(function(){
 			if($('#date').val()==''){
@@ -158,6 +168,7 @@
 				return false;
 			}
 		});
+		 
 	});
 </script>
 </head>
