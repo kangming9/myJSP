@@ -21,7 +21,7 @@
 	<span id="title3">${count}개의 글</span>
 	<span id="title2">입양후기 게시판</span>
 	<div class="list-space align-right">
-		<c:if test="${!empty user_num || user_grade=='2'}">
+		<c:if test="${!empty user_num && user_grade=='2'}">
 			<input type="button" value="글쓰기" id="write-bt" onclick="location.href='${pageContext.request.contextPath}/adoptAfter/writeForm.do'">
 		</c:if>
 	</div>
