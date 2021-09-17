@@ -46,7 +46,7 @@
 						var output = '<div class="item" id="replyList">';
 						var pimg = null;
 						if(item.img != null)
-							pimg = "${pageContext.request.contextPath}/images/animal/" + item.img;
+							pimg = "${pageContext.request.contextPath}/upload/" + item.img;
 						else
 							pimg = "${pageContext.request.contextPath}/images/default_profile.png"
 						output += '<br><div style="width:50px; height: 50px; border-radius: 70%; overflow: hidden;" id="repltListImg"><img id="pimg" style="width:100%; object-fit:cover" src=' + pimg + '></div>';
