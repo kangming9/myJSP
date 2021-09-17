@@ -133,11 +133,11 @@
 		});
 		
 		$('#volunteer_form #date').keydown(function(){
-	         dateChecked = 0;
+	         checked = 0;
 	    });
 	      
 	    $('#volunteer_form #time').keydown(function(){
-	         dateChecked = 0;
+	         checked = 0;
 	    });
 				
 		$('#volunteer_form').submit(function(){
