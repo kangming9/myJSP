@@ -11,8 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var fullChecked;
-		var alreadyChecked;
+		var fullChecked=0;
+		var alreadyChecked=0;
 		
 		//신청 날짜 인원 초과 체크
 		$("#date_check").click(function(){
@@ -33,54 +33,10 @@
 			$('#message_date').text("");	
 			$('#message_already').text("");
 			
-			DateFull();
-			DateAlready();
-			
-			if (fullChecked == 1){
-				if(alreadyChecked == 1){
-					$("#message_date").css("color", "blue").text("신청 가능");
-					$('#message_already').css("color", "blue").text("선택하신 날짜와 시간에 봉사 신청이 가능합니다:D");
-				}else{
-					$("#message_date").css("color", "red").text("신청 불가");
-					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
-				}
-			}else if(fullChecked == 0){
-				if(alreadyChecked == 1){
-					$("#message_date").css("color", "red").text("신청 불가");
-					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
-				}else{
-					$("#message_date").css("color", "red").text("신청 불가");
-					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
-				}
-			}
-			
-		});
-		
-		$('#volunteer_form').submit(function(){
-			if($('#date').val()==''){
-				alert('날짜를 입력하세요!');
-				$('#date').focus();
-				$('#date').val('');
-				return false;
-			}
-			if($('#time').val()==''){
-				alert('시간을 입력하세요!');
-				$('#time').focus();
-				$('#time').val('');
-				return false;
-			}
-			if(dateChecked == 0){
-				alert('해당 날짜에 봉사가 가능한지 확인해주세요!');
-				return false;
-			}
-		});
-		
-		
-		
-		function DateFull(){
 			$.ajax({
 				url:"checkDateFull.do",
 				type:"post",
+				async:false,
 				data:{date:$("#date").val(), time:$("#time").val()},
 				dataType:"json",
 				cache:false,
@@ -102,12 +58,12 @@
 					alert("네트워크 오류 발생");
 				}
 			});
-		}
-		
-		function DateAlready(){
+			
+			
 			$.ajax({
 				url:"checkAlready.do",
 				type:"post",
+				async:false,
 				data:{date:$("#date").val(), time:$("#time").val()},
 				dataType:"json",
 				cache:false,
@@ -130,8 +86,45 @@
 					alert("네트워크 오류 발생");
 				}
 			});
-		}
+			
+			if (fullChecked == 1){
+				if(alreadyChecked == 1){
+					$("#message_date").css("color", "blue").text("신청 가능");
+					$('#message_already').css("color", "blue").text("선택하신 날짜와 시간에 봉사 신청이 가능합니다:D");
+				}else{
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
+				}
+			}else if(fullChecked == 0){
+				if(alreadyChecked == 1){
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 많은 봉사자분들이 선택해주신 날짜입니다:(");
+				}else{
+					$("#message_date").css("color", "red").text("신청 불가");
+					$('#message_already').css("color", "red").text("이미 신청해주신 봉사 내역이 있습니다:(");
+				}
+			}
 		
+		});
+		
+		$('#volunteer_form').submit(function(){
+			if($('#date').val()==''){
+				alert('날짜를 입력하세요!');
+				$('#date').focus();
+				$('#date').val('');
+				return false;
+			}
+			if($('#time').val()==''){
+				alert('시간을 입력하세요!');
+				$('#time').focus();
+				$('#time').val('');
+				return false;
+			}
+			if(dateChecked == 0){
+				alert('해당 날짜에 봉사가 가능한지 확인해주세요!');
+				return false;
+			}
+		});
 	});
 </script>
 </head>
